@@ -1,12 +1,12 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { appRoutes } from '../../const/app-routes';
-import Header from '../Header/Header';
 import MainPage from '../../pages/MainPage/MainPage';
+import Header from '../Header/Header';
 import HabitPage from '../../pages/HabitPage/HabitPage';
 import AddNewHabitPage from '../../pages/AddNewHabitPage/AddNewHabitPage';
 import EditHabitPage from '../../pages/EditHabitPage/EditHabitPage';
-import NotFoundPage from '../../pages/EditHabitPage/NotFoundPage';
+import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 
 function App() {
   return (
