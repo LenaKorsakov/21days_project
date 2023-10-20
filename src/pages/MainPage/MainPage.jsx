@@ -21,7 +21,7 @@ function MainPage() {
           title="To add habit form"
           to={appRoutes.AddHabit}
         >
-          <div>Add New Habit</div>
+          <div>Create New Habit</div>
         </Link>
       </div>
     </main>

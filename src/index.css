@@ -101,3 +101,7 @@ a {
   pointer-events: none;
   color: rgba(0, 128, 41, 0.546);
 }
+
+.title--uppercase {
+  text-transform: uppercase;
+}
