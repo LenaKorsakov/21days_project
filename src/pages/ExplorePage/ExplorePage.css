@@ -1,0 +1,12 @@
+.ExplorePage {
+  .page-explore__container {
+    padding: 0;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 2fr));
+    column-gap: 0.5vw;
+    row-gap: 1vh;
+  }
+}
