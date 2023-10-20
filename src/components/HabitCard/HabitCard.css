@@ -1,2 +1,24 @@
 .HabitCard {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  box-shadow: rgba(198, 89, 154, 0.3) 0px 4px 12px;
+  margin: 3vh 0;
+  padding: 1vh 2vw;
+
+  & h3 {
+    color: rgba(0, 128, 41, 0.546);
+  }
+
+  & button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  & .btn-edit {
+    font-size: clamp(0.5vw, 1vw, 1.5vw);
+  }
 }

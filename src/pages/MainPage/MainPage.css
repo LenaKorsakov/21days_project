@@ -1,3 +1,12 @@
 .MainPage {
-  color: green;
+  color: #000;
+
+  .page-main__container {
+    padding: 0;
+  }
+
+  .habits__list {
+    margin: 3vh 0;
+    padding: 0;
+  }
 }
