@@ -22,8 +22,9 @@ function HabitCard() {
       >
         <h3 className="habit__title">Sleep 8 hours</h3>
       </Link>
+      <button className="btn btn--complete">Complete today</button>
       <Link
-        className="btn btn-edit"
+        className="btn btn--edit"
         to={`${appRoutes.EditHabit}/3`}
         title="To the edit page"
       >

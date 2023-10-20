@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, Link } from 'react-router-dom';
 import './Header.css';
 import { appRoutes } from '../../const/app-routes';
 
@@ -8,12 +8,13 @@ function Header() {
       <header className="Header">
         <div className="page-header__container">
           <div className="page-header-logo__container">
-            <img
-              className="page-header__logo"
-              src="../../../public/image/cute-cartoon-turtle-file-with-transparent-background-png.webp"
-              alt="21 days logo"
-            />
-
+            <Link to={appRoutes.Main}>
+              <img
+                className="page-header__logo swinging"
+                src="../../../public/image/cute-cartoon-turtle-file-with-transparent-background-png.webp"
+                alt="21 days logo"
+              />
+            </Link>
             <div className="container">
               <h3 className="page-header__title">21Days</h3>
               <small> It takes 21 days to make a habit...</small>

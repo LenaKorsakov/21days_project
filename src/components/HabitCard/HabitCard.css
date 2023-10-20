@@ -18,7 +18,15 @@
     cursor: pointer;
   }
 
-  & .btn-edit {
+  & .btn--edit {
     font-size: clamp(0.5vw, 1vw, 1.5vw);
+    border: none;
+  }
+
+  .btn--complete {
+    font-size: 1vw;
+    background-color: rgba(0, 128, 41, 0.546);
+    color: white;
+    /* TODO  it should be a checkbox*/
   }
 }

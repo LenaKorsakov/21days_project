@@ -9,4 +9,9 @@
     margin: 3vh 0;
     padding: 0;
   }
+
+  .btn--add {
+    background-color: #e71477;
+    color: #f5ecf0;
+  }
 }
