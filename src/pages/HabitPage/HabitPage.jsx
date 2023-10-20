@@ -29,6 +29,7 @@ function HabitPage() {
             deleniti consectetur amet odit provident voluptatem. Error impedit
             et illum itaque.
           </p>
+          <h1>ADD CALENDAR</h1>
           <button className="btn">Complete today</button>
         </div>
       </div>

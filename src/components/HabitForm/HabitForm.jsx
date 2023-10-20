@@ -57,11 +57,11 @@ function HabitForm() {
         <div>
           <select name="category" id="category" className="form__item">
             <option value="self-realization">Self-realization</option>
-            <option value="emotional state">Emotional state</option>
+            <option value="emotional-state">Emotional state</option>
             <option value="lifestyle">Lifestyle</option>
             <option value="health">Health</option>
             <option value="beauty">Beauty</option>
-            <option value="career and finance">Career and finance</option>
+            <option value="career-and-finance">Career and finance</option>
             <option value="relationships">Relationships</option>
             <option value="self-developement and education">
               Self-developement and education

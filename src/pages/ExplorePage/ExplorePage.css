@@ -9,4 +9,10 @@
     column-gap: 0.5vw;
     row-gap: 1vh;
   }
+
+  .filter__list {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+  }
 }
