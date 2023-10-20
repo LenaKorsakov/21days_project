@@ -3,5 +3,6 @@ export const appRoutes = {
   Habit: '/habit',
   AddHabit: '/add',
   EditHabit: '/habit/edit',
+  Explore: '/habits',
   NotFound: '*',
 };

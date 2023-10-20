@@ -7,6 +7,7 @@ import HabitPage from '../../pages/HabitPage/HabitPage';
 import AddNewHabitPage from '../../pages/AddNewHabitPage/AddNewHabitPage';
 import EditHabitPage from '../../pages/EditHabitPage/EditHabitPage';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
+import ExplorePage from '../../pages/ExplorePage/ExplorePage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             path={`${appRoutes.EditHabit}/:habitId`}
             element={<EditHabitPage />}
           />
+          <Route path={`${appRoutes.Explore}`} element={<ExplorePage />} />
           <Route path={appRoutes.NotFound} element={<NotFoundPage />} />
         </Route>
       </Routes>

@@ -1,47 +1,58 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* GENERAL
+/* Remove the margin in all browsers. */
 
-  color-scheme: light dark;
-color: black
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+/* TODO add fonts */
+
+/* COLORS */
+/* TODO add colors */
+
+:root {
+  --main-color: #e71477;
+  --green: #41ac77;
+  --violet: #484e79;
+  --white: #f6f6f6;
 }
 
 body {
-  margin: 0 auto;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  margin: 0;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+* {
+  box-sizing: border-box;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
-button:hover {
-  border-color: #646cff;
+
+html {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: 'Arial', sans-serif;
+  height: 100%;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow-wrap: break-word;
+}
+
+main {
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 
 .container {
@@ -52,10 +63,45 @@ button:focus-visible {
   flex-direction: column;
 }
 
+a {
+  text-decoration: none;
+}
+
 .btn {
-  border: none;
-  border-radius: 5px;
-  background-color: black;
-  color: white;
-  padding: 2vh 2vw;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem 0.5rem;
+  font-weight: 600;
+  font-size: clamp(0.4rem, 1.2vw, 2rem);
+  line-height: 1.2;
+  color: black;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid var(--main-color);
+  border-radius: 47px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--main-color);
+}
+
+.link {
+  padding: 0;
+  font: inherit;
+  font-size: clamp(0.8vw, 1.2vw, 1.3vw);
+  color: var(--white);
+  overflow-wrap: anywhere;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+
+.link.active {
+  cursor: default;
+  pointer-events: none;
+  color: rgba(0, 128, 41, 0.546);
+}
+
+.title--uppercase {
+  text-transform: uppercase;
 }

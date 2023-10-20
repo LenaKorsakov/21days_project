@@ -1,15 +1,18 @@
-.HabitCard {
-  width: 100%;
+.HabitCardExplore {
+  width: 15vw;
   display: flex;
+  flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-evenly;
   box-shadow: rgba(198, 89, 154, 0.3) 0px 4px 12px;
   margin: 3vh 0;
   padding: 1vh 2vw;
+  gap: 1vh;
 
   & h3 {
     color: rgba(0, 128, 41, 0.546);
+    font-size: 1vw;
   }
 
   & button {
@@ -23,10 +26,24 @@
     border: none;
   }
 
-  .btn--complete {
-    font-size: 1vw;
+  .btn--add {
+    font-size: 0.5vw;
     background-color: rgba(0, 128, 41, 0.546);
     color: white;
-    /* TODO  it should be a checkbox*/
+  }
+
+  .habit-img__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .habit-img {
+      width: 10vw;
+    }
+  }
+
+  .habit__description {
+    font-size: 0.9vw;
+    color: grey;
   }
 }
