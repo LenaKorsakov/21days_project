@@ -1,5 +1,5 @@
 .HabitCard {
-  width: 100%;
+  /* width: 100%;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -27,6 +27,63 @@
     font-size: 1vw;
     background-color: rgba(0, 128, 41, 0.546);
     color: white;
-    /* TODO  it should be a checkbox*/
+    TODO  it should be a checkbox
+*/
+
+  display: flex;
+  background-color: #fff;
+  border-radius: 20px;
+  /* padding: 0.5vh; */
+  justify-content: space-between;
+
+  .habit__type {
+    display: flex;
+    align-items: center;
+    padding: 0.3vh;
+    margin-left: 0.5vh;
   }
+
+  &>a.link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 13px;
+  }
+
+  & h3 {
+    color: rgba(0, 128, 41, 0.546);
+    font-size: 0.7rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: black;
+  }
+
+  & button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .btn--complete {
+    background-color: var(--light-green);
+    color: white;
+    border-radius: 0;
+  }
+
+  & .btn--edit {
+    font-size: clamp(0.5vw, 1vw, 1.5vw);
+    border: none;
+    background-color: var(--light-yellow);
+    border-radius: 0;
+  }
+
+  .btn--delete {
+    background-color: var(--light-yellow);
+    border-radius: 0 20px 20px 0;
+  }
+
+
 }

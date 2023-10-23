@@ -1,17 +1,38 @@
 .MainPage {
   color: #000;
+  background-color: #FFE4F0;
 
   .page-main__container {
-    padding: 0;
+    padding: 2.5vh;
+
+    /* .table {} */
+  }
+
+  .habits {
+
+    & h2 {
+      font-size: 2.5vh;
+      margin-bottom: 2vh;
+      font-family: "LilitaOne", sans-serif;
+      color: var(--gray);
+    }
   }
 
   .habits__list {
-    margin: 3vh 0;
+    /* margin: 3vh 0; */
+    margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3vh;
   }
 
   .btn--add {
-    background-color: #e71477;
+    background-color: var(--pink);
+    border: 0;
+    padding: 1.5vh 2vh;
     color: #f5ecf0;
+    font-size: 2.5vh;
+    margin-top: 5vh;
   }
 }

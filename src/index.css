@@ -2,6 +2,10 @@
 /* Remove the margin in all browsers. */
 
 /* TODO add fonts */
+@font-face {
+  font-family: "LilitaOne";
+  src: url("./../public/fonts/LilitaOne-Regular.ttf") format("TrueType");
+}
 
 /* COLORS */
 /* TODO add colors */
@@ -11,6 +15,16 @@
   --green: #41ac77;
   --violet: #484e79;
   --white: #f6f6f6;
+  /* form figma */
+  --pink: #e5b3c9;
+  --blue: #64AAC8;
+  --lightblue: #0e181c;
+  --gray: #6F6F6F;
+  --light-yellow: #F1EAAA;
+  --light-green: #9ADAA1;
+  /* media query sizes */
+  --mobile-breakpoint: 500px;
+  --tablet-breakpoint: 769px;
 }
 
 body {
