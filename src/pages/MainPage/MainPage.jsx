@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
-import HabitCard from '../../components/HabitCard/HabitCard';
-import HabitInProgress from '../../components/HabitInProgress/HabitInProgress';
-import './MainPage.css';
-import { appRoutes } from '../../const/app-routes';
+import { Link } from "react-router-dom";
+import HabitCard from "../../components/HabitCard/HabitCard";
+import HabitInProgress from "../../components/HabitInProgress/HabitInProgress";
+import "./MainPage.css";
+import { appRoutes } from "../../const/app-routes";
 
 function MainPage() {
   return (
@@ -10,6 +10,7 @@ function MainPage() {
       <div className="page-main__container">
         <HabitInProgress />
         <section className="habits">
+          <h2>my habits</h2>
           <ul className="habits__list">
             <HabitCard />
             <HabitCard />
