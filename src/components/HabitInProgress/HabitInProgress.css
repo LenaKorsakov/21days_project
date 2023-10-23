@@ -1,13 +1,10 @@
 .page-main__container {
-
-  @media(max-width: 500px) {
+  @media (max-width: 500px) {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
   }
-
-
 
   /* &::before {
     content: " ";
@@ -24,12 +21,11 @@
 
   & h2 {
     color: var(--gray);
-    font-family: "LilitaOne";
+    font-family: 'LilitaOne';
   }
 
   .table {
     width: 100%;
-    /* border: 1px solid rgba(0, 128, 41, 0.546); */
     margin-top: 2vh;
 
     padding: 1vh;
@@ -60,6 +56,7 @@
   .header__item {
     flex: 1 1 20%;
     text-align: center;
+    font-size: clamp(1.5vh, 2vw, 3vw);
   }
 
   .progress {
@@ -67,8 +64,6 @@
     flex: 1 1 auto;
     display: flex;
     align-items: center;
-
-
 
     & span {
       width: 100%;
@@ -79,7 +74,7 @@
       position: relative;
 
       &::before {
-        content: " ";
+        content: ' ';
         height: 6px;
         position: absolute;
         left: 0;
