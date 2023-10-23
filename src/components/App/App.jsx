@@ -1,14 +1,13 @@
-import "./App.css";
-import { Routes, Route } from "react-router-dom";
-import { appRoutes } from "../../const/app-routes";
-import MainPage from "../../pages/MainPage/MainPage";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import HabitPage from "../../pages/HabitPage/HabitPage";
-import AddNewHabitPage from "../../pages/AddNewHabitPage/AddNewHabitPage";
-import EditHabitPage from "../../pages/EditHabitPage/EditHabitPage";
-import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
-import ExplorePage from "../../pages/ExplorePage/ExplorePage";
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import { appRoutes } from '../../const/app-routes';
+import MainPage from '../../pages/MainPage/MainPage';
+import Header from '../Header/Header';
+import HabitPage from '../../pages/HabitPage/HabitPage';
+import AddNewHabitPage from '../../pages/AddNewHabitPage/AddNewHabitPage';
+import EditHabitPage from '../../pages/EditHabitPage/EditHabitPage';
+import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
+import ExplorePage from '../../pages/ExplorePage/ExplorePage';
 
 function App() {
   return (
@@ -25,7 +24,6 @@ function App() {
           <Route path={`${appRoutes.Explore}`} element={<ExplorePage />} />
           <Route path={appRoutes.NotFound} element={<NotFoundPage />} />
         </Route>
-        <Route path={appRoutes.Main} element={<Footer />} />
       </Routes>
     </>
   );

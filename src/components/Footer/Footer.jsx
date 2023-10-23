@@ -1,6 +1,6 @@
-import { NavLink, Outlet, Link } from "react-router-dom";
-import "./Footer.css";
-import { appRoutes } from "../../const/app-routes";
+import { NavLink } from 'react-router-dom';
+import './Footer.css';
+import { appRoutes } from '../../const/app-routes';
 
 function Footer() {
   return (
@@ -13,7 +13,7 @@ function Footer() {
                 to={appRoutes.Main}
                 end
                 className={({ isActive }) =>
-                  isActive ? "link active" : "link"
+                  isActive ? 'link active' : 'link'
                 }
               >
                 Home
@@ -22,7 +22,7 @@ function Footer() {
             <li>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "link active" : "link"
+                  isActive ? 'link active' : 'link'
                 }
                 to={appRoutes.Explore}
               >
@@ -30,6 +30,9 @@ function Footer() {
               </NavLink>
             </li>
           </ul>
+          <span>
+            Made with ❤️ <br /> by Rony and Elena{' '}
+          </span>
         </div>
       </footer>
     </>

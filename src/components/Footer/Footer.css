@@ -1,48 +1,53 @@
 .Footer {
-    padding-top: 0.5vh;
-    color: #ffffff;
-    background-color: rgba(198, 89, 154, 0.3);
-    /* max-height: 20vh; */
-    /* background-image: url(); */
-    /* background-size: cover; */
-    /* background-repeat: no-repeat;  */
+  padding-top: 0.5vh;
+  color: #ffffff;
+  background-color: rgba(198, 89, 154, 0.3);
+  /* max-height: 20vh; */
+  /* background-image: url(); */
+  /* background-size: cover; */
+  /* background-repeat: no-repeat;  */
 
-    & .page-header__container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-left: 1vw;
-        max-height: 100%;
+  & .page-header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1vw;
+    max-height: 100%;
+  }
+
+  & .page-header-logo__container {
+    display: flex;
+    align-items: center;
+    padding-left: 5vw;
+    max-height: 100%;
+
+    & h3 {
+      font-size: clamp(1vw, 1.6vw, 2vw);
+      color: rgba(0, 128, 41, 0.546);
     }
 
-    & .page-header-logo__container {
-        display: flex;
-        align-items: center;
-        padding-left: 5vw;
-        max-height: 100%;
-
-        & h3 {
-            font-size: clamp(1vw, 1.6vw, 2vw);
-            color: rgba(0, 128, 41, 0.546);
-        }
-
-        & small {
-            font-size: clamp(0.5vw, 0.8vw, 1vw);
-        }
+    & small {
+      font-size: clamp(0.5vw, 0.8vw, 1vw);
     }
+  }
 
-    & .page-header__logo {
-        max-width: 5vw;
-    }
+  & .page-header__logo {
+    max-width: 5vw;
+  }
 
-    & .page-header-nav__list {
-        min-width: 30vw;
-        list-style-type: none;
-        display: flex;
-        flex-wrap: wrap;
-        margin-right: 1vw;
-        padding: 0;
-        align-items: center;
-        justify-content: space-evenly;
-    }
+  & .page-header-nav__list {
+    min-width: 30vw;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 1vw;
+    padding: 0;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  & span {
+    margin-right: 30vw;
+    font-size: 1vw;
+  }
 }
