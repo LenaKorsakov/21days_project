@@ -73,7 +73,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1vw;
+  /* padding: 1vw; */
   flex-direction: column;
 }
 

@@ -1,11 +1,17 @@
 .Footer {
     padding-top: 0.5vh;
-    color: #ffffff;
-    background-color: rgba(198, 89, 154, 0.3);
-    /* max-height: 20vh; */
-    /* background-image: url(); */
-    /* background-size: cover; */
-    /* background-repeat: no-repeat;  */
+    color: #000;
+    background-color: #fff;
+    border-radius: 5vh 5vh 0 0;
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    @media(min-width: 501px) {
+        display: none !important;
+    }
 
     & .page-header__container {
         display: flex;
@@ -39,10 +45,16 @@
         min-width: 30vw;
         list-style-type: none;
         display: flex;
-        flex-wrap: wrap;
-        margin-right: 1vw;
         padding: 0;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-around;
+        color: black;
+        flex-direction: row;
+        width: 100%;
+
+        & svg {
+            width: 5vh;
+            color: black;
+        }
     }
 }

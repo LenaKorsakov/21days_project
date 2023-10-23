@@ -25,8 +25,8 @@ function App() {
           <Route path={`${appRoutes.Explore}`} element={<ExplorePage />} />
           <Route path={appRoutes.NotFound} element={<NotFoundPage />} />
         </Route>
-        <Route path={appRoutes.Main} element={<Footer />} />
       </Routes>
+      <Footer />
     </>
   );
 }

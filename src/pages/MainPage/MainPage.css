@@ -4,17 +4,16 @@
 
   .page-main__container {
     padding: 2.5vh;
-
-    /* .table {} */
   }
 
   .habits {
+    z-index: 1;
 
     & h2 {
       font-size: 2.5vh;
       margin-bottom: 2vh;
       font-family: "LilitaOne", sans-serif;
-      color: var(--gray);
+      color: #fff;
     }
   }
 
@@ -31,8 +30,9 @@
     background-color: var(--pink);
     border: 0;
     padding: 1.5vh 2vh;
-    color: #f5ecf0;
+    color: #000;
     font-size: 2.5vh;
     margin-top: 5vh;
+    z-index: 1;
   }
 }
