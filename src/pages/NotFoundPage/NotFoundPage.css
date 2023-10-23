@@ -1,2 +1,22 @@
 .NotFoundPage {
+  background-color: #ffe4f0;
+  height: 100vh;
+  color: var(--gray);
+
+  .page__logo {
+    max-width: 8vw;
+  }
+
+  .btn {
+    margin-top: 10vh;
+    color: inherit;
+    border: 1px solid var(--light-green);
+    background-color: var(--light-green);
+  }
+
+  .btn:hover {
+    margin-top: 10vh;
+    border: 1px solid var(--blue);
+    background-color: var(--blue);
+  }
 }

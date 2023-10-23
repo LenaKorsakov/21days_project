@@ -23,7 +23,7 @@
 
     & h3 {
       font-size: clamp(1vw, 1.6vw, 2vw);
-      color: rgba(0, 128, 41, 0.546);
+      color: var(--light-green);
     }
 
     & small {
@@ -44,10 +44,15 @@
     padding: 0;
     align-items: center;
     justify-content: space-evenly;
+
+    & .link {
+      font-size: clamp(1vh, 1.4vw, 1.6vw);
+    }
   }
 
   & span {
     margin-right: 30vw;
     font-size: 1vw;
+    font-family: 'LilitaOne';
   }
 }

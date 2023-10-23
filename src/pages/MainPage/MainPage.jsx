@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom';
 import HabitCard from '../../components/HabitCard/HabitCard';
-import HabitInProgress from '../../components/HabitInProgress/HabitInProgress';
 import './MainPage.css';
-import { appRoutes } from '../../const/app-routes';
-import Footer from '../../components/Footer/Footer';
+
 import { useState } from 'react';
-import api from '../../service/api';
 import { useEffect } from 'react';
+
+import HabitInProgress from '../../components/HabitInProgress/HabitInProgress';
+import Footer from '../../components/Footer/Footer';
+import LoadingPage from '../LoadingPage/LoadingPage';
+
+import api from '../../service/api';
+
+import { appRoutes } from '../../const/app-routes';
 
 function MainPage() {
   const [habits, setHabits] = useState();
@@ -20,8 +25,9 @@ function MainPage() {
     fetchAllHabits();
   }, []);
 
-  console.log(habits);
-
+  if (!habits) {
+    return <LoadingPage />;
+  }
   return (
     <>
       <main className="MainPage">
@@ -30,9 +36,9 @@ function MainPage() {
           <section className="habits">
             <h2>my habits</h2>
             <ul className="habits__list">
-              <HabitCard />
-              <HabitCard />
-              <HabitCard />
+              {habits.map((habit) => {
+                return <HabitCard habit={habit} key={habit.id} />;
+              })}
             </ul>
           </section>
           <Link

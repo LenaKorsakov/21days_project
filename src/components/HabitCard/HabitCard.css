@@ -1,35 +1,4 @@
 .HabitCard {
-  /* width: 100%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  box-shadow: rgba(198, 89, 154, 0.3) 0px 4px 12px;
-  margin: 3vh 0;
-  padding: 1vh 2vw;
-
-  & h3 {
-    color: rgba(0, 128, 41, 0.546);
-  }
-
-  & button {
-    border: 0;
-    background-color: transparent;
-    cursor: pointer;
-  }
-
-  & .btn--edit {
-    font-size: clamp(0.5vw, 1vw, 1.5vw);
-    border: none;
-  }
-
-  .btn--complete {
-    font-size: 1vw;
-    background-color: rgba(0, 128, 41, 0.546);
-    color: white;
-    TODO  it should be a checkbox
-*/
-
   display: flex;
   background-color: #fff;
   border-radius: 20px;
@@ -40,10 +9,11 @@
     display: flex;
     align-items: center;
     padding: 0.3vh;
-    margin-left: 0.5vh;
+    margin-left: 3vw;
+    font-size: clamp(3vh, 3vw, 5vw);
   }
 
-  &>a.link {
+  & > a.link {
     width: 100%;
     display: flex;
     align-items: center;
@@ -53,12 +23,11 @@
   }
 
   & h3 {
-    color: rgba(0, 128, 41, 0.546);
-    font-size: 0.7rem;
+    font-size: clamp(1.2vh, 1.5vw, 1.7vw);
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    color: black;
+    color: var(--lightblue);
   }
 
   & button {
@@ -84,6 +53,4 @@
     background-color: var(--light-yellow);
     border-radius: 0 20px 20px 0;
   }
-
-
 }

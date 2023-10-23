@@ -1,19 +1,16 @@
 .MainPage {
   color: #000;
-  background-color: #FFE4F0;
+  background-color: #ffe4f0;
 
   .page-main__container {
     padding: 2.5vh;
-
-    /* .table {} */
   }
 
   .habits {
-
     & h2 {
       font-size: 2.5vh;
       margin-bottom: 2vh;
-      font-family: "LilitaOne", sans-serif;
+      font-family: 'LilitaOne', sans-serif;
       color: var(--gray);
     }
   }
@@ -34,5 +31,9 @@
     color: #f5ecf0;
     font-size: 2.5vh;
     margin-top: 5vh;
+  }
+
+  .btn--add:hover {
+    background-color: var(--blue);
   }
 }

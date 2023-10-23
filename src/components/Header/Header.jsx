@@ -10,7 +10,7 @@ function Header() {
           <div className="page-header-logo__container">
             <Link to={appRoutes.Main}>
               <img
-                className="page-header__logo swinging"
+                className="page-header__logo"
                 src="../../../public/image/cute-cartoon-turtle-file-with-transparent-background-png.webp"
                 alt="21 days logo"
               />
