@@ -8,6 +8,7 @@ import AddNewHabitPage from '../../pages/AddNewHabitPage/AddNewHabitPage';
 import EditHabitPage from '../../pages/EditHabitPage/EditHabitPage';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import ExplorePage from '../../pages/ExplorePage/ExplorePage';
+import Footer from '../Footer/Footer';
 
 function App() {
   return (

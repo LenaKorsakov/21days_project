@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './HabitCard.css';
 import { appRoutes } from '../../const/app-routes';
 
-function HabitCard({ habit }) {
+function HabitCard({ habit, onDeleteButton }) {
   return (
     <li className="HabitCard">
       <div className="habit__type">
@@ -39,7 +39,7 @@ function HabitCard({ habit }) {
           </svg>
         </span>
       </Link>
-      <button className="btn--delete">
+      <button className="btn--delete" onClick={() => onDeleteButton(habit.id)}>
         <span>
           <svg
             style={{ width: '2vh' }}

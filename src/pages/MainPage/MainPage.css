@@ -1,6 +1,6 @@
 .MainPage {
   color: #000;
-  background-color: #ffe4f0;
+  background-color: var(--pink);
 
   .page-main__container {
     padding: 2.5vh;
@@ -13,10 +13,11 @@
       font-family: 'LilitaOne', sans-serif;
       color: var(--gray);
     }
+
+    z-index: 1;
   }
 
   .habits__list {
-    /* margin: 3vh 0; */
     margin: 0;
     padding: 0;
     display: flex;
@@ -28,13 +29,13 @@
     background-color: var(--pink);
     border: 0;
     padding: 1.5vh 2vh;
-    color: #000;
+    color: var(--light-blue);
     font-size: 2.5vh;
     margin-top: 5vh;
     z-index: 1;
   }
 
   .btn--add:hover {
-    background-color: var(--blue);
+    background-color: var(--light-green);
   }
 }
