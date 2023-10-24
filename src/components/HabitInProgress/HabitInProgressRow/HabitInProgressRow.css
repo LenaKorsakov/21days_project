@@ -9,6 +9,32 @@
     font-size: clamp(1.2vh, 1.5vw, 1.7vw);
   }
 
+  & h3 {
+    font-size: clamp(1.2vh, 1.5vw, 1.7vw);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: var(--lightblue);
+  }
+
+  & button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .btn--delete {
+    background-color: var(--light-yellow);
+    border-radius: 0 20px 20px 0;
+  }
+
+  .btn--start {
+    background-color: var(--light-green);
+    color: white;
+    border-radius: 0;
+    width: 13vw;
+  }
+
   .progress {
     width: 100%;
     flex: 1 1 auto;

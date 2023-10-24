@@ -51,7 +51,11 @@ function MainPage() {
     <>
       <main className="MainPage">
         <div className="page-main__container">
-          <HabitInProgressList habits={habits} />
+          <HabitInProgressList
+            habits={habits}
+            onDeleteButton={onDeleteButton}
+            onStartAgain={fetchAllHabits}
+          />
           <section className="habits">
             <h2>my habits</h2>
             <ul className="habits__list">
