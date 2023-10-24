@@ -41,9 +41,10 @@
   /* form figma */
   --pink: #e5b3c9;
   --blue: #64aac8;
-  --lightblue: #0e181c;
+  --light-blue: #DAF4FF;
   --gray: #6f6f6f;
   --light-yellow: #f1eaaa;
+  --yellow: #F3DE92;
   --light-green: #9adaa1;
   --dark-green: #7bae82;
   /* media query sizes */
@@ -57,6 +58,10 @@ body {
 
 * {
   box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 html,

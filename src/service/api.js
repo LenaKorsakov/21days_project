@@ -1,9 +1,9 @@
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import axios from "axios";
+import { toast } from "react-toastify";
 
-import { apiRoutes } from '../const/api-routes';
+import { apiRoutes } from "../const/api-routes";
 
-const BACKEND_URL = 'https://app-21days.adaptable.app/';
+const BACKEND_URL = "https://app-21days.adaptable.app/";
 const REQUEST_TIMEOUT = 5000;
 
 const api = axios.create({
