@@ -1,0 +1,26 @@
+import './HabitInProgressList.css';
+import HabitInProgressRow from './HabitInProgressRow/HabitInProgressRow';
+
+function HabitInProgressList({ habits, onDeleteButton, onStartAgain }) {
+  return (
+    <section className="HabitInProgress">
+      <h2>my progress</h2>
+      <div className="table">
+        <div className="table-content">
+          {habits.map((habit) => {
+            return (
+              <HabitInProgressRow
+                habit={habit}
+                key={habit.id}
+                onDeleteButton={onDeleteButton}
+                onStartAgain={onStartAgain}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default HabitInProgressList;

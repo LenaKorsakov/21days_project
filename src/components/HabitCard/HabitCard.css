@@ -2,7 +2,6 @@
   display: flex;
   background-color: #fff;
   border-radius: 20px;
-  /* padding: 0.5vh; */
   justify-content: space-between;
 
   .habit__type {
@@ -40,6 +39,7 @@
     background-color: var(--light-green);
     color: white;
     border-radius: 0;
+    width: 13vw;
   }
 
   & .btn--edit {
@@ -52,5 +52,16 @@
   .btn--delete {
     background-color: var(--light-yellow);
     border-radius: 0 20px 20px 0;
+  }
+
+  .completed {
+    text-decoration: line-through !important;
+  }
+
+  .btn--uncomplete {
+    background-color: var(--dark-green);
+    color: white;
+    border-radius: 0;
+    width: 13vw;
   }
 }

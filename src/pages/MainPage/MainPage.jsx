@@ -2,16 +2,15 @@ import { Link } from 'react-router-dom';
 import HabitCard from '../../components/HabitCard/HabitCard';
 import './MainPage.css';
 
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import HabitInProgress from '../../components/HabitInProgress/HabitInProgress';
-import Footer from '../../components/Footer/Footer';
+import HabitInProgressList from '../../components/HabitInProgress/HabitInProgressList';
 import LoadingPage from '../LoadingPage/LoadingPage';
 
 import api from '../../service/api';
 
 import { appRoutes } from '../../const/app-routes';
+import { buttonMesage } from '../../const/const';
 
 function MainPage() {
   const [habits, setHabits] = useState();
@@ -19,6 +18,31 @@ function MainPage() {
   const fetchAllHabits = async () => {
     const data = await api.fetchAllHabits();
     setHabits(data);
+  };
+
+  const onDeleteButton = async (id) => {
+    await api.deleteHabit(id);
+    fetchAllHabits();
+  };
+
+  const onCompleteButton = async (id) => {
+    const date = new Date().toJSON();
+    const dateObj = {
+      my_habitId: id,
+      date: date,
+    };
+
+    await api.createCheckIn(dateObj);
+    fetchAllHabits();
+  };
+
+  const onRefreshPage = () => {
+    fetchAllHabits();
+  };
+
+  const onUncompleteButton = async (id) => {
+    await api.deleteCheckin(id);
+    fetchAllHabits();
   };
 
   useEffect(() => {
@@ -32,12 +56,24 @@ function MainPage() {
     <>
       <main className="MainPage">
         <div className="page-main__container">
-          <HabitInProgress />
+          <HabitInProgressList
+            habits={habits}
+            onDeleteButton={onDeleteButton}
+            onStartAgain={onRefreshPage}
+          />
           <section className="habits">
             <h2>my habits</h2>
             <ul className="habits__list">
               {habits.map((habit) => {
-                return <HabitCard habit={habit} key={habit.id} />;
+                return (
+                  <HabitCard
+                    habit={habit}
+                    key={habit.id}
+                    onDeleteButton={onDeleteButton}
+                    onCompleteButton={onCompleteButton}
+                    onUncompleteButton={onUncompleteButton}
+                  />
+                );
               })}
             </ul>
           </section>
@@ -46,11 +82,14 @@ function MainPage() {
             title="To add habit form"
             to={appRoutes.AddHabit}
           >
-            <div>Create New Habit</div>
+            <div>
+              {habits.lenth === 0
+                ? buttonMesage.FirstHabit
+                : buttonMesage.Default}
+            </div>
           </Link>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

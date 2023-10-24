@@ -1,0 +1,32 @@
+
+
+.HabitInProgress {
+  font-size: 3vw;
+  margin-bottom: 3vh;
+  background-color: white;
+  border-radius: 10px;
+  padding: 2.5vh 0;
+  z-index: 1;
+
+  & h2 {
+    color: var(--gray);
+    font-family: 'LilitaOne';
+  }
+
+  .table {
+    width: 100%;
+    margin-top: 2vh;
+
+    padding: 1vh;
+  }
+
+  .table-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+  }
+
+  .header__item {
+    text-transform: uppercase;
+  }
+}

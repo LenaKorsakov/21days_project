@@ -10,6 +10,7 @@
   .page-header__title {
     font-size: clamp(1vh, 1.9vw, 2vw);
     color: var(--light-green);
+    font-family: 'LilitaOne';
   }
 
   & .page-header__container {
@@ -47,7 +48,7 @@
     justify-content: space-evenly;
 
     & .link {
-      font-size: clamp(1vh, 1.4vw, 1.6vw);
+      font-size: clamp(1vh, 1.3vw, 1.5vw);
     }
   }
 }

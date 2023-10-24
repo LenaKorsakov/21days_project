@@ -1,8 +1,51 @@
 import { Link } from 'react-router-dom';
 import './HabitCard.css';
 import { appRoutes } from '../../const/app-routes';
+import { useEffect, useState } from 'react';
+import dayjs from 'dayjs';
+import * as isToday from 'dayjs/plugin/isToday';
 
-function HabitCard({ habit }) {
+dayjs.extend(isToday);
+
+function HabitCard({
+  habit,
+  onDeleteButton,
+  onCompleteButton,
+  onUncompleteButton,
+}) {
+  const [wasCompletedToday, setWasCompletedToday] = useState(false);
+  const checkins = habit.checkins;
+
+  const checkIsTodayWasCheckin = () => {
+    if (habit.checkins.length === 0) {
+      setWasCompletedToday(false);
+    } else {
+      const lastCheckinDate = new Date(checkins[checkins.length - 1].date);
+      const wasCheckinToday = dayjs(lastCheckinDate).isToday();
+
+      if (wasCheckinToday) {
+        setWasCompletedToday(true);
+      } else {
+        setWasCompletedToday(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    checkIsTodayWasCheckin();
+  }, []);
+
+  const handleCompleteButton = () => {
+    if (wasCompletedToday) {
+      const lastCheckinId = checkins[checkins.length - 1].id;
+      onUncompleteButton(lastCheckinId);
+      setWasCompletedToday(false);
+    } else {
+      onCompleteButton(habit.id);
+      setWasCompletedToday(true);
+    }
+  };
+
   return (
     <li className="HabitCard">
       <div className="habit__type">
@@ -13,9 +56,18 @@ function HabitCard({ habit }) {
         to={`${appRoutes.Habit}/${habit.id}`}
         title="To the habit page"
       >
-        <h3 className="habit__title">{habit.title}</h3>
+        <h3 className={`habit__title ${wasCompletedToday ? 'completed' : ''}`}>
+          {habit.title}
+        </h3>
       </Link>
-      <button className="btn btn--complete">Complete today</button>
+      <button
+        className={`btn ${
+          wasCompletedToday ? 'btn--uncomplete' : 'btn--complete'
+        }`}
+        onClick={handleCompleteButton}
+      >
+        {wasCompletedToday ? 'Uncomplete today' : 'Complete today'}
+      </button>
       <Link
         className="btn btn--edit"
         to={`${appRoutes.EditHabit}/${habit.id}`}
@@ -39,7 +91,7 @@ function HabitCard({ habit }) {
           </svg>
         </span>
       </Link>
-      <button className="btn--delete">
+      <button className="btn--delete" onClick={() => onDeleteButton(habit.id)}>
         <span>
           <svg
             style={{ width: '2vh' }}
