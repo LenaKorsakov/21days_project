@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import './HabitCard.css';
 import { appRoutes } from '../../const/app-routes';
 import { useEffect, useState } from 'react';
-import api from '../../service/api';
 import dayjs from 'dayjs';
 import * as isToday from 'dayjs/plugin/isToday';
 
@@ -15,7 +14,7 @@ function HabitCard({
   onUncompleteButton,
 }) {
   const [wasCompletedToday, setWasCompletedToday] = useState(false);
-  const [checkins, setCheckins] = useState(habit.checkins);
+  const checkins = habit.checkins;
 
   const checkIsTodayWasCheckin = () => {
     if (habit.checkins.length === 0) {
@@ -36,26 +35,14 @@ function HabitCard({
     checkIsTodayWasCheckin();
   }, []);
 
-  const fetchCheckins = async (id) => {
-    const data = await api.fetchOneHabit(id);
-    setCheckins(data.checkins);
-  };
-
-  const deleteLastCheckin = async () => {
-    const lastCheckinId = checkins[checkins.length - 1].id;
-    await api.deleteCheckin(lastCheckinId);
-  };
-
   const handleCompleteButton = () => {
     if (wasCompletedToday) {
-      deleteLastCheckin();
-      setWasCompletedToday(!wasCompletedToday);
-      fetchCheckins(habit.id);
-      onUncompleteButton();
+      const lastCheckinId = checkins[checkins.length - 1].id;
+      onUncompleteButton(lastCheckinId);
+      setWasCompletedToday(false);
     } else {
       onCompleteButton(habit.id);
-      setWasCompletedToday(!wasCompletedToday);
-      fetchCheckins(habit.id);
+      setWasCompletedToday(true);
     }
   };
 

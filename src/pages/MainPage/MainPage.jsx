@@ -36,7 +36,12 @@ function MainPage() {
     fetchAllHabits();
   };
 
-  const onUncompleteButton = async () => {
+  const onRefreshPage = () => {
+    fetchAllHabits();
+  };
+
+  const onUncompleteButton = async (id) => {
+    await api.deleteCheckin(id);
     fetchAllHabits();
   };
 
@@ -54,7 +59,7 @@ function MainPage() {
           <HabitInProgressList
             habits={habits}
             onDeleteButton={onDeleteButton}
-            onStartAgain={fetchAllHabits}
+            onStartAgain={onRefreshPage}
           />
           <section className="habits">
             <h2>my habits</h2>

@@ -9,14 +9,6 @@
     font-size: clamp(1.2vh, 1.5vw, 1.7vw);
   }
 
-  & h3 {
-    font-size: clamp(1.2vh, 1.5vw, 1.7vw);
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    color: var(--lightblue);
-  }
-
   & button {
     border: 0;
     background-color: transparent;
@@ -33,6 +25,21 @@
     color: white;
     border-radius: 0;
     width: 13vw;
+  }
+
+  .table-data--completed__container {
+    display: flex;
+    background-color: #fff;
+    border-radius: 20px;
+    justify-content: space-between;
+
+    & h3 {
+      font-size: clamp(1.2vh, 1vw, 1.7vw);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      color: var(--lightblue);
+    }
   }
 
   .progress {

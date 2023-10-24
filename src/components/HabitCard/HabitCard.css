@@ -2,7 +2,6 @@
   display: flex;
   background-color: #fff;
   border-radius: 20px;
-  /* padding: 0.5vh; */
   justify-content: space-between;
 
   .habit__type {
