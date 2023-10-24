@@ -7,14 +7,37 @@
   src: url('./../public/fonts/LilitaOne-Regular.ttf') format('TrueType');
 }
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Bold.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* COLORS */
-/* TODO add colors */
 
 :root {
   --main-color: #e71477;
   --green: #41ac77;
   --violet: #484e79;
-  --white: #f6f6f6;
+  --white: #ffffff;
   /* form figma */
   --pink: #e5b3c9;
   --blue: #64aac8;
@@ -47,7 +70,7 @@ html {
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', 'Arial', sans-serif;
   height: 100%;
 }
 
