@@ -40,6 +40,7 @@
     background-color: var(--light-green);
     color: white;
     border-radius: 0;
+    width: 13vw;
   }
 
   & .btn--edit {
@@ -52,5 +53,16 @@
   .btn--delete {
     background-color: var(--light-yellow);
     border-radius: 0 20px 20px 0;
+  }
+
+  .completed {
+    text-decoration: line-through !important;
+  }
+
+  .btn--uncomplete {
+    background-color: var(--dark-green);
+    color: white;
+    border-radius: 0;
+    width: 13vw;
   }
 }

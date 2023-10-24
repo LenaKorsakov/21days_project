@@ -1,8 +1,64 @@
 import { Link } from 'react-router-dom';
 import './HabitCard.css';
 import { appRoutes } from '../../const/app-routes';
+import { useEffect, useState } from 'react';
+import api from '../../service/api';
+import dayjs from 'dayjs';
+import * as isToday from 'dayjs/plugin/isToday';
 
-function HabitCard({ habit, onDeleteButton }) {
+dayjs.extend(isToday);
+
+function HabitCard({
+  habit,
+  onDeleteButton,
+  onCompleteButton,
+  onUncompleteButton,
+}) {
+  const [wasCompletedToday, setWasCompletedToday] = useState(false);
+  const [checkins, setCheckins] = useState(habit.checkins);
+
+  const checkIsTodayWasCheckin = () => {
+    if (habit.checkins.length === 0) {
+      setWasCompletedToday(false);
+    } else {
+      const lastCheckinDate = new Date(checkins[checkins.length - 1].date);
+      const wasCheckinToday = dayjs(lastCheckinDate).isToday();
+
+      if (wasCheckinToday) {
+        setWasCompletedToday(true);
+      } else {
+        setWasCompletedToday(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    checkIsTodayWasCheckin();
+  }, []);
+
+  const fetchCheckins = async (id) => {
+    const data = await api.fetchOneHabit(id);
+    setCheckins(data.checkins);
+  };
+
+  const deleteLastCheckin = async () => {
+    const lastCheckinId = checkins[checkins.length - 1].id;
+    await api.deleteCheckin(lastCheckinId);
+  };
+
+  const handleCompleteButton = () => {
+    if (wasCompletedToday) {
+      deleteLastCheckin();
+      setWasCompletedToday(!wasCompletedToday);
+      fetchCheckins(habit.id);
+      onUncompleteButton();
+    } else {
+      onCompleteButton(habit.id);
+      setWasCompletedToday(!wasCompletedToday);
+      fetchCheckins(habit.id);
+    }
+  };
+
   return (
     <li className="HabitCard">
       <div className="habit__type">
@@ -13,9 +69,18 @@ function HabitCard({ habit, onDeleteButton }) {
         to={`${appRoutes.Habit}/${habit.id}`}
         title="To the habit page"
       >
-        <h3 className="habit__title">{habit.title}</h3>
+        <h3 className={`habit__title ${wasCompletedToday ? 'completed' : ''}`}>
+          {habit.title}
+        </h3>
       </Link>
-      <button className="btn btn--complete">Complete today</button>
+      <button
+        className={`btn ${
+          wasCompletedToday ? 'btn--uncomplete' : 'btn--complete'
+        }`}
+        onClick={handleCompleteButton}
+      >
+        {wasCompletedToday ? 'Uncomplete today' : 'Complete today'}
+      </button>
       <Link
         className="btn btn--edit"
         to={`${appRoutes.EditHabit}/${habit.id}`}

@@ -25,6 +25,21 @@ function MainPage() {
     fetchAllHabits();
   };
 
+  const onCompleteButton = async (id) => {
+    const date = new Date().toJSON();
+    const dateObj = {
+      my_habitId: id,
+      date: date,
+    };
+
+    await api.createCheckIn(dateObj);
+    fetchAllHabits();
+  };
+
+  const onUncompleteButton = async () => {
+    fetchAllHabits();
+  };
+
   useEffect(() => {
     fetchAllHabits();
   }, []);
@@ -46,6 +61,8 @@ function MainPage() {
                     habit={habit}
                     key={habit.id}
                     onDeleteButton={onDeleteButton}
+                    onCompleteButton={onCompleteButton}
+                    onUncompleteButton={onUncompleteButton}
                   />
                 );
               })}
