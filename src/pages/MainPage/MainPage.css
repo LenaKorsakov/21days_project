@@ -13,6 +13,8 @@
       font-family: 'LilitaOne', sans-serif;
       color: var(--gray);
     }
+
+    z-index: 1;
   }
 
   .habits__list {
@@ -22,6 +24,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.3vh;
+    z-index: 1;
   }
 
   .btn--add {
