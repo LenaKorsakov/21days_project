@@ -1,58 +1,60 @@
 .Footer {
-  padding-top: 0.5vh;
-  color: #ffffff;
-  background-color: rgba(198, 89, 154, 0.3);
-  /* max-height: 20vh; */
-  /* background-image: url(); */
-  /* background-size: cover; */
-  /* background-repeat: no-repeat;  */
+    padding-top: 0.5vh;
+    color: #000;
+    background-color: #fff;
+    border-radius: 5vh 5vh 0 0;
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 
-  & .page-header__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 1vw;
-    max-height: 100%;
-  }
-
-  & .page-header-logo__container {
-    display: flex;
-    align-items: center;
-    padding-left: 5vw;
-    max-height: 100%;
-
-    & h3 {
-      font-size: clamp(1vw, 1.6vw, 2vw);
-      color: var(--light-green);
+    @media(min-width: 501px) {
+        display: none !important;
     }
 
-    & small {
-      font-size: clamp(0.5vw, 0.8vw, 1vw);
+    & .page-header__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 1vw;
+        max-height: 100%;
     }
-  }
 
-  & .page-header__logo {
-    max-width: 5vw;
-  }
+    & .page-header-logo__container {
+        display: flex;
+        align-items: center;
+        padding-left: 5vw;
+        max-height: 100%;
 
-  & .page-header-nav__list {
-    min-width: 30vw;
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: 1vw;
-    padding: 0;
-    align-items: center;
-    justify-content: space-evenly;
+        & h3 {
+            font-size: clamp(1vw, 1.6vw, 2vw);
+            color: rgba(0, 128, 41, 0.546);
+        }
 
-    & .link {
-      font-size: clamp(1vh, 1.4vw, 1.6vw);
+        & small {
+            font-size: clamp(0.5vw, 0.8vw, 1vw);
+        }
     }
-  }
 
-  & span {
-    margin-right: 30vw;
-    font-size: 1vw;
-    font-family: 'LilitaOne';
-  }
+    & .page-header__logo {
+        max-width: 5vw;
+    }
+
+    & .page-header-nav__list {
+        min-width: 30vw;
+        list-style-type: none;
+        display: flex;
+        padding: 0;
+        align-items: center;
+        justify-content: space-around;
+        color: black;
+        flex-direction: row;
+        width: 100%;
+
+        & svg {
+            width: 5vh;
+            color: black;
+        }
+    }
 }

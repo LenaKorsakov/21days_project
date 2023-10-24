@@ -1,5 +1,17 @@
 .HabitPage {
   .habit-page__picture {
-    margin: 2vh;
+    padding: 3vh;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-content: flex-start;
+    text-align: left;
+
+    & p {
+      margin: 0;
+    }
   }
+
+
 }

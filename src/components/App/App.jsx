@@ -25,6 +25,7 @@ function App() {
           <Route path={appRoutes.NotFound} element={<NotFoundPage />} />
         </Route>
       </Routes>
+      <Footer />
     </>
   );
 }
