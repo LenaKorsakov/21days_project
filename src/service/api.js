@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-import { shouldDisplayError } from '../utiles/utiles';
 import { apiRoutes } from '../const/api-routes';
 
 const BACKEND_URL = 'https://app-21days.adaptable.app/';
@@ -12,57 +11,56 @@ const api = axios.create({
   timeout: REQUEST_TIMEOUT,
 });
 
-api.fetchAllQuests = async function () {
+api.fetchAllHabits = async function () {
   try {
-    const { data } = await api.get(apiRoutes.Habits);
+    const { data } = await api.get(`${apiRoutes.AllHabits}?_embed=checkins`);
     return data;
   } catch (error) {
-    console.log(error);
+    toast.error(`${error.message}. Try to reload this page.`);
   }
 };
 
 api.fetchOneHabit = async function (id) {
   try {
-    const { data } = await api.get(`/${id}`);
+    const { data } = await api.get(
+      `${apiRoutes.AllHabits}/${id}?_embed=checkins`
+    );
     return data;
   } catch (error) {
-    console.log(error);
+    toast.error(`${error.message}. Try to reload this page.`);
   }
 };
 
 api.createNewHabit = async function (habit) {
   try {
-    await api.post(apiRoutes.Habits, habit);
+    await api.post(apiRoutes.AllHabits, habit);
   } catch (error) {
-    console.log(error);
+    toast.warn(`${error.message}. Try again.`);
+  }
+};
+
+api.createCheckIn = async function (checkin) {
+  try {
+    await api.post(apiRoutes.AllCheckins, checkin);
+  } catch (error) {
+    toast.warn(`${error.message}. Try again.`);
   }
 };
 
 api.editHabit = async function (id, habit) {
   try {
-    await api.put(`/${id}`, habit);
+    await api.put(`${apiRoutes.AllHabits}/${id}`, habit);
   } catch (error) {
-    console.log(error);
+    toast.warn(`${error.message}. Try again.`);
   }
 };
 
 api.deleteHabit = async function (id) {
   try {
-    await api.delete(`/${id}`);
+    await api.delete(`${apiRoutes.AllHabits}/${id}`);
   } catch (error) {
-    console.log(error);
+    toast.warn(`${error.message}. Try again.`);
   }
 };
-
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response && shouldDisplayError(error.response)) {
-      toast.warn(`${error.response.data.error}`);
-    }
-
-    throw error;
-  }
-);
 
 export default api;

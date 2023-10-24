@@ -13,6 +13,11 @@ function NotFoundPage() {
             <div>Back to the main page</div>
           </Link>
         </div>
+        <img
+          className="page__logo"
+          src="../../../public/image/cute-cartoon-turtle-file-with-transparent-background-png.webp"
+          alt="21 days logo"
+        />
       </main>
     </>
   );

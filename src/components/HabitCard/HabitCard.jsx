@@ -1,36 +1,29 @@
-import { Link } from "react-router-dom";
-import "./HabitCard.css";
-import { appRoutes } from "../../const/app-routes";
+import { Link } from 'react-router-dom';
+import './HabitCard.css';
+import { appRoutes } from '../../const/app-routes';
 
-function HabitCard() {
+function HabitCard({ habit }) {
   return (
     <li className="HabitCard">
       <div className="habit__type">
-        {/* <img
-            className="habit__type-icon"
-            width={42}
-            height={42}
-            src="TODO"
-            alt="emoji icon"
-          /> */}
-        <span>😴</span>
+        <span>{habit.emoji}</span>
       </div>
       <Link
         className="link"
-        to={`${appRoutes.Habit}/3`}
+        to={`${appRoutes.Habit}/${habit.id}`}
         title="To the habit page"
       >
-        <h3 className="habit__title">Sleep 8 hours</h3>
+        <h3 className="habit__title">{habit.title}</h3>
       </Link>
       <button className="btn btn--complete">Complete today</button>
       <Link
         className="btn btn--edit"
-        to={`${appRoutes.EditHabit}/3`}
+        to={`${appRoutes.EditHabit}/${habit.id}`}
         title="To the edit page"
       >
         <span>
           <svg
-            style={{ width: "2vh" }}
+            style={{ width: '2vh' }}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -49,7 +42,7 @@ function HabitCard() {
       <button className="btn--delete">
         <span>
           <svg
-            style={{ width: "2vh" }}
+            style={{ width: '2vh' }}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
