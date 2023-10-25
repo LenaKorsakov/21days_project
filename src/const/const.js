@@ -6,7 +6,7 @@ export const buttonMesage = {
 export const AMOUNT_OF_DAYS = 21;
 
 export const filtersCategories = [
-  'self-realization',
+  'self realization',
   'emotional state',
   'lifestyle',
   'beauty',
