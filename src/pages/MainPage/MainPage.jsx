@@ -13,7 +13,7 @@ import { appRoutes } from '../../const/app-routes';
 import { buttonMesage } from '../../const/const';
 
 function MainPage() {
-  const [habits, setHabits] = useState();
+  const [habits, setHabits] = useState(null);
 
   const fetchAllHabits = async () => {
     const data = await api.fetchAllHabits();
@@ -36,13 +36,28 @@ function MainPage() {
     fetchAllHabits();
   };
 
-  const onRefreshPage = () => {
-    fetchAllHabits();
-  };
-
   const onUncompleteButton = async (id) => {
     await api.deleteCheckin(id);
     fetchAllHabits();
+  };
+
+  const deleteCheckin = async (id) => {
+    await api.deleteCheckin(id);
+  };
+
+  const clearAllCheckins = async (habit) => {
+    console.log(habit);
+    if (habit.checkins) {
+      for (const checkin of habit.checkins) {
+        await deleteCheckin(checkin.id);
+      }
+    }
+  };
+
+  const onStartHabitAgain = async (id, habit) => {
+    await api.editHabit(id, habit);
+    await clearAllCheckins(habit);
+    await fetchAllHabits();
   };
 
   useEffect(() => {
@@ -59,7 +74,7 @@ function MainPage() {
           <HabitInProgressList
             habits={habits}
             onDeleteButton={onDeleteButton}
-            onStartAgain={onRefreshPage}
+            onStartAgain={onStartHabitAgain}
           />
           <section className="habits">
             <h2>my habits</h2>

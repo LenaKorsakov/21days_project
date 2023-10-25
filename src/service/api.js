@@ -1,9 +1,9 @@
-import axios from "axios";
-import { toast } from "react-toastify";
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
-import { apiRoutes } from "../const/api-routes";
+import { apiRoutes } from '../const/api-routes';
 
-const BACKEND_URL = "https://app-21days.adaptable.app/";
+const BACKEND_URL = 'https://app-21days.adaptable.app/';
 const REQUEST_TIMEOUT = 5000;
 
 const api = axios.create({
@@ -14,6 +14,17 @@ const api = axios.create({
 api.fetchAllHabits = async function () {
   try {
     const { data } = await api.get(`${apiRoutes.AllHabits}?_embed=checkins`);
+    return data;
+  } catch (error) {
+    toast.error(`${error.message}. Try to reload this page.`);
+  }
+};
+
+api.fetchFilteredHabits = async function (filter) {
+  try {
+    const { data } = await api.get(
+      `${apiRoutes.ExploreHabits}?category=${filter}`
+    );
     return data;
   } catch (error) {
     toast.error(`${error.message}. Try to reload this page.`);
@@ -49,6 +60,7 @@ api.createCheckIn = async function (checkin) {
 
 api.deleteCheckin = async function (id) {
   try {
+    console.log('Deleting: ', id);
     await api.delete(`${apiRoutes.AllCheckins}/${id}`);
   } catch (error) {
     toast.warn(`${error.message}. Try again.`);
@@ -57,6 +69,7 @@ api.deleteCheckin = async function (id) {
 
 api.editHabit = async function (id, habit) {
   try {
+    let newHabit = { ...habit, checkins: [] };
     await api.put(`${apiRoutes.AllHabits}/${id}`, habit);
   } catch (error) {
     toast.warn(`${error.message}. Try again.`);
@@ -68,6 +81,15 @@ api.deleteHabit = async function (id) {
     await api.delete(`${apiRoutes.AllHabits}/${id}`);
   } catch (error) {
     toast.warn(`${error.message}. Try again.`);
+  }
+};
+
+api.fetchExploreHabits = async function () {
+  try {
+    const { data } = await api.get(apiRoutes.ExploreHabits);
+    return data;
+  } catch (error) {
+    toast.error(`${error.message}. Try to reload this page.`);
   }
 };
 
