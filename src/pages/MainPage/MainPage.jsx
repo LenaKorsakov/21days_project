@@ -36,12 +36,26 @@ function MainPage() {
     fetchAllHabits();
   };
 
-  const onRefreshPage = () => {
+  const onUncompleteButton = async (id) => {
+    await api.deleteCheckin(id);
     fetchAllHabits();
   };
 
-  const onUncompleteButton = async (id) => {
+  const deleteCheckin = async (id) => {
     await api.deleteCheckin(id);
+  };
+
+  const clearAllCheckins = (habit) => {
+    if (habit.checkins) {
+      for (const checkin of habit.checkins) {
+        deleteCheckin(checkin.id);
+      }
+    }
+  };
+
+  const onStartHabitAgain = async (id, habit) => {
+    await api.editHabit(id, habit);
+    clearAllCheckins(habit);
     fetchAllHabits();
   };
 
@@ -59,7 +73,7 @@ function MainPage() {
           <HabitInProgressList
             habits={habits}
             onDeleteButton={onDeleteButton}
-            onStartAgain={onRefreshPage}
+            onStartAgain={onStartHabitAgain}
           />
           <section className="habits">
             <h2>my habits</h2>
