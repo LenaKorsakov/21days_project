@@ -10,6 +10,7 @@ dayjs.extend(isToday);
 
 function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
   const [isLastDay, setLastDay] = useState(false);
+  const [isStartAgain, setStartAgain] = useState(false);
 
   const myProgress = habit.checkins.length;
   const progressInPercent = (myProgress / AMOUNT_OF_DAYS) * 100;
@@ -39,6 +40,12 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
       start_day: new Date().toJSON(),
     };
     onStartAgain(habit.id, newHabit);
+
+    setStartAgain(true);
+
+    setTimeout(() => {
+      setLastDay(false);
+    }, 2000);
   };
 
   return (
@@ -49,7 +56,18 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
             <span>{habit.emoji}</span>
           </div>
           <div className="table-data progress">
-            <h3>{`${habit.title} should have become your habit! You did it ${myProgress} times in 21 days.`}</h3>
+            {isStartAgain ? (
+              <h3>Let's make a strong habit together!</h3>
+            ) : (
+              <h3>
+                <span className="table-data--important">{habit.title}</span>{' '}
+                should have become your habit 🎉 You did it{' '}
+                <span className="table-data--important">{myProgress}</span>{' '}
+                times in{' '}
+                <span className="table-data--important">{AMOUNT_OF_DAYS}</span>{' '}
+                days.
+              </h3>
+            )}
           </div>
           <div className="table-data buttons_container">
             <button className="btn btn--start" onClick={handleStartAgain}>
@@ -94,7 +112,9 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
               ></span>
             </span>
           </div>
-          <div className="table-data">{myProgress}/21</div>
+          <div className="table-data">
+            <span className="important">{myProgress}</span>/{AMOUNT_OF_DAYS}
+          </div>
         </>
       )}
     </div>

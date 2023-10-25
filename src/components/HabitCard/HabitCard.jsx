@@ -18,9 +18,11 @@ function HabitCard({
   const [wasCompletedToday, setWasCompletedToday] = useState(false);
   const checkins = habit.checkins;
 
+  console.log(habit.start_day, habit.id);
+
   const findTodayCheckin = (myCheckins) => {
     const todayCheckin = myCheckins.find((checkin) =>
-      dayjs(myCheckins.date).isToday()
+      dayjs(checkin.date).isToday()
     );
 
     return todayCheckin;

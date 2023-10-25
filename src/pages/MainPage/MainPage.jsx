@@ -45,10 +45,10 @@ function MainPage() {
     await api.deleteCheckin(id);
   };
 
-  const clearAllCheckins = (habit) => {
+  const clearAllCheckins = async (habit) => {
     if (habit.checkins) {
       for (const checkin of habit.checkins) {
-        deleteCheckin(checkin.id);
+        await deleteCheckin(checkin.id);
       }
     }
   };
