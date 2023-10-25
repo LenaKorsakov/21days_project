@@ -20,7 +20,7 @@
     .table-content {
       display: flex;
       flex-direction: column;
-      gap: 1.7vh;
+      gap: 1vh;
     }
   }
 }

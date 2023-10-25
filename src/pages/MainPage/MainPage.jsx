@@ -13,7 +13,7 @@ import { appRoutes } from '../../const/app-routes';
 import { buttonMesage } from '../../const/const';
 
 function MainPage() {
-  const [habits, setHabits] = useState();
+  const [habits, setHabits] = useState(null);
 
   const fetchAllHabits = async () => {
     const data = await api.fetchAllHabits();

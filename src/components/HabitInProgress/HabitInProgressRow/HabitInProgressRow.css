@@ -4,6 +4,13 @@
   padding: 0.1vw 0;
   align-items: center;
 
+  @media (max-width: 500px) {
+    .buttons_container {
+      margin-right: 1vw;
+      max-height: 2vh;
+    }
+  }
+
   .table-data {
     flex: 1 1 20%;
     text-align: center;
@@ -44,7 +51,7 @@
     color: var(--light-blue);
     border-radius: 0;
     width: 5vw;
-    font-size: clamp(0.6vh, 0.8vw, 1.3vw);
+    font-size: clamp(0.4vh, 0.8vw, 1.3vw);
     border-radius: 20px 0px 0px 20px;
     flex: 1 1 50%;
   }
@@ -61,7 +68,6 @@
     font-size: clamp(0.8vh, 0.8vw, 1.2vw);
     color: var(--lightblue);
     flex: 1 1 20%;
-    /* text-wrap: balance; */
   }
 
   .progress {

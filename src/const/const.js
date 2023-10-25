@@ -12,7 +12,7 @@ export const filtersCategories = [
   'beauty',
   'career-and-finance',
   'relationships',
-  'self-developement and education',
+  'education',
   'hobbies',
-  'other',
+  'reset filter',
 ];

@@ -20,6 +20,17 @@ api.fetchAllHabits = async function () {
   }
 };
 
+api.fetchFilteredHabits = async function (filter) {
+  try {
+    const { data } = await api.get(
+      `${apiRoutes.ExploreHabits}?category=${filter}`
+    );
+    return data;
+  } catch (error) {
+    toast.error(`${error.message}. Try to reload this page.`);
+  }
+};
+
 api.fetchOneHabit = async function (id) {
   try {
     const { data } = await api.get(
