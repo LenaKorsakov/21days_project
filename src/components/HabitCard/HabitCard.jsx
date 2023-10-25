@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { appRoutes } from '../../const/app-routes';
+import { async } from 'rxjs';
 
 dayjs.extend(isToday);
 
@@ -17,8 +18,6 @@ function HabitCard({
 }) {
   const [wasCompletedToday, setWasCompletedToday] = useState(false);
   const checkins = habit.checkins;
-
-  console.log(habit.start_day, habit.id);
 
   const findTodayCheckin = (myCheckins) => {
     const todayCheckin = myCheckins.find((checkin) =>
@@ -46,13 +45,13 @@ function HabitCard({
     checkIsTodayWasCheckin();
   }, []);
 
-  const handleCompleteButton = () => {
+  const handleCompleteButton = async () => {
     if (wasCompletedToday) {
       const lastCheckinId = findTodayCheckin(habit.checkins).id;
-      onUncompleteButton(lastCheckinId);
+      await onUncompleteButton(lastCheckinId);
       setWasCompletedToday(false);
     } else {
-      onCompleteButton(habit.id);
+      await onCompleteButton(habit.id);
       setWasCompletedToday(true);
     }
   };

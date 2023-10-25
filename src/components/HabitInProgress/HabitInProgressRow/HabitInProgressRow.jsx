@@ -13,7 +13,14 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
   const [isStartAgain, setStartAgain] = useState(false);
 
   const myProgress = habit.checkins.length;
-  const progressInPercent = (myProgress / AMOUNT_OF_DAYS) * 100;
+
+  const countProgressInPercent = () => {
+    if (myProgress === AMOUNT_OF_DAYS) {
+      return 100;
+    } else {
+      return (myProgress / AMOUNT_OF_DAYS) * 100;
+    }
+  };
 
   const firstDayOfHabit = dayjs(habit.start_day);
   const lastDayOfHabit = firstDayOfHabit.add(AMOUNT_OF_DAYS, 'day');
@@ -31,7 +38,7 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
     checkIsTodayLastDayOfHabit();
   }, []);
 
-  const handleStartAgain = () => {
+  const handleStartAgain = async () => {
     const newHabit = {
       title: habit.title,
       category: habit.category,
@@ -39,13 +46,13 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
       emoji: habit.emoji,
       start_day: new Date().toJSON(),
     };
-    onStartAgain(habit.id, newHabit);
+    await onStartAgain(habit.id, newHabit);
 
     setStartAgain(true);
 
     setTimeout(() => {
       setLastDay(false);
-    }, 2000);
+    }, 1500);
   };
 
   return (
@@ -57,7 +64,7 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
           </div>
           <div className="table-data progress">
             {isStartAgain ? (
-              <h3>Let's make a strong habit together!</h3>
+              <h3>Let's make a strong habit together...</h3>
             ) : (
               <h3>
                 <span className="table-data--important">{habit.title}</span>{' '}
@@ -107,7 +114,7 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
               <span
                 className="table-date__progress"
                 style={{
-                  width: `${progressInPercent}%`,
+                  width: `${countProgressInPercent()}%`,
                 }}
               ></span>
             </span>

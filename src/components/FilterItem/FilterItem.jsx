@@ -9,7 +9,7 @@ function FilterItem({ title }) {
         name={title}
         id={title}
         // onChange={}
-        checked={false}
+        // checked={false}
       />
       <label className="filter__label" htmlFor={title}>
         <span className="filter__label-text">{title}</span>
