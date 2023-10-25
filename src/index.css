@@ -54,6 +54,7 @@
 
 body {
   margin: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 * {
@@ -62,6 +63,10 @@ body {
   &:focus {
     outline: none;
   }
+}
+
+li {
+  list-style: none;
 }
 
 html,
