@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import './FilterItem.css';
 
 function FilterItem({

@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { appRoutes } from '../../const/app-routes';
-import { async } from 'rxjs';
 
 dayjs.extend(isToday);
 

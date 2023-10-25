@@ -46,6 +46,7 @@ function MainPage() {
   };
 
   const clearAllCheckins = async (habit) => {
+    console.log(habit);
     if (habit.checkins) {
       for (const checkin of habit.checkins) {
         await deleteCheckin(checkin.id);
@@ -55,8 +56,8 @@ function MainPage() {
 
   const onStartHabitAgain = async (id, habit) => {
     await api.editHabit(id, habit);
-    clearAllCheckins(habit);
-    fetchAllHabits();
+    await clearAllCheckins(habit);
+    await fetchAllHabits();
   };
 
   useEffect(() => {

@@ -60,6 +60,7 @@ api.createCheckIn = async function (checkin) {
 
 api.deleteCheckin = async function (id) {
   try {
+    console.log('Deleting: ', id);
     await api.delete(`${apiRoutes.AllCheckins}/${id}`);
   } catch (error) {
     toast.warn(`${error.message}. Try again.`);
@@ -68,6 +69,7 @@ api.deleteCheckin = async function (id) {
 
 api.editHabit = async function (id, habit) {
   try {
+    let newHabit = { ...habit, checkins: [] };
     await api.put(`${apiRoutes.AllHabits}/${id}`, habit);
   } catch (error) {
     toast.warn(`${error.message}. Try again.`);

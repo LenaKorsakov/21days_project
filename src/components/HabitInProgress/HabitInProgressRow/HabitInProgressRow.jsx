@@ -40,10 +40,7 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
 
   const handleStartAgain = async () => {
     const newHabit = {
-      title: habit.title,
-      category: habit.category,
-      description: habit.description,
-      emoji: habit.emoji,
+      ...habit,
       start_day: new Date().toJSON(),
     };
     await onStartAgain(habit.id, newHabit);

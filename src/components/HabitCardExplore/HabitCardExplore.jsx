@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import './HabitCardExplore.css';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { appRoutes } from '../../const/app-routes';
+import './HabitCardExplore.css';
 
 function HabitCardExplore({ habit, habits, onCreateNewHabit }) {
   const [myHabit, setMyHabit] = useState(null);
@@ -13,15 +13,18 @@ function HabitCardExplore({ habit, habits, onCreateNewHabit }) {
 
   useEffect(() => {
     findMyHabit(habits);
-  }, []);
+  }, [habits]);
 
-  const handleAddToMyHabits = () => {
+  const handleAddToMyHabits = async () => {
     const newHabit = {
-      ...habit,
+      title: habit.title,
+      category: habit.category,
+      description: habit.description,
+      emoji: habit.emoji,
       start_day: new Date().toJSON(),
     };
-    onCreateNewHabit(newHabit);
-    findMyHabit(habits);
+    await onCreateNewHabit(newHabit);
+    // findMyHabit(habits);
   };
 
   return (

@@ -7,10 +7,10 @@ export const AMOUNT_OF_DAYS = 21;
 
 export const filtersCategories = [
   'self-realization',
-  'emotional-state',
+  'emotional state',
   'lifestyle',
   'beauty',
-  'career-and-finance',
+  'career and finance',
   'relationships',
   'education',
   'hobbies',

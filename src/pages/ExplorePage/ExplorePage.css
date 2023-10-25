@@ -61,4 +61,8 @@
     font-size: clamp(2vh, 2vw, 3vw);
     z-index: 1;
   }
+
+  .message__container {
+    z-index: 1;
+  }
 }

@@ -1,17 +1,23 @@
 import './ExplorePage.css';
 
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import FilterItem from '../../components/FilterItem/FilterItem';
 import HabitCardExplore from '../../components/HabitCardExplore/HabitCardExplore';
 import LoadingPage from '../LoadingPage/LoadingPage';
-import api from '../../service/api';
+
+import { appRoutes } from '../../const/app-routes';
 import { filtersCategories } from '../../const/const';
+import api from '../../service/api';
 
 function ExplorePage() {
   const [habits, setHabits] = useState(null);
   const [myHabits, setMyHabits] = useState(null);
   const [currentFilter, setCurrentFilter] = useState('');
+
+  console.log('allhabits', habits);
+  console.log('myhabits', myHabits);
 
   const onChangeFilter = (newFilter) => {
     setCurrentFilter(newFilter);
@@ -39,7 +45,7 @@ function ExplorePage() {
   const createNewHabit = async (habit) => {
     await api.createNewHabit(habit);
     await fetchMyHabits();
-    fetchExploreHabits();
+    await fetchExploreHabits();
   };
 
   useEffect(() => {
@@ -74,7 +80,16 @@ function ExplorePage() {
         </fieldset>
 
         {habits.length === 0 ? (
-          <h2>We don't have filters in this category yet 😔</h2>
+          <div className="message__container">
+            <h2>We don't have filters in this category yet 😔</h2>
+            <Link
+              className="link"
+              title="To add habit form"
+              to={appRoutes.AddHabit}
+            >
+              But you can create your own habit here!
+            </Link>
+          </div>
         ) : (
           <div className="cards-grid">
             {' '}
