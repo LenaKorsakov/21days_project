@@ -8,8 +8,9 @@
 }
 
 @font-face {
-  font-family: "JosefinSans";
-  src: url("./../public/fonts/JosefinSans-VariableFont_wght.ttf") format("TrueType");
+  font-family: 'JosefinSans';
+  src: url('./../public/fonts/JosefinSans-VariableFont_wght.ttf')
+    format('TrueType');
   font-weight: 125 950;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -45,8 +46,6 @@
 
 :root {
   --main-color: #e71477;
-  --green: #41ac77;
-  --violet: #484e79;
   --white: #ffffff;
   /* form figma */
   --pink: #e5b3c9;
@@ -54,7 +53,9 @@
   --light-blue: #020b0f;
   --gray: #6f6f6f;
   --light-yellow: #f1eaaa;
-  --yellow: #f3de92;
+  --yellow: #f3db87;
+  --red: #f0674f;
+  --orange: #f39e4f;
   --light-green: #9adaa1;
   --dark-green: #7bae82;
   /* media query sizes */
@@ -89,7 +90,7 @@ html {
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
-  font-family: "JosefinSans", "Roboto", "Helvetica", sans-serif;
+  font-family: 'JosefinSans', 'Roboto', 'Helvetica', sans-serif;
   height: 100%;
 }
 

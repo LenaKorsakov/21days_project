@@ -26,6 +26,32 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
   const firstDayOfHabit = dayjs(habit.start_day);
   const lastDayOfHabit = firstDayOfHabit.add(AMOUNT_OF_DAYS, 'day');
 
+  const evaluateProgress = () => {
+    const progressIShouldHave = Math.round(
+      dayjs().diff(firstDayOfHabit) / (1000 * 60 * 60 * 24)
+    );
+    if (progressIShouldHave === 0) {
+      return 100;
+    }
+    return (myProgress / progressIShouldHave) * 100;
+  };
+
+  const getProgressColor = () => {
+    const progress = evaluateProgress();
+
+    if (progress >= 70) {
+      return 'var(--light-green)';
+    } else if (progress >= 40) {
+      return 'var(--light-yellow)';
+    } else if (progress >= 20) {
+      return 'var(--light-orange)';
+    } else {
+      return 'var(--light-red)';
+    }
+  };
+
+  const colorForProgressRow = getProgressColor();
+
   const checkIsTodayLastDayOfHabit = () => {
     const isLastDay = dayjs(lastDayOfHabit).isToday();
     const isAfterLastDay = dayjs().isAfter(lastDayOfHabit, 'day');
@@ -114,6 +140,7 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
               <span
                 className="table-date__progress"
                 style={{
+                  background: colorForProgressRow,
                   width: `${countProgressInPercent()}%`,
                 }}
               ></span>
