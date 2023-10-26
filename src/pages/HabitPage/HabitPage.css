@@ -1,4 +1,10 @@
 .HabitPage {
+  @media (max-width: 500px) {
+    padding-bottom: 60px;
+  }
+
+  background-color: var(--blue);
+
   .habit-page__picture {
     padding: 3vh;
     min-height: 300px;
@@ -10,6 +16,69 @@
 
     & p {
       margin: 0;
+    }
+  }
+
+  .habit-page__content {
+    width: 100%;
+  }
+
+  .habit-page__title {
+    text-align: center;
+    font-family: "LilitaOne", sans-serif;
+    color: #fff;
+  }
+
+  .habit-page__emoji {
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    margin: 3vh auto;
+
+    & span {
+      font-size: 35px;
+    }
+  }
+
+  .habit-page__info-wrapper {
+    max-width: 80vw;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 3vh auto;
+
+    .habit-page__category {
+      margin: 2vh auto;
+      text-align: center;
+      font-size: clamp(4vh, 1vw, 1vw);
+      font-family: "LilitaOne", sans-serif;
+
+    }
+
+    .habit-page__description {
+      font-size: clamp(2vh, 1vw, 1vw);
+    }
+  }
+
+  .habit-page__stats-wrapper {
+    display: flex;
+    justify-content: space-around;
+
+    & p {
+      font-size: clamp(3vh, 1vw, 1vw);
+      font-family: "LilitaOne", sans-serif;
+    }
+
+    .habit-page__streak {
+      color: var(--dark-green);
+    }
+
+    .habit-page__misses {
+      color: var(--pink);
     }
   }
 

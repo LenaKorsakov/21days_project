@@ -65,17 +65,17 @@ function HabitCard({
         to={`${appRoutes.Habit}/${habit.id}`}
         title="To the habit page"
       >
-        <h3 className={`habit__title ${wasCompletedToday ? 'completed' : ''}`}>
+        <h3 className={`habit__title ${wasCompletedToday ? "completed" : ""}`}>
           {habit.title}
         </h3>
       </Link>
       <button
         className={`btn ${
-          wasCompletedToday ? 'btn--uncomplete' : 'btn--complete'
+          wasCompletedToday ? "btn--uncomplete" : "btn--complete"
         }`}
         onClick={handleCompleteButton}
       >
-        {wasCompletedToday ? 'Uncomplete today' : 'Complete today'}
+        {wasCompletedToday ? "Uncomplete today" : "Complete today"}
       </button>
       <Link
         className="btn btn--edit"
@@ -84,7 +84,7 @@ function HabitCard({
       >
         <span>
           <svg
-            style={{ width: '2vh' }}
+            style={{ width: "2vh" }}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -103,7 +103,7 @@ function HabitCard({
       <button className="btn--delete" onClick={() => onDeleteButton(habit.id)}>
         <span>
           <svg
-            style={{ width: '2vh' }}
+            style={{ width: "2vh" }}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
