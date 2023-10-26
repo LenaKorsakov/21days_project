@@ -1,15 +1,31 @@
 import './FilterItem.css';
 
-// eslint-disable-next-line react/prop-types
-function FilterItem({ title }) {
+function FilterItem({
+  title,
+  onFilterHabits,
+  onFetchAllHabits,
+  onChangeFilter,
+  currentFilter,
+}) {
+  const handleFilterChange = (event) => {
+    const filter = event.target.name;
+    onChangeFilter(filter);
+
+    if (filter === 'reset filter') {
+      onFetchAllHabits();
+    } else {
+      onFilterHabits(filter);
+    }
+  };
+
   return (
     <li className="FilterItem">
       <input
         type="radio"
         name={title}
         id={title}
-        // onChange={}
-        checked={false}
+        onChange={handleFilterChange}
+        checked={currentFilter === title}
       />
       <label className="filter__label" htmlFor={title}>
         <span className="filter__label-text">{title}</span>

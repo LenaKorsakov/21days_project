@@ -1,18 +1,21 @@
 .HabitCardExplore {
+  background-color: var(--white);
   width: 15vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  box-shadow: rgba(198, 89, 154, 0.3) 0px 4px 12px;
+  box-shadow: rgba(0, 0, 0, 0.138) 0px 4px 12px;
   margin: 3vh 0;
   padding: 1vh 2vw;
   gap: 1vh;
+  border-radius: 20px;
 
   & h3 {
-    color: rgba(0, 128, 41, 0.546);
+    color: var(--light-green);
     font-size: 1vw;
+    text-wrap: balance;
   }
 
   & button {
@@ -21,29 +24,52 @@
     cursor: pointer;
   }
 
-  & .btn--edit {
-    font-size: clamp(0.5vw, 1vw, 1.5vw);
-    border: none;
-  }
-
   .btn--add {
-    font-size: 0.5vw;
-    background-color: rgba(0, 128, 41, 0.546);
+    font-size: clamp(0.5vh, 1vw, 3vw);
+    background-color: var(--light-green);
     color: white;
+    margin-bottom: 1vw;
   }
 
-  .habit-img__wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .btn--add:hover {
+    background-color: var(--pink);
+  }
 
-    .habit-img {
-      width: 10vw;
-    }
+  .btn--pink {
+    background-color: var(--pink);
+  }
+
+  .btn--pink:hover {
+    background-color: var(--light-green);
   }
 
   .habit__description {
     font-size: 0.9vw;
-    color: grey;
+    color: var(--light-blue);
+    text-wrap: balance;
+  }
+
+  .container--emoji {
+    flex: 1 1 20%;
+    border: 1px solid var(--gray);
+    border-radius: 50%;
+    width: clamp(1vh, 3vw, 3vw);
+    height: 3vw;
+    padding: 0.5vw;
+
+    & span {
+      font-size: clamp(0.7vh, 1.5vw, 3vw);
+    }
+  }
+
+  .habit-card__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+
+    .habit__description {
+      flex: 1 1 50%;
+    }
   }
 }

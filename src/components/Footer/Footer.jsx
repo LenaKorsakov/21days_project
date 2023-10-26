@@ -58,7 +58,7 @@ function Footer() {
             <li>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "link active" : "link"
+                  isActive ? 'link active' : 'link'
                 }
                 to={appRoutes.Explore}
               >
@@ -81,7 +81,7 @@ function Footer() {
             <li>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "link active" : "link"
+                  isActive ? 'link active' : 'link'
                 }
                 to={appRoutes.Explore}
               >
@@ -102,10 +102,8 @@ function Footer() {
               </NavLink>
             </li>
           </ul>
-          <span>
-            Made with ❤️ <br /> by Rony and Elena{' '}
-          </span>
         </div>
+        <span className="copyright">Made with ❤️ by Rony and Elena </span>
       </footer>
     </>
   );

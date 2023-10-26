@@ -1,12 +1,32 @@
 .HabitInProgressRow {
   display: flex;
-  width: 100%;
+  max-width: 100%;
   padding: 0.1vw 0;
+  align-items: center;
+
+  @media (max-width: 500px) {
+    .buttons_container {
+      margin-right: 1vw;
+      max-height: 2vh;
+    }
+  }
 
   .table-data {
     flex: 1 1 20%;
     text-align: center;
-    font-size: clamp(1.2vh, 1.5vw, 1.7vw);
+    font-size: clamp(1.1vh, 1.3vw, 1.5vw);
+    display: flex;
+    justify-content: center;
+
+    .table-data--important {
+      color: var(--pink);
+      font-family: 'LilitaOne';
+      font-size: larger;
+    }
+
+    .important {
+      color: var(--pink);
+    }
   }
 
   & button {
@@ -18,28 +38,36 @@
   .btn--delete {
     background-color: var(--light-yellow);
     border-radius: 0 20px 20px 0;
+    flex: 1 1 50%;
+
+    & svg {
+      max-width: 3vw;
+    }
   }
 
   .btn--start {
-    background-color: var(--light-green);
-    color: white;
+    margin-left: 0.5vw;
+    background-color: var(--pink);
+    color: var(--light-blue);
     border-radius: 0;
-    width: 13vw;
+    width: 5vw;
+    font-size: clamp(0.4vh, 0.8vw, 1.3vw);
+    border-radius: 20px 0px 0px 20px;
+    flex: 1 1 50%;
   }
 
-  .table-data--completed__container {
-    display: flex;
-    background-color: #fff;
-    border-radius: 20px;
-    justify-content: space-between;
+  .btn--start:hover {
+    background-color: var(--light-green);
+  }
 
-    & h3 {
-      font-size: clamp(1.2vh, 1vw, 1.7vw);
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      color: var(--lightblue);
-    }
+  .buttons_container {
+    margin-right: 1vw;
+  }
+
+  & h3 {
+    font-size: clamp(0.8vh, 0.8vw, 1.2vw);
+    color: var(--lightblue);
+    flex: 1 1 20%;
   }
 
   .progress {
@@ -61,7 +89,6 @@
         height: 6px;
         position: absolute;
         left: 0;
-        width: 50%;
         background-color: var(--light-green);
         border-radius: 3px;
       }
