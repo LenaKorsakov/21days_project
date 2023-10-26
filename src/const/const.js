@@ -18,3 +18,5 @@ export const filtersCategories = [
   'hobbies',
   'reset filter',
 ];
+
+export const SEARCH_DELAY = 400;
