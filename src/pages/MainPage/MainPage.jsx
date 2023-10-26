@@ -105,7 +105,7 @@ function MainPage() {
               to={appRoutes.AddHabit}
             >
               <div>
-                {habits.lenth === 0
+                {habits.length === 0
                   ? buttonMesage.FirstHabit
                   : buttonMesage.Default}
               </div>

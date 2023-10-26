@@ -1,13 +1,12 @@
-import "./HabitCard.css";
+import './HabitCard.css';
 
-import dayjs from "dayjs";
-import isToday from "dayjs/plugin/isToday";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import dayjs from 'dayjs';
+import isToday from 'dayjs/plugin/isToday';
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import { appRoutes } from '../../const/app-routes';
 import { buttonMesage } from '../../const/const';
-
 
 dayjs.extend(isToday);
 
@@ -44,7 +43,7 @@ function HabitCard({
 
   useEffect(() => {
     checkIsTodayWasCheckin();
-  }, []);
+  }, [habit]);
 
   const handleCompleteButton = async () => {
     if (wasCompletedToday) {
