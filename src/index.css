@@ -8,6 +8,14 @@
 }
 
 @font-face {
+  font-family: "JosefinSans";
+  src: url("path/to/font/file/JosefinSans-VariableFont_wght.ttf") format("TrueType");
+  font-weight: 125 950;
+  font-stretch: 75% 125%;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Roboto';
   src: url('../fonts/Roboto-Bold.woff2') format('woff2');
   font-weight: 900;
@@ -54,7 +62,7 @@
 
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "JosefinSans", "Roboto", "Helvetica" sans-serif;
 }
 
 * {

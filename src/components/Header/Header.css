@@ -22,14 +22,25 @@
 
   & .page-header-logo__container {
     display: flex;
-    gap: 1vw;
+    gap: 2vw;
     align-items: center;
     padding-left: 1vw;
     max-height: 100%;
+    margin-left: 3vw;
+
+
+    & h3 {
+      font-size: clamp(3vh, 2vw, 2vw);
+    }
 
     & small {
-      font-size: clamp(0.9vh, 0.9vw, 1vw);
+      font-size: clamp(1vh, 0.9vw, 1vw);
       font-family: 'LilitaOne';
+    }
+
+    .container {
+      flex-direction: row;
+      gap: 2vw;
     }
   }
 
