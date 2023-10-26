@@ -9,11 +9,13 @@
 
 @font-face {
   font-family: "JosefinSans";
-  src: url("path/to/font/file/JosefinSans-VariableFont_wght.ttf") format("TrueType");
+  src: url("./../public/fonts/JosefinSans-VariableFont_wght.ttf") format("TrueType");
   font-weight: 125 950;
   font-stretch: 75% 125%;
   font-style: normal;
 }
+
+/* JosefinSans-Medium.ttf */
 
 @font-face {
   font-family: 'Roboto';
@@ -62,7 +64,6 @@
 
 body {
   margin: 0;
-  font-family: "JosefinSans", "Roboto", "Helvetica" sans-serif;
 }
 
 * {
@@ -88,7 +89,7 @@ html {
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
-  font-family: 'Roboto', 'Arial', sans-serif;
+  font-family: "JosefinSans", "Roboto", "Helvetica", sans-serif;
   height: 100%;
 }
 

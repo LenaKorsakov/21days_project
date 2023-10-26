@@ -3,6 +3,11 @@
   background: linear-gradient(var(--pink) 50%, var(--blue));
   padding-top: 80px;
 
+  @media (max-width: 500px) {
+    padding-bottom: 60px;
+    padding-top: 40px;
+  }
+
 
   .page-main__container {
     display: flex;
