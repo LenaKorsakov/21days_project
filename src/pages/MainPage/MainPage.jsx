@@ -76,33 +76,33 @@ function MainPage() {
             onStartAgain={onStartHabitAgain}
           />
           <div className="page-main__decoration">
-          <section className="habits">
-            <h2>my habits</h2>
-            <ul className="habits__list">
-              {habits.map((habit) => {
-                return (
-                  <HabitCard
-                    habit={habit}
-                    key={habit.id}
-                    onDeleteButton={onDeleteButton}
-                    onCompleteButton={onCompleteButton}
-                    onUncompleteButton={onUncompleteButton}
-                  />
-                );
-              })}
-            </ul>
-          </section>
-          <Link
-            className="btn btn--add"
-            title="To add habit form"
-            to={appRoutes.AddHabit}
-          >
-            <div>
-              {habits.lenth === 0
-                ? buttonMesage.FirstHabit
-                : buttonMesage.Default}
-            </div>
-          </Link>
+            <section className="habits">
+              <h2>my habits</h2>
+              <ul className="habits__list">
+                {habits.map((habit) => {
+                  return (
+                    <HabitCard
+                      habit={habit}
+                      key={habit.id}
+                      onDeleteButton={onDeleteButton}
+                      onCompleteButton={onCompleteButton}
+                      onUncompleteButton={onUncompleteButton}
+                    />
+                  );
+                })}
+              </ul>
+            </section>
+            <Link
+              className="btn btn--add"
+              title="To add habit form"
+              to={appRoutes.AddHabit}
+            >
+              <div>
+                {habits.length === 0
+                  ? buttonMesage.FirstHabit
+                  : buttonMesage.Default}
+              </div>
+            </Link>
           </div>
         </div>
       </main>

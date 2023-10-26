@@ -1,16 +1,17 @@
-import "./HabitInProgressRow.css";
+import './HabitInProgressRow.css';
 
-import dayjs from "dayjs";
-import isToday from "dayjs/plugin/isToday";
-import { useState } from "react";
+import dayjs from 'dayjs';
+import isToday from 'dayjs/plugin/isToday';
+import { useState } from 'react';
 
-import { AMOUNT_OF_DAYS } from "../../../const/const";
+import { AMOUNT_OF_DAYS } from '../../../const/const';
 
 dayjs.extend(isToday);
 
 function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
-  const [isLastDay, setLastDay] = useState(false);
+  const [isLastDayOfHabit, setLastDayOfHabit] = useState(false);
   const [isStartAgain, setStartAgain] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const myProgress = habit.checkins.length;
 
@@ -23,14 +24,40 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
   };
 
   const firstDayOfHabit = dayjs(habit.start_day);
-  const lastDayOfHabit = firstDayOfHabit.add(AMOUNT_OF_DAYS, "day");
+  const lastDayOfHabit = firstDayOfHabit.add(AMOUNT_OF_DAYS, 'day');
+
+  const evaluateProgress = () => {
+    const progressIShouldHave = Math.round(
+      dayjs().diff(firstDayOfHabit) / (1000 * 60 * 60 * 24)
+    );
+    if (progressIShouldHave === 0) {
+      return 100;
+    }
+    return (myProgress / progressIShouldHave) * 100;
+  };
+
+  const getProgressColor = () => {
+    const progress = evaluateProgress();
+
+    if (progress >= 70) {
+      return 'var(--light-green)';
+    } else if (progress >= 40) {
+      return 'var(--yellow)';
+    } else if (progress >= 20) {
+      return 'var(--orange)';
+    } else {
+      return 'var(--red)';
+    }
+  };
+
+  const colorForProgressRow = getProgressColor();
 
   const checkIsTodayLastDayOfHabit = () => {
     const isLastDay = dayjs(lastDayOfHabit).isToday();
-    const isAfterLastDay = dayjs().isAfter(lastDayOfHabit, "day");
+    const isAfterLastDay = dayjs().isAfter(lastDayOfHabit, 'day');
 
     if (isLastDay || isAfterLastDay) {
-      setLastDay(true);
+      setLastDayOfHabit(true);
     }
   };
 
@@ -46,15 +73,17 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
     await onStartAgain(habit.id, newHabit);
 
     setStartAgain(true);
+    setIsLoading(true);
 
     setTimeout(() => {
-      setLastDay(false);
+      setIsLoading(false);
+      setLastDayOfHabit(false);
     }, 1500);
   };
 
   return (
     <div className="HabitInProgressRow">
-      {isLastDay ? (
+      {isLastDayOfHabit ? (
         <>
           <div className="table-data">
             <span>{habit.emoji}</span>
@@ -64,18 +93,18 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
               <h3>Let's make a strong habit together...</h3>
             ) : (
               <h3>
-                <span className="table-data--important">{habit.title}</span>{" "}
-                should have become your habit 🎉 You did it{" "}
-                <span className="table-data--important">{myProgress}</span>{" "}
-                times in{" "}
-                <span className="table-data--important">{AMOUNT_OF_DAYS}</span>{" "}
+                <span className="table-data--important">{habit.title}</span>{' '}
+                should have become your habit 🎉 You did it{' '}
+                <span className="table-data--important">{myProgress}</span>{' '}
+                times in{' '}
+                <span className="table-data--important">{AMOUNT_OF_DAYS}</span>{' '}
                 days.
               </h3>
             )}
           </div>
           <div className="table-data buttons_container">
             <button className="btn btn--start" onClick={handleStartAgain}>
-              Start again?
+              {isLoading ? 'Starting again...' : 'Start again?'}
             </button>
             <button
               className="btn btn--delete"
@@ -83,7 +112,7 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
             >
               <span>
                 <svg
-                  style={{ width: "2vh" }}
+                  style={{ width: '2vh' }}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -111,6 +140,7 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
               <span
                 className="table-date__progress"
                 style={{
+                  background: colorForProgressRow,
                   width: `${countProgressInPercent()}%`,
                 }}
               ></span>
