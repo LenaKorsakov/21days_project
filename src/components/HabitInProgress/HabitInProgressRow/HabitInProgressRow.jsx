@@ -1,12 +1,12 @@
 import "./HabitInProgressRow.css";
 
 import dayjs from "dayjs";
-import * as isToday from "dayjs/plugin/isToday";
+import isToday from "dayjs/plugin/isToday";
 import { useState } from "react";
 
 import { AMOUNT_OF_DAYS } from "../../../const/const";
 
-// dayjs.extend(isToday);
+dayjs.extend(isToday);
 
 function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
   const [isLastDay, setLastDay] = useState(false);

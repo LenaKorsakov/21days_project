@@ -1,13 +1,13 @@
 import "./HabitCard.css";
 
 import dayjs from "dayjs";
-import * as isToday from "dayjs/plugin/isToday";
+import isToday from "dayjs/plugin/isToday";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { appRoutes } from "../../const/app-routes";
 
-// dayjs.extend(isToday);
+dayjs.extend(isToday);
 
 function HabitCard({
   habit,
