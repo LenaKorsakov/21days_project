@@ -1,19 +1,18 @@
 .HabitCardExplore {
   background-color: var(--white);
-  /* width: 30vw; */
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
   box-shadow: rgba(0, 0, 0, 0.138) 0px 4px 12px;
-  padding: 1vh 2vw;
-  gap: 1vh;
+  padding: 1vh 1vw;
   border-radius: 20px;
+  max-width: 350px;
+  gap: 0.5vw;
 
   & h3 {
     color: var(--blue);
-    font-size: clamp(1.2vh, 1.3vw, 1.5vh);
+    font-size: clamp(1.2vh, 1.3vw, 1.2vh);
     text-wrap: balance;
   }
 
@@ -34,6 +33,10 @@
     background-color: var(--pink);
   }
 
+  & a {
+    color: var(--white);
+  }
+
   .btn--pink {
     background-color: var(--pink);
   }
@@ -42,19 +45,13 @@
     background-color: var(--light-green);
   }
 
-  .habit__description {
-    font-size: 0.9vw;
-    color: var(--light-blue);
-    text-wrap: balance;
-  }
-
   .container--emoji {
-    flex: 1 1 20%;
     border: 1px solid var(--gray);
     border-radius: 50%;
-    width: clamp(1vh, 3vw, 3vw);
-    height: 3vw;
+    width: 2.8vw;
+    height: 2.8vw;
     padding: 0.5vw;
+    margin: 5px;
 
     & span {
       font-size: clamp(0.7vh, 1.5vw, 3vw);
@@ -68,9 +65,11 @@
     flex-direction: column;
 
     .habit__description {
-      flex: 1 1 50%;
       font-size: clamp(0.7vh, 1.5vw, 1vh);
       text-wrap: balance;
+      color: var(--light-blue);
+      text-wrap: balance;
+      width: 80%;
     }
   }
 }

@@ -79,11 +79,7 @@ function ExplorePage() {
           {globalHabits.length === 0 ? (
             <div className="message__container">
               <h2>We don't have filters in this category yet 😔</h2>
-              <Link
-                className="link"
-                title="To add habit form"
-                to={appRoutes.AddHabit}
-              >
+              <Link title="To add habit form" to={appRoutes.AddHabit}>
                 But you can create your own habit here!
               </Link>
             </div>

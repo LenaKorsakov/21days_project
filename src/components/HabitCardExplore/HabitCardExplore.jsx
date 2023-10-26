@@ -45,7 +45,6 @@ function HabitCardExplore({ habit, habits, onCreateNewHabit }) {
       ) : (
         <button className="btn btn--add btn--pink">
           <Link
-            className="link"
             to={`${appRoutes.Habit}/${myHabit.id}`}
             title="To the habit page"
           >
