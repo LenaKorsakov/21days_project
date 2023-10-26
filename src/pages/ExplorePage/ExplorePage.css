@@ -1,6 +1,7 @@
 .ExplorePage {
   color: var(--light-blue);
   background-color: var(--light-yellow);
+  padding-top: 80px;
 
   .page-explore__container {
     display: flex;

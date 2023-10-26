@@ -1,10 +1,10 @@
-import './HabitInProgressRow.css';
+import "./HabitInProgressRow.css";
 
-import dayjs from 'dayjs';
-import * as isToday from 'dayjs/plugin/isToday';
-import { useState } from 'react';
+import dayjs from "dayjs";
+import isToday from "dayjs/plugin/isToday";
+import { useState } from "react";
 
-import { AMOUNT_OF_DAYS } from '../../../const/const';
+import { AMOUNT_OF_DAYS } from "../../../const/const";
 
 dayjs.extend(isToday);
 
@@ -23,11 +23,11 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
   };
 
   const firstDayOfHabit = dayjs(habit.start_day);
-  const lastDayOfHabit = firstDayOfHabit.add(AMOUNT_OF_DAYS, 'day');
+  const lastDayOfHabit = firstDayOfHabit.add(AMOUNT_OF_DAYS, "day");
 
   const checkIsTodayLastDayOfHabit = () => {
     const isLastDay = dayjs(lastDayOfHabit).isToday();
-    const isAfterLastDay = dayjs().isAfter(lastDayOfHabit, 'day');
+    const isAfterLastDay = dayjs().isAfter(lastDayOfHabit, "day");
 
     if (isLastDay || isAfterLastDay) {
       setLastDay(true);
@@ -64,11 +64,11 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
               <h3>Let's make a strong habit together...</h3>
             ) : (
               <h3>
-                <span className="table-data--important">{habit.title}</span>{' '}
-                should have become your habit 🎉 You did it{' '}
-                <span className="table-data--important">{myProgress}</span>{' '}
-                times in{' '}
-                <span className="table-data--important">{AMOUNT_OF_DAYS}</span>{' '}
+                <span className="table-data--important">{habit.title}</span>{" "}
+                should have become your habit 🎉 You did it{" "}
+                <span className="table-data--important">{myProgress}</span>{" "}
+                times in{" "}
+                <span className="table-data--important">{AMOUNT_OF_DAYS}</span>{" "}
                 days.
               </h3>
             )}
@@ -83,7 +83,7 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
             >
               <span>
                 <svg
-                  style={{ width: '2vh' }}
+                  style={{ width: "2vh" }}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"

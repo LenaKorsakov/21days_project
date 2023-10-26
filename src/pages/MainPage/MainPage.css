@@ -1,6 +1,8 @@
 .MainPage {
   color: var(--light-blue);
   background: linear-gradient(var(--pink) 50%, var(--blue));
+  padding-top: 80px;
+
 
   .page-main__container {
     display: flex;
