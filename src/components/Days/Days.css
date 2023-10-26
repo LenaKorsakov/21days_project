@@ -7,13 +7,86 @@
     margin: 4vw auto;
     align-items: center;
     justify-content: center;
+    gap: calc(5vw);
 
     .day {
-        height: 40px;
-        width: 20px;
-        border-radius: 1px;
-        border: 1px solid gray;
-        display: block;
-        flex: 0 1 calc(20% - 8px);
+
+        & label {
+            font-family: "LilitaOne", sans-serif;
+        }
+
+
+        & input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #eee;
+            height: 6vw;
+            width: 6vw;
+            border-radius: 1px;
+            display: block;
+            position: relative;
+            border-radius: 3vw;
+            cursor: pointer;
+        }
+
+
+        /* flex: 0 1 calc(20% - 8px); */
+
+        & input[checkin-id="0000"] {
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
+        &[data-light="off"] {
+            pointer-events: none;
+            cursor: not-allowed;
+
+            .checkmark {
+                background-color: var(--gray);
+                cursor: default;
+                pointer-events: none;
+                cursor: not-allowed;
+            }
+
+        }
+
+        &[data-light="green"] {
+            .checkmark {
+                background-color: #fff;
+                box-shadow: 0 0 40px 20px var(--light-yellow);
+                ;
+            }
+
+
+
+            /* pointer-events: none;
+            cursor: not-allowed; */
+        }
+
+        &[data-light="red"] {
+            .checkmark {
+                background-color: var(--pink);
+            }
+
+
+        }
+
+        &[data-light="yellow"] {
+            .checkmark {
+                background-color: var(--light-yellow);
+            }
+
+        }
+
+
     }
 }
