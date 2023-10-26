@@ -7,7 +7,8 @@
   z-index: 1;
 
   .page-header__title {
-    font-size: clamp(1vh, 1.9vw, 2vw);
+
+    font-size: clamp(1vh, 1.9vw, 2.5vh);
     color: #fff;
     font-family: 'LilitaOne';
     text-shadow: 1px 1px 1px var(--gray);
@@ -26,10 +27,12 @@
     align-items: center;
     padding-left: 1vw;
     max-height: 100%;
+    margin: 0 0.5vw;
 
     & small {
-      font-size: clamp(0.9vh, 0.9vw, 1vw);
+      font-size: clamp(0.8vh, 0.8vw, 1vh);
       font-family: 'LilitaOne';
+      color: var(--white);
     }
   }
 

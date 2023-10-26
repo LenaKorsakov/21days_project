@@ -54,7 +54,7 @@
 
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 * {
@@ -121,7 +121,7 @@ a {
   align-items: center;
   padding: 0.3rem 0.5rem;
   font-weight: 600;
-  font-size: clamp(0.4rem, 1.2vw, 2rem);
+  font-size: clamp(0.8vh, 1.2vw, 1.8vh);
   line-height: 1.2;
   color: black;
   background-color: rgba(255, 255, 255, 0);
