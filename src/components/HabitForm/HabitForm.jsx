@@ -8,7 +8,6 @@ import { appRoutes } from "../../const/app-routes";
 import { useEffect } from "react";
 
 function HabitForm({ habit }) {
-  console.log("habit", habit);
   const editing = habit ? true : false;
   const navigate = useNavigate();
   const [showEmojis, setShowEmojis] = useState(false);
@@ -147,7 +146,7 @@ function HabitForm({ habit }) {
           />
         </div>
 
-        <div className="container">
+        <div className="container container-emoji">
           <label className="form__label title--uppercase" htmlFor="icon">
             Emoji *
           </label>
@@ -177,7 +176,7 @@ function HabitForm({ habit }) {
           )}
         </div>
 
-        <div className="container">
+        <div className="container container-category">
           <label className="form__label title--uppercase" htmlFor="category">
             Category*
           </label>
