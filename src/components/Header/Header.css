@@ -23,7 +23,7 @@
 
   & .page-header-logo__container {
     display: flex;
-    gap: 1vw;
+    gap: 2vw;
     align-items: center;
     padding-left: 1vw;
     max-height: 100%;
@@ -33,6 +33,11 @@
       font-size: clamp(0.8vh, 0.8vw, 1vh);
       font-family: 'LilitaOne';
       color: var(--white);
+    }
+
+    .container {
+      flex-direction: row;
+      gap: 2vw;
     }
   }
 
