@@ -42,11 +42,11 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
     if (progress >= 70) {
       return 'var(--light-green)';
     } else if (progress >= 40) {
-      return 'var(--light-yellow)';
+      return 'var(--yellow)';
     } else if (progress >= 20) {
-      return 'var(--light-orange)';
+      return 'var(--orange)';
     } else {
-      return 'var(--light-red)';
+      return 'var(--red)';
     }
   };
 
