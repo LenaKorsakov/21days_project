@@ -14,8 +14,7 @@ function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
   const inputLightsObject = {};
 
   let misses = 0,
-    daysinarow = 0,
-    totaldaysinarow = 0;
+    daysinarow = 0;
 
   const numbers = [...Array(21).keys()];
 
@@ -30,6 +29,7 @@ function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
           return undefined;
         }
       });
+
       let dataLight,
         checkinDate,
         checkinId,
@@ -43,9 +43,6 @@ function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
         inputChecked = true;
         dayState = "passed";
         daysinarow++;
-        if (daysinarow > totaldaysinarow) {
-          totaldaysinarow = daysinarow;
-        }
       } else if (!checkfound && dayjs(nextDay).isBefore(dayjs())) {
         checkinDate = nextDay;
         checkinId = "000";
@@ -85,10 +82,9 @@ function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
   useEffect(() => {
     const dailyHabits = setDaysData(numbers);
     setAllHabitDay(dailyHabits);
+    onChangeMisses(misses);
+    onChangeDaysInRow(daysinarow);
   }, [habit]);
-
-  onChangeMisses(misses);
-  onChangeDaysInRow(totaldaysinarow);
 
   const [checkedStateData, setCheckedStateData] = useState(inputChecksObject);
   const [lightStateData, setLightStateData] = useState(inputLightsObject);
@@ -151,7 +147,7 @@ function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
                   }
                   checked={checkedStateData[habitDay.number]}
                 />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
               </label>
             </li>
           );

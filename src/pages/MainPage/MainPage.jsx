@@ -1,22 +1,29 @@
-import { Link } from 'react-router-dom';
-import HabitCard from '../../components/HabitCard/HabitCard';
-import './MainPage.css';
+import { Link } from "react-router-dom";
+import HabitCard from "../../components/HabitCard/HabitCard";
+import "./MainPage.css";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import HabitInProgressList from '../../components/HabitInProgress/HabitInProgressList';
-import LoadingPage from '../LoadingPage/LoadingPage';
+import HabitInProgressList from "../../components/HabitInProgress/HabitInProgressList";
+import LoadingPage from "../LoadingPage/LoadingPage";
+import LandingPage from "../LandingPage/LandingPage";
 
-import api from '../../service/api';
+import api from "../../service/api";
 
-import { appRoutes } from '../../const/app-routes';
-import { buttonMesage } from '../../const/const';
+import { appRoutes } from "../../const/app-routes";
+import { buttonMesage } from "../../const/const";
+import { useNavigate } from "react-router-dom";
 
 function MainPage() {
   const [habits, setHabits] = useState(null);
+  const navigate = useNavigate();
 
   const fetchAllHabits = async () => {
     const data = await api.fetchAllHabits();
+    console.log("data", data);
+    if (data.length < 1) {
+      navigate(appRoutes.Landing);
+    }
     setHabits(data);
   };
 
@@ -76,33 +83,33 @@ function MainPage() {
             onStartAgain={onStartHabitAgain}
           />
           <div className="page-main__decoration">
-          <section className="habits">
-            <h2>my habits</h2>
-            <ul className="habits__list">
-              {habits.map((habit) => {
-                return (
-                  <HabitCard
-                    habit={habit}
-                    key={habit.id}
-                    onDeleteButton={onDeleteButton}
-                    onCompleteButton={onCompleteButton}
-                    onUncompleteButton={onUncompleteButton}
-                  />
-                );
-              })}
-            </ul>
-          </section>
-          <Link
-            className="btn btn--add"
-            title="To add habit form"
-            to={appRoutes.AddHabit}
-          >
-            <div>
-              {habits.lenth === 0
-                ? buttonMesage.FirstHabit
-                : buttonMesage.Default}
-            </div>
-          </Link>
+            <section className="habits">
+              <h2>my habits</h2>
+              <ul className="habits__list">
+                {habits.map((habit) => {
+                  return (
+                    <HabitCard
+                      habit={habit}
+                      key={habit.id}
+                      onDeleteButton={onDeleteButton}
+                      onCompleteButton={onCompleteButton}
+                      onUncompleteButton={onUncompleteButton}
+                    />
+                  );
+                })}
+              </ul>
+            </section>
+            <Link
+              className="btn btn--add"
+              title="To add habit form"
+              to={appRoutes.AddHabit}
+            >
+              <div>
+                {habits.lenth === 0
+                  ? buttonMesage.FirstHabit
+                  : buttonMesage.Default}
+              </div>
+            </Link>
           </div>
         </div>
       </main>

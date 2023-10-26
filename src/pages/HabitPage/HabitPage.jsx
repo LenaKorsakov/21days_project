@@ -26,7 +26,6 @@ function HabitPage() {
   }, []);
 
   const fetchOneHabit = async () => {
-    console.log("AAAAAAAAAAA");
     const data = await api.fetchOneHabit(habitId);
     setHabit(data);
   };

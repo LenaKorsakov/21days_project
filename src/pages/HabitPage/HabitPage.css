@@ -90,6 +90,7 @@
       @media (max-width: 500px) {
         font-size: clamp(3vh, 1vw, 1vw);
       }
+
     }
 
     .habit-page__streak {
