@@ -1,12 +1,16 @@
 .Header {
   padding-top: 0.5vh;
   color: #ffffff;
-  background-color: var(--blue);
+  /* background-color: var(--blue); */
+  position: absolute;
+  width: 100%;
+  z-index: 1;
 
   .page-header__title {
     font-size: clamp(1vh, 1.9vw, 2vw);
-    color: var(--light-green);
+    color: #fff;
     font-family: 'LilitaOne';
+    text-shadow: 1px 1px 1px var(--gray);
   }
 
   & .page-header__container {
@@ -18,12 +22,13 @@
 
   & .page-header-logo__container {
     display: flex;
+    gap: 1vw;
     align-items: center;
     padding-left: 1vw;
     max-height: 100%;
 
     & small {
-      font-size: clamp(0.8vh, 0.8vw, 1vw);
+      font-size: clamp(0.9vh, 0.9vw, 1vw);
       font-family: 'LilitaOne';
     }
   }
@@ -43,7 +48,11 @@
     justify-content: space-evenly;
 
     & .link {
-      font-size: clamp(1vh, 0.8vw, 1.4vw);
+      font-size: clamp(1vh, 1vw, 1.4vw);
+
+      &.active {
+        color: var(--gray);
+      }
     }
   }
 }

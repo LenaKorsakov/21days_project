@@ -1,6 +1,7 @@
 .MainPage {
   color: var(--light-blue);
   background-color: var(--pink);
+  padding-top: 80px;
 
   .page-main__container {
     display: flex;
