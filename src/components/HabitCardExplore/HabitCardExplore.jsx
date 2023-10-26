@@ -24,7 +24,6 @@ function HabitCardExplore({ habit, habits, onCreateNewHabit }) {
       start_day: new Date().toJSON(),
     };
     await onCreateNewHabit(newHabit);
-    // findMyHabit(habits);
   };
 
   return (

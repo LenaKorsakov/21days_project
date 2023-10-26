@@ -8,7 +8,7 @@ function Header() {
       <header className="Header">
         <div className="page-header__container">
           <div className="page-header-logo__container">
-            <Link to={appRoutes.Main}>
+            <Link to={appRoutes.Main} title="to the main page">
               <img
                 className="page-header__logo"
                 src="../../../public/image/cute-cartoon-turtle-file-with-transparent-background-png.webp"
@@ -16,8 +16,10 @@ function Header() {
               />
             </Link>
             <div className="container">
-              <h3 className="page-header__title">21Days</h3>
-              <small> It takes 21 days to make a habit...</small>
+              <Link to={appRoutes.Main} title="to the main page">
+                <h3 className="page-header__title">21Days</h3>
+                <small> It takes 21 days to make a habit...</small>
+              </Link>
             </div>
           </div>
 

@@ -1,20 +1,19 @@
 .HabitCardExplore {
   background-color: var(--white);
-  width: 15vw;
+  /* width: 30vw; */
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-evenly;
   box-shadow: rgba(0, 0, 0, 0.138) 0px 4px 12px;
-  margin: 3vh 0;
   padding: 1vh 2vw;
   gap: 1vh;
   border-radius: 20px;
 
   & h3 {
-    color: var(--light-green);
-    font-size: 1vw;
+    color: var(--blue);
+    font-size: clamp(1.2vh, 1.3vw, 1.5vh);
     text-wrap: balance;
   }
 
@@ -25,7 +24,7 @@
   }
 
   .btn--add {
-    font-size: clamp(0.5vh, 1vw, 3vw);
+    font-size: clamp(0.5vh, 1vw, 0.7vw);
     background-color: var(--light-green);
     color: white;
     margin-bottom: 1vw;
@@ -70,6 +69,8 @@
 
     .habit__description {
       flex: 1 1 50%;
+      font-size: clamp(0.7vh, 1.5vw, 1vh);
+      text-wrap: balance;
     }
   }
 }

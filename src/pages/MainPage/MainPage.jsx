@@ -46,7 +46,6 @@ function MainPage() {
   };
 
   const clearAllCheckins = async (habit) => {
-    console.log(habit);
     if (habit.checkins) {
       for (const checkin of habit.checkins) {
         await deleteCheckin(checkin.id);
@@ -76,6 +75,7 @@ function MainPage() {
             onDeleteButton={onDeleteButton}
             onStartAgain={onStartHabitAgain}
           />
+          <div className="page-main__decoration">
           <section className="habits">
             <h2>my habits</h2>
             <ul className="habits__list">
@@ -103,6 +103,7 @@ function MainPage() {
                 : buttonMesage.Default}
             </div>
           </Link>
+          </div>
         </div>
       </main>
     </>

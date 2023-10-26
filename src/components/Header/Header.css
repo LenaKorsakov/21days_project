@@ -4,7 +4,7 @@
   background-color: var(--blue);
 
   .page-header__title {
-    font-size: clamp(1vh, 1.9vw, 2vw);
+    font-size: clamp(1vh, 1.9vw, 2.5vh);
     color: var(--light-green);
     font-family: 'LilitaOne';
   }
@@ -21,10 +21,12 @@
     align-items: center;
     padding-left: 1vw;
     max-height: 100%;
+    margin: 0 0.5vw;
 
     & small {
-      font-size: clamp(0.8vh, 0.8vw, 1vw);
+      font-size: clamp(0.8vh, 0.8vw, 1vh);
       font-family: 'LilitaOne';
+      color: var(--white);
     }
   }
 
