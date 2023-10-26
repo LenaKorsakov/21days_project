@@ -1,6 +1,6 @@
-import { NavLink, Outlet, Link } from 'react-router-dom';
-import './Header.css';
-import { appRoutes } from '../../const/app-routes';
+import { NavLink, Outlet, Link } from "react-router-dom";
+import "./Header.css";
+import { appRoutes } from "../../const/app-routes";
 
 function Header() {
   return (
@@ -11,7 +11,7 @@ function Header() {
             <Link to={appRoutes.Main}>
               <img
                 className="page-header__logo"
-                src="../../../public/image/cute-cartoon-turtle-file-with-transparent-background-png.webp"
+                src="/image/turtle.png"
                 alt="21 days logo"
               />
             </Link>
@@ -27,7 +27,7 @@ function Header() {
                 to={appRoutes.Main}
                 end
                 className={({ isActive }) =>
-                  isActive ? 'link active' : 'link'
+                  isActive ? "link active" : "link"
                 }
               >
                 Home
@@ -36,7 +36,7 @@ function Header() {
             <li>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? 'link active' : 'link'
+                  isActive ? "link active" : "link"
                 }
                 to={appRoutes.Explore}
               >
