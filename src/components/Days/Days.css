@@ -20,6 +20,22 @@
         & label {
             font-family: "LilitaOne", sans-serif;
             font-size: clamp(3vh, 1vw, 1vw);
+
+            /* @media (min-width: 1401px) {
+                font-size: clamp(1vh, 3vw, 6.5vw);
+            }
+
+            @media (min-width: 801px) and (max-width: 1400px) {
+                font-size: clamp(1vh, 3vw, 6.5vw);
+            }
+
+            @media (min-width: 500px) and (max-width: 800px) {
+                font-size: clamp(1vh, 3vw, 6.5vw);
+            } */
+
+            @media (max-width: 500px) {
+                font-size: clamp(2vh, 1vw, 1vw);
+            }
         }
 
 
