@@ -1,4 +1,4 @@
-.HabitCardExplore {
+.GlobalHabitCard {
   background-color: var(--white);
   display: flex;
   flex-direction: column;
@@ -7,8 +7,12 @@
   box-shadow: rgba(0, 0, 0, 0.138) 0px 4px 12px;
   padding: 1vh 1vw;
   border-radius: 20px;
-  max-width: 350px;
+
   gap: 0.5vw;
+
+  @media (min-width: 800px) {
+    width: 300px;
+  }
 
   & h3 {
     color: var(--blue);
@@ -86,7 +90,7 @@
   }
 }
 
-.HabitCardExplore:hover {
+.GlobalHabitCard:hover {
   box-shadow: rgba(0, 0, 0, 0.3) 0px 12px 28px 0px,
     rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
     rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;

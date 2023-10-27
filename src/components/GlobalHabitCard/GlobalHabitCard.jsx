@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { appRoutes } from '../../const/app-routes';
-import './HabitCardExplore.css';
+import './GlobalHabitCard.css';
 
-function HabitCardExplore({ habit, habits, onCreateNewHabit }) {
+function GlobalHabitCard({ habit, habits, onCreateNewHabit }) {
   const [myHabit, setMyHabit] = useState(null);
 
   const findMyHabit = (myHabits) => {
@@ -27,7 +27,7 @@ function HabitCardExplore({ habit, habits, onCreateNewHabit }) {
   };
 
   return (
-    <div className="HabitCardExplore">
+    <div className="GlobalHabitCard">
       <div className="habit-img__wrapper">
         <div className="container container--emoji">
           <span>{habit.emoji}</span>
@@ -56,4 +56,4 @@ function HabitCardExplore({ habit, habits, onCreateNewHabit }) {
   );
 }
 
-export default HabitCardExplore;
+export default GlobalHabitCard;

@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import FilterItem from '../../components/FilterItem/FilterItem';
-import HabitCardExplore from '../../components/HabitCardExplore/HabitCardExplore';
 import LoadingPage from '../LoadingPage/LoadingPage';
+import GlobalHabitCard from '../../components/GlobalHabitCard/GlobalHabitCard';
 
 import { appRoutes } from '../../const/app-routes';
 import { filtersCategories } from '../../const/const';
@@ -92,7 +92,7 @@ function ExplorePage() {
               {' '}
               {globalHabits.map((habit) => {
                 return (
-                  <HabitCardExplore
+                  <GlobalHabitCard
                     key={habit.id}
                     habit={habit}
                     habits={myHabits}
