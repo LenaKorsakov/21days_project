@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 
 import { appRoutes } from '../../const/app-routes';
 import { buttonMesage } from '../../const/const';
+import { debounce } from 'lodash';
 
 dayjs.extend(isToday);
 
@@ -56,6 +57,11 @@ function HabitCard({
     }
   };
 
+  const handleCompleteButtonDebonced = debounce(
+    async () => await handleCompleteButton(),
+    500
+  );
+
   return (
     <li className="HabitCard">
       <div className="habit__type">
@@ -76,7 +82,7 @@ function HabitCard({
         className={`btn ${
           wasCompletedToday ? 'btn--uncomplete' : 'btn--complete'
         }`}
-        onClick={handleCompleteButton}
+        onClick={handleCompleteButtonDebonced}
       >
         {wasCompletedToday ? buttonMesage.Uncompleted : buttonMesage.Completed}
       </button>

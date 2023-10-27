@@ -1,14 +1,14 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import dayjs from "dayjs";
-import api from "../../service/api";
-import "./Days.css";
-import LoadingPage from "../../pages/LoadingPage/LoadingPage";
+import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import dayjs from 'dayjs';
+import api from '../../service/api';
+import './Days.css';
+import LoadingPage from '../../pages/LoadingPage/LoadingPage';
 
 function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
   const [allHabitDay, setAllHabitDay] = useState();
-  const firstDay = dayjs(new Date(habit.start_day)).startOf("day");
+  const firstDay = dayjs(new Date(habit.start_day)).startOf('day');
 
   const inputChecksObject = {};
   const inputLightsObject = {};
@@ -21,10 +21,10 @@ function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
   const setDaysData = (days) => {
     const daysObject = days.map((day) => {
       const habitDay = {};
-      const nextDay = dayjs(firstDay).add(day, "d").toDate();
+      const nextDay = dayjs(firstDay).add(day, 'd').toDate();
       const checkfound = habit.checkins.find((checkin) => {
         if (checkin.date) {
-          return dayjs(nextDay).isSame(dayjs(checkin.date).startOf("day"));
+          return dayjs(nextDay).isSame(dayjs(checkin.date).startOf('day'));
         } else {
           return undefined;
         }
@@ -39,31 +39,31 @@ function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
       if (checkfound) {
         checkinDate = checkfound.date;
         checkinId = checkfound.id;
-        dataLight = "green";
+        dataLight = 'green';
         inputChecked = true;
-        dayState = "passed";
+        dayState = 'passed';
         daysinarow++;
       } else if (!checkfound && dayjs(nextDay).isBefore(dayjs())) {
         checkinDate = nextDay;
-        checkinId = "000";
-        dataLight = "red";
-        dayState = "passed";
+        checkinId = '000';
+        dataLight = 'red';
+        dayState = 'passed';
         misses++;
         daysinarow = 0;
       } else {
-        checkinDate = "000";
-        checkinId = "000";
-        dataLight = "off";
-        dayState = "future";
+        checkinDate = '000';
+        checkinId = '000';
+        dataLight = 'off';
+        dayState = 'future';
       }
 
       if (dayjs(nextDay).isToday()) {
         // dataLight = "yellow";
-        dayState = "today";
+        dayState = 'today';
       }
 
       habitDay.number = day + 1;
-      habitDay.dayId = "day" + (day + 1);
+      habitDay.dayId = 'day' + (day + 1);
       habitDay.date = nextDay;
       habitDay.dayCheked = inputChecked;
       habitDay.checkin_id = checkinId;
@@ -92,10 +92,10 @@ function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
   const handleCheck = (event, index, checkInDate, checkinId) => {
     setCheckedStateData({ ...checkedStateData, [index]: event.target.checked });
     if (event.target.checked) {
-      setLightStateData({ ...lightStateData, [index]: "green" });
+      setLightStateData({ ...lightStateData, [index]: 'green' });
       addCheckIn(checkInDate);
     } else {
-      setLightStateData({ ...lightStateData, [index]: "red" });
+      setLightStateData({ ...lightStateData, [index]: 'red' });
       deleteCheckin(checkinId);
     }
   };
@@ -127,9 +127,9 @@ function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
               data-light={lightStateData[habitDay.number]}
             >
               <label>
-                {habitDay.state === "today"
-                  ? "Today"
-                  : "Day " + habitDay.number}
+                {habitDay.state === 'today'
+                  ? 'Today'
+                  : 'Day ' + habitDay.number}
 
                 <input
                   type="checkbox"
