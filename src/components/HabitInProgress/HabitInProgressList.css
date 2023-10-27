@@ -11,16 +11,17 @@
     color: var(--gray);
     font-family: 'LilitaOne';
     font-size: clamp(3vh, 4vw, 3.5vh);
-
-    .table {
-      width: 100%;
-      padding: 1vh;
-    }
-
-    .table-content {
-      display: flex;
-      flex-direction: column;
-      gap: 1vh;
-    }
   }
+
+  .table {
+    width: 100%;
+    padding: 1vh;
+  }
+
+  .table-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+  }
+
 }

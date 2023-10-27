@@ -95,6 +95,10 @@
                 background-color: #fff;
                 box-shadow: 0 0 40px 20px var(--light-yellow);
 
+                &:hover {
+                    box-shadow: 0 0 40px 10px var(--light-yellow);
+                }
+
                 @media (max-width: 500px) {
                     box-shadow: 0 0 20px 10px var(--light-yellow);
                 }
@@ -111,6 +115,10 @@
             .checkmark {
                 background-color: #e1c2c2;
                 box-shadow: 0 0 40px 20px #f1aaaa;
+
+                &:hover {
+                    box-shadow: 0 0 40px 10px #f1aaaa;
+                }
 
                 @media (max-width: 500px) {
                     box-shadow: 0 0 20px 10px #f1aaaa;
