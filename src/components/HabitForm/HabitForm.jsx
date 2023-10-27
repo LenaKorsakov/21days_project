@@ -129,6 +129,7 @@ function HabitForm({ habit }) {
             placeholder="Meditate 10min"
             value={formData.title}
             onChange={handleChange}
+            autoComplete="off"
           ></input>
         </div>
 
@@ -158,6 +159,7 @@ function HabitForm({ habit }) {
               name="emoji"
               value={emojiValue}
               onChange={handleChange}
+              autoComplete="off"
             />
 
             <div className="showEmoji" onClick={handleShowEmojis}>

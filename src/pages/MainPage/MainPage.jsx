@@ -20,7 +20,6 @@ function MainPage() {
 
   const fetchAllHabits = async () => {
     const data = await api.fetchAllHabits();
-    console.log("data", data);
     if (data.length < 1) {
       navigate(appRoutes.Landing);
     }
