@@ -12,8 +12,7 @@
 
   & h3 {
     color: var(--blue);
-    font-size: clamp(1.2vh, 1.3vw, 1.2vh);
-    text-wrap: balance;
+    font-size: clamp(1.3vh, 1.4vw, 1.35vh);
   }
 
   & button {
@@ -23,7 +22,7 @@
   }
 
   .btn--add {
-    font-size: clamp(0.5vh, 1vw, 0.7vw);
+    font-size: clamp(1vh, 1vw, 0.7vw);
     background-color: var(--light-green);
     color: white;
     margin-bottom: 1vw;
@@ -53,8 +52,21 @@
     padding: 0.5vw;
     margin: 5px;
 
+    @media (max-width: 500px) {
+      border: 0.1px solid var(--gray);
+      border-radius: 50%;
+      width: 2.8vh;
+      height: 2.8vh;
+      padding: 1vh;
+      margin: 0.3vh;
+    }
+
     & span {
-      font-size: clamp(0.7vh, 1.5vw, 3vw);
+      font-size: clamp(0.7vh, 1.5vw, 2.5vh);
+
+      @media (max-width: 500px) {
+        font-size: 1.2vh;
+      }
     }
   }
 
@@ -65,11 +77,17 @@
     flex-direction: column;
 
     .habit__description {
-      font-size: clamp(0.7vh, 1.5vw, 1vh);
+      font-size: clamp(1vh, 1.6vw, 1vh);
       text-wrap: balance;
       color: var(--light-blue);
       text-wrap: balance;
       width: 80%;
     }
   }
+}
+
+.HabitCardExplore:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
 }
