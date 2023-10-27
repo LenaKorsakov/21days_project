@@ -1,22 +1,30 @@
 .NotFoundPage {
-  background-color: #ffe4f0;
+  background-color: var(--pink);
   height: 100vh;
   color: var(--gray);
 
+  & h1 {
+    font-size: clamp(1.5vh, 3vw, 3.5vh);
+    margin: 150px 1vw 0 1px;
+    font-family: 'LilitaOne', sans-serif;
+    color: var(--gray);
+  }
+
   .page__logo {
     max-width: 8vw;
+    margin-top: 20px;
   }
 
   .btn {
     margin-top: 10vh;
-    color: inherit;
     border: 1px solid var(--light-green);
     background-color: var(--light-green);
+    padding: 10px;
   }
 
   .btn:hover {
     margin-top: 10vh;
-    border: 1px solid var(--blue);
-    background-color: var(--blue);
+    border: 1px solid var(--dark-green);
+    background-color: var(--dark-green);
   }
 }

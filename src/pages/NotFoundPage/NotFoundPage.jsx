@@ -15,7 +15,7 @@ function NotFoundPage() {
         </div>
         <img
           className="page__logo"
-          src="../../../public/image/cute-cartoon-turtle-file-with-transparent-background-png.webp"
+          src="../../../public/image/turtle.png"
           alt="21 days logo"
         />
       </main>
