@@ -13,6 +13,8 @@ It is said that it takes 21 (straight) days to create a habit so our App is the 
 
 The remember that the small changes amount to great things and that the turtle won the race so no hurry.
 
+https://21days-project.vercel.app/image/21days_screen-cap01.png
+
 ## Why this project?
 
 "We chose '21 Days' for several compelling reasons:
@@ -22,6 +24,8 @@ The remember that the small changes amount to great things and that the turtle w
 - Useful: We identified a gap in the market for a user-friendly habit-tracking app that aligns with our goals.
 - Simple to start: we don’t need to find free API. We used JSON server and Chat GPT for backend side.
 
+https://21days-project.vercel.app/image/21days_screen-cap02.png
+
 ## Main Challenges
 
 Managing asynchronous calls: We overcame this by carefully debugging and put right order of these calls.
@@ -29,6 +33,8 @@ Managing asynchronous calls: We overcame this by carefully debugging and put rig
 Dealing with time: We successfully integrated the Dayjs library to work with time effectively.
 
 Responsive design: Achieving a balance between 4K screens and mobile phones was really hard but manageable.
+
+https://21days-project.vercel.app/image/21days_screen-cap03.png
 
 ## Cool Features
 
@@ -40,6 +46,8 @@ Responsive design: Achieving a balance between 4K screens and mobile phones was 
 - Manage Debouncing.
 - And emojis! 😜
 
+https://21days-project.vercel.app/image/21days_screen-cap04.png
+
 ## Next Steps
 
 Looking ahead, we have exciting plans to enhance '21 Days':
@@ -48,6 +56,8 @@ Looking ahead, we have exciting plans to enhance '21 Days':
 - Data-base for all history of habits.
 - Implement a user statistics page with data on completed habits and current habits.
 - Add a Save for the Future functionality, enabling users to save habits for later."
+
+  https://21days-project.vercel.app/image/21days_screen-cap05.png
 
 ## Conclusion
 
