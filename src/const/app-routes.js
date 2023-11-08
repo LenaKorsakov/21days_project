@@ -7,5 +7,5 @@ export const appRoutes = {
   NotFound: '*',
   Landing: '/landing',
   Login: '/login',
-  Signin: '/Signin',
+  Signup: '/signup',
 };

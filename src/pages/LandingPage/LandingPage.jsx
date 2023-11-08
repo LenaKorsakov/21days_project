@@ -23,7 +23,7 @@ function LandingPage() {
 
         <div className="Landing-page__buttons-wrapper">
           <div className="button__container">
-            <Link to={appRoutes.Logout}>
+            <Link to={appRoutes.Signup}>
               <div className="btn-nav">Sign Up</div>
             </Link>
             <Link to={appRoutes.Login}>

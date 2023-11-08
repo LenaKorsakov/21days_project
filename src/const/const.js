@@ -20,3 +20,9 @@ export const filtersCategories = [
 ];
 
 export const SEARCH_DELAY = 400;
+
+export const authorizationStatus = {
+  Auth: 'AUTH',
+  NoAuth: 'NO_AUTH',
+  Unknown: 'UNKNOWN'
+};

@@ -134,7 +134,7 @@ a {
   color: var(--white);
   background-color: var(--pink);
   border: 0;
-  border-radius: 20px;
+  border-radius: 30px;
   cursor: pointer;
 }
 

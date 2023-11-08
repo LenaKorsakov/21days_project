@@ -12,11 +12,11 @@ function LoginPage() {
       <main className="LoginPage">
         <div className="page__container">
           <div className="page__decoration">
-            <h1 className="subtitle">Login</h1>
+            <h1 className="subtitle">Log in</h1>
             <LoginForm />
-            <Link to={appRoutes.Signin}>
+            <Link to={appRoutes.Signup}>
               <p className="login-link">
-                This user is not found. Please, Sign in
+                This user is not found. Please, Sign up
               </p>
             </Link>
           </div>

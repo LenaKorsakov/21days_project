@@ -6,12 +6,15 @@ import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import App from '../src/components/App/App';
+import AuthContentWrapper from './components/AuthContextWrapper/AuthContextWrapper';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <ToastContainer />
-      <App />
+      <AuthContentWrapper>
+        <App />
+      </AuthContentWrapper>
     </BrowserRouter>
   </React.StrictMode>
 );

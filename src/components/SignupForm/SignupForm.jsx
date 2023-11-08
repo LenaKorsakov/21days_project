@@ -1,9 +1,9 @@
-import './SigninForm.css';
+import './SignupForm.css';
 
-function SigninForm() {
+function SignupForm() {
   return (
     <form
-      className="SigninForm"
+      className="SignupForm"
       action=""
       method="post"
       // onSubmit={handleFormSubmit}
@@ -39,10 +39,10 @@ function SigninForm() {
         />
       </div>
       <button className="btn btn--login" type="submit">
-        LOG IN
+        SIGN UP
       </button>
     </form>
   );
 }
 
-export default SigninForm;
+export default SignupForm;

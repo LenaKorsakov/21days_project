@@ -1,11 +1,10 @@
-import "./HabitForm.css";
-import axios from "axios";
-import EmojiPicker from "emoji-picker-react";
-import { useState } from "react";
-import api from "../../service/api";
-import { useNavigate } from "react-router-dom";
-import { appRoutes } from "../../const/app-routes";
-import { useEffect } from "react";
+import './HabitForm.css';
+import EmojiPicker from 'emoji-picker-react';
+import { useState } from 'react';
+import api from '../../service/api';
+import { useNavigate } from 'react-router-dom';
+import { appRoutes } from '../../const/app-routes';
+import { useEffect } from 'react';
 
 function HabitForm({ habit }) {
   const editing = habit ? true : false;
@@ -13,13 +12,13 @@ function HabitForm({ habit }) {
   const [showEmojis, setShowEmojis] = useState(false);
   const [disableButton, setDisableButton] = useState(true);
   const [showPopup, setshowPopup] = useState(false);
-  const [emojiValue, setEmojiValue] = useState("");
+  const [emojiValue, setEmojiValue] = useState('');
   const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    emoji: "",
-    category: "default",
-    start_day: "",
+    title: '',
+    description: '',
+    emoji: '',
+    category: 'default',
+    start_day: '',
   });
 
   const handleShowEmojis = () => {
@@ -46,9 +45,9 @@ function HabitForm({ habit }) {
 
   const checkForFormFilled = () => {
     if (
-      formData.title !== "" &&
-      formData.category !== "default" &&
-      formData.emoji !== ""
+      formData.title !== '' &&
+      formData.category !== 'default' &&
+      formData.emoji !== ''
     ) {
       setDisableButton(false);
     }
@@ -60,7 +59,7 @@ function HabitForm({ habit }) {
   };
 
   const handleChangeEmoji = (emoji) => {
-    setFormData({ ...formData, ["emoji"]: emoji });
+    setFormData({ ...formData, ['emoji']: emoji });
   };
 
   const createNewHabit = async (habit) => {
@@ -73,11 +72,11 @@ function HabitForm({ habit }) {
     }, 1000);
 
     setFormData({
-      title: "",
-      description: "",
-      emoji: "",
-      category: "default",
-      start_day: "",
+      title: '',
+      description: '',
+      emoji: '',
+      category: 'default',
+      start_day: '',
     });
   };
 
@@ -91,18 +90,18 @@ function HabitForm({ habit }) {
     }, 1000);
 
     setFormData({
-      title: "",
-      description: "",
-      emoji: "",
-      category: "default",
-      start_day: "",
+      title: '',
+      description: '',
+      emoji: '',
+      category: 'default',
+      start_day: '',
     });
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const creationDate = new Date().toJSON();
-    setFormData({ ...formData, ["start_day"]: creationDate });
+    setFormData({ ...formData, ['start_day']: creationDate });
     if (editing) {
       editHabit(habit.id, formData);
     } else {
@@ -213,9 +212,9 @@ function HabitForm({ habit }) {
 
         <div className="habit__button-wrapper">
           <button className="btn" type="submit" disabled={disableButton}>
-            {editing ? "Edit Habit" : "Add Habit"}
+            {editing ? 'Edit Habit' : 'Add Habit'}
           </button>
-          <p style={{ fontSize: "2vh", textAlign: "left" }}>
+          <p style={{ fontSize: '2vh', textAlign: 'left' }}>
             * Necesary fields
           </p>
         </div>

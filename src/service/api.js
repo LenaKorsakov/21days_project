@@ -4,11 +4,43 @@ import { toast } from 'react-toastify';
 import { apiRoutes } from '../const/api-routes';
 
 const BACKEND_URL = 'https://app-21days.adaptable.app/';
+const BACKEND_URL_DEV = 'http://localhost:5005/app/';
 const REQUEST_TIMEOUT = 5000;
 
 const api = axios.create({
   baseURL: BACKEND_URL,
   timeout: REQUEST_TIMEOUT,
+});
+
+export const myApi = axios.create({
+  baseURL: BACKEND_URL_DEV,
+  timeout: REQUEST_TIMEOUT,
+});
+
+myApi.getUserInfo = async function () {
+  try {
+    const { data } = await myApi.get(apiRoutes.Auth);
+    return data;
+  } catch (error) {
+    toast.error(`${error.message}. Try to reload this page.`);
+  }
+};
+
+myApi.signup = async function (userData) {
+  try {
+    await myApi.post(apiRoutes.Signup, userData);
+  } catch (error) {
+    toast.error(`${error.message}. Try to reload this page.`);
+  }
+};
+
+myApi.interceptors.request.use((request) => {
+  const token = localStorage.getItem('authToken');
+  if (!token) {
+    return request;
+  }
+  request.headers.Authorization = `Bearer ${token}`;
+  return request;
 });
 
 api.fetchAllHabits = async function () {

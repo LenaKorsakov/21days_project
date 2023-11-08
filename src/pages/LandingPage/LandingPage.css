@@ -60,6 +60,7 @@
     font-size: 2vh;
     margin-top: 5vh;
     width: 100%;
+    border-radius: 30px;
 
     @media (max-width: 500px) {
       font-size: 2vh;
