@@ -1,28 +1,22 @@
-import { Link } from "react-router-dom";
-import HabitCard from "../../components/HabitCard/HabitCard";
-import "./MainPage.css";
+import { Link } from 'react-router-dom';
+import HabitCard from '../../components/HabitCard/HabitCard';
+import './MainPage.css';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import HabitInProgressList from "../../components/HabitInProgress/HabitInProgressList";
-import LoadingPage from "../LoadingPage/LoadingPage";
-import LandingPage from "../LandingPage/LandingPage";
+import HabitInProgressList from '../../components/HabitInProgress/HabitInProgressList';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
-import api from "../../service/api";
+import api from '../../service/api';
 
-import { appRoutes } from "../../const/app-routes";
-import { buttonMesage } from "../../const/const";
-import { useNavigate } from "react-router-dom";
+import { appRoutes } from '../../const/app-routes';
+import { buttonMesage } from '../../const/const';
 
 function MainPage() {
   const [habits, setHabits] = useState(null);
-  const navigate = useNavigate();
 
   const fetchAllHabits = async () => {
     const data = await api.fetchAllHabits();
-    if (data.length < 1) {
-      navigate(appRoutes.Landing);
-    }
     setHabits(data);
   };
 

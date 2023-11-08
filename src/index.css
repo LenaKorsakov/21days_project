@@ -16,8 +16,6 @@
   font-style: normal;
 }
 
-/* JosefinSans-Medium.ttf */
-
 @font-face {
   font-family: 'Roboto';
   src: url('../fonts/Roboto-Bold.woff2') format('woff2');
@@ -45,7 +43,6 @@
 /* COLORS */
 
 :root {
-  --main-color: #e71477;
   --white: #ffffff;
   /* form figma */
   --pink: #e5b3c9;
@@ -130,19 +127,19 @@ a {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 0.3rem 0.5rem;
+  padding: 0.9rem 0.8rem;
   font-weight: 600;
-  font-size: clamp(0.8vh, 1.2vw, 1.8vh);
+  font-size: clamp(0.8vh, 0.9vw, 1.1vh);
   line-height: 1.2;
-  color: black;
-  background-color: rgba(255, 255, 255, 0);
-  border: 1px solid var(--pink);
-  border-radius: 47px;
+  color: var(--white);
+  background-color: var(--pink);
+  border: 0;
+  border-radius: 20px;
   cursor: pointer;
 }
 
 .btn:hover {
-  background-color: var(--blue);
+  background-color: var(--dark-pink);
 }
 
 .link {
