@@ -121,6 +121,7 @@ h6 {
 
 a {
   text-decoration: none;
+  color: var(--white);
 }
 
 .btn {
@@ -144,18 +145,18 @@ a {
 
 .link {
   padding: 0;
-  font: inherit;
-  font-size: clamp(0.8vw, 1.2vw, 1.3vw);
+  font-size: clamp(1vh, 0.5vw, 1.1vh);
   color: var(--white);
   overflow-wrap: anywhere;
-  background-color: rgba(255, 255, 255, 0);
+  /* background-color: rgba(255, 255, 255, 0); */
   cursor: pointer;
+  padding: 0.4rem 0.4rem;
 }
 
 .link.active {
   cursor: default;
   pointer-events: none;
-  color: var(--light-green);
+  color: var(--gray);
 }
 
 .title--uppercase {

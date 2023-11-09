@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { apiRoutes } from '../const/api-routes';
 
 const BACKEND_URL = 'https://app-21days.adaptable.app/';
-const BACKEND_URL_DEV = 'http://localhost:5005/app/';
+const BACKEND_URL_DEV = 'http://localhost:5005/';
 const REQUEST_TIMEOUT = 5000;
 
 const api = axios.create({
@@ -29,6 +29,15 @@ myApi.getUserInfo = async function () {
 myApi.signup = async function (userData) {
   try {
     await myApi.post(apiRoutes.Signup, userData);
+  } catch (error) {
+    toast.error(`${error.message}. Try to reload this page.`);
+  }
+};
+
+myApi.login = async function (userData) {
+  try {
+    const { data } = await myApi.post(apiRoutes.Login, userData);
+    return data;
   } catch (error) {
     toast.error(`${error.message}. Try to reload this page.`);
   }

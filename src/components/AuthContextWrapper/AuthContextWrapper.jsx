@@ -15,12 +15,13 @@ function AuthContentWrapper({ children }) {
   const [authStatus, setAuthStatus] = useState(authorizationStatus.Unknown);
   const [isLoading, setIsLoading] = useState(true);
 
-  async function authenticateUser() {
+  const authenticateUser = async () => {
     const token = localStorage.getItem('authToken');
 
     if (!token) {
+      console.log('111111111');
       setUser(null);
-      setAuthStatus(authorizationStatus.Auth);
+      setAuthStatus(authorizationStatus.NoAuth);
       setIsLoading(false);
 
       return;
@@ -28,8 +29,10 @@ function AuthContentWrapper({ children }) {
 
     try {
       const user = await myApi.getUserInfo();
+      console.log(user);
+
       setUser(user);
-      setAuthStatus(authorizationStatus.NoAuth);
+      setAuthStatus(authorizationStatus.Auth);
       setIsLoading(false);
     } catch (error) {
       setUser(null);
@@ -39,7 +42,7 @@ function AuthContentWrapper({ children }) {
         `Something is going wrong. Try to reload this page or log in.`
       );
     }
-  }
+  };
 
   useEffect(() => {
     authenticateUser();

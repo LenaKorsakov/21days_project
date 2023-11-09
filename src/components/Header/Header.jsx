@@ -18,7 +18,7 @@ function Header() {
             <div className="container">
               <Link to={appRoutes.Main} title="to the main page">
                 <h3 className="page-header__title">21Days</h3>
-                <small> It takes 21 days to make a habit...</small>
+                <p> It takes 21 days to make a habit...</p>
               </Link>
             </div>
           </div>

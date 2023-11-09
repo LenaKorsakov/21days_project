@@ -68,8 +68,8 @@
       align-items: flex-end;
     }
 
-    & small {
-      font-size: clamp(1.1vh, 1.8vw, 5vh);
+    & p {
+      font-size: clamp(1.5vh, 2vw, 5vh);
       font-family: 'JosefinSans';
       color: var(--white);
       position: relative;

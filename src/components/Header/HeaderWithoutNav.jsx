@@ -1,6 +1,6 @@
-import {  Link } from "react-router-dom";
-import "./Header.css";
-import { appRoutes } from "../../const/app-routes";
+import { Link } from 'react-router-dom';
+import './Header.css';
+import { appRoutes } from '../../const/app-routes';
 
 function HeaderWithoutNav() {
   return (
@@ -22,6 +22,14 @@ function HeaderWithoutNav() {
               </Link>
             </div>
           </div>
+
+          <ul className="page-header-nav__list">
+            <li>
+              <Link to={appRoutes.Login} className="btn link">
+                Log in
+              </Link>
+            </li>
+          </ul>
         </div>
       </header>
     </>
