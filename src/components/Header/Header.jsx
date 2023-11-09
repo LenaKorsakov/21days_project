@@ -1,8 +1,16 @@
-import { NavLink, Outlet, Link } from "react-router-dom";
-import "./Header.css";
-import { appRoutes } from "../../const/app-routes";
+import './Header.css';
+import { NavLink, Outlet, Link } from 'react-router-dom';
+import { useAuth } from '../AuthContextWrapper/AuthContextWrapper';
+import { appRoutes } from '../../const/app-routes';
+import { authorizationStatus } from '../../const/const';
 
 function Header() {
+  const { authStatus, isLoading } = useAuth();
+
+  if (isLoading || authorizationStatus === authorizationStatus.Unknown) {
+    return <LoadingPage />;
+  }
+
   return (
     <>
       <header className="Header">
@@ -29,7 +37,7 @@ function Header() {
                 to={appRoutes.Main}
                 end
                 className={({ isActive }) =>
-                  isActive ? "link active" : "link"
+                  isActive ? 'link active' : 'link'
                 }
               >
                 Home
@@ -38,13 +46,26 @@ function Header() {
             <li>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "link active" : "link"
+                  isActive ? 'link active' : 'link'
                 }
                 to={appRoutes.Explore}
               >
                 Explore
               </NavLink>
             </li>
+            {authStatus === authorizationStatus.NoAuth && (
+              <li>
+                <Link to={appRoutes.Login} className="btn link">
+                  Log in
+                </Link>
+              </li>
+            )}
+
+            {authStatus === authorizationStatus.Auth && (
+              <li>
+                <button className="btn link">Log out</button>
+              </li>
+            )}
           </ul>
         </div>
       </header>

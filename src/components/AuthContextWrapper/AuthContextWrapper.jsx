@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { createContext } from 'react';
 import { myApi } from '../../service/api';
 import { toast } from 'react-toastify';
-import { authorizationStatus } from '../../const/const';
+import { authorizationStatus, errorMessage } from '../../const/const';
 
 const AuthContext = createContext();
 
@@ -19,7 +19,7 @@ function AuthContentWrapper({ children }) {
     const token = localStorage.getItem('authToken');
 
     if (!token) {
-      console.log('111111111');
+      console.log('TOKEN');
       setUser(null);
       setAuthStatus(authorizationStatus.NoAuth);
       setIsLoading(false);
@@ -29,7 +29,7 @@ function AuthContentWrapper({ children }) {
 
     try {
       const user = await myApi.getUserInfo();
-      console.log(user);
+      console.log('AUTH');
 
       setUser(user);
       setAuthStatus(authorizationStatus.Auth);
@@ -38,9 +38,7 @@ function AuthContentWrapper({ children }) {
       setUser(null);
       setAuthStatus(authorizationStatus.Unknown);
       setIsLoading(false);
-      toast.warning(
-        `Something is going wrong. Try to reload this page or log in.`
-      );
+      toast.warning(errorMessage.ErrorLogIn);
     }
   };
 

@@ -1,13 +1,15 @@
 import './LoginForm.css';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { toast } from 'react-toastify';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../AuthContextWrapper/AuthContextWrapper';
 import { myApi } from '../../service/api';
 
 import { appRoutes } from '../../const/app-routes';
+import { apiRoutes } from '../../const/api-routes';
+import { errorMessage, serverResponse } from '../../const/const';
 
 function LoginForm() {
   const emailRef = useRef();
@@ -15,65 +17,98 @@ function LoginForm() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [error, setError] = useState('');
+
   const { authenticateUser } = useAuth();
+
+  const navigateUser = () => {
+    if (location.state?.from) {
+      const { pathname } = location.state.from;
+
+      navigate(pathname);
+    } else {
+      navigate(appRoutes.Main);
+    }
+  };
+
+  const resetPassword = () => {
+    passwordRef.current.value = '';
+  };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    setError('');
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
     try {
-      const response = await myApi.login({ email, password });
+      const { data } = await myApi.post(apiRoutes.Login, { email, password });
+      console.log(data);
 
-      localStorage.setItem('authToken', response.authToken);
+      localStorage.setItem('authToken', data.token);
 
       await authenticateUser();
-
-      if (location.state?.from) {
-        const { pathname } = location.state.from;
-
-        navigate(pathname);
-      } else {
-        navigate(appRoutes.Main);
-      }
+      navigateUser();
     } catch (error) {
-      toast.warning(error);
+      const errorMessage = error.response.data.message;
+      if (
+        errorMessage === serverResponse.NotFound ||
+        errorMessage === serverResponse.WrongPassword
+      ) {
+        setError(errorMessage);
+        resetPassword();
+        setTimeout(() => {
+          setError('');
+        }, 3000);
+      } else {
+        toast.error(`${error.message}. ${errorMessage.Reload}`);
+      }
     }
   };
 
   return (
-    <form
-      className="LoginForm"
-      action=""
-      method="post"
-      onSubmit={handleFormSubmit}
-    >
-      <div className="container login__input-wrapper">
-        <label className="form__label">E-mail</label>
-        <input
-          ref={emailRef}
-          // autoComplete="off"
-          className="form__item"
-          name="email"
-          autoFocus
-          required
-        />
-      </div>
-      <div className="container login__input-wrapper">
-        <label className="form__label">Password</label>
-        <input
-          ref={passwordRef}
-          className="form__item"
-          type="password"
-          name="password"
-          autoComplete="off"
-          required
-        />
-      </div>
-      <button className="btn btn--login" type="submit">
-        LOG IN
-      </button>
-    </form>
+    <>
+      <form
+        className="LoginForm"
+        action=""
+        method="post"
+        onSubmit={handleFormSubmit}
+      >
+        <div className="container login__input-wrapper">
+          <label className="form__label">E-mail</label>
+          <input
+            ref={emailRef}
+            // autoComplete="off"
+            className="form__item"
+            name="email"
+            autoFocus
+            required
+          />
+        </div>
+        <div className="container login__input-wrapper">
+          <label className="form__label">Password</label>
+          <input
+            ref={passwordRef}
+            className="form__item"
+            type="password"
+            name="password"
+            autoComplete="off"
+            required
+          />
+        </div>
+        <button className="btn btn--login" type="submit">
+          LOG IN
+        </button>
+      </form>
+      {error && (
+        <p>
+          {errorMessage.WrongCredentials}{' '}
+          <Link className="login-link" to={appRoutes.Signup}>
+            Sign up
+          </Link>
+        </p>
+      )}
+    </>
   );
 }
 

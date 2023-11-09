@@ -6,6 +6,14 @@ import { useNavigate } from 'react-router-dom';
 import { appRoutes } from '../../const/app-routes';
 import { useEffect } from 'react';
 
+const initialState = {
+  title: '',
+  description: '',
+  emoji: '',
+  category: 'default',
+  start_day: '',
+};
+
 function HabitForm({ habit }) {
   const editing = habit ? true : false;
   const navigate = useNavigate();
@@ -13,13 +21,7 @@ function HabitForm({ habit }) {
   const [disableButton, setDisableButton] = useState(true);
   const [showPopup, setshowPopup] = useState(false);
   const [emojiValue, setEmojiValue] = useState('');
-  const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    emoji: '',
-    category: 'default',
-    start_day: '',
-  });
+  const [formData, setFormData] = useState(initialState);
 
   const handleShowEmojis = () => {
     setShowEmojis(!showEmojis);
@@ -71,13 +73,7 @@ function HabitForm({ habit }) {
       navigate(appRoutes.Main);
     }, 1000);
 
-    setFormData({
-      title: '',
-      description: '',
-      emoji: '',
-      category: 'default',
-      start_day: '',
-    });
+    setFormData(initialState);
   };
 
   const editHabit = async (id, habit) => {
@@ -89,13 +85,7 @@ function HabitForm({ habit }) {
       navigate(appRoutes.Main);
     }, 1000);
 
-    setFormData({
-      title: '',
-      description: '',
-      emoji: '',
-      category: 'default',
-      start_day: '',
-    });
+    setFormData(initialState);
   };
 
   const handleFormSubmit = (event) => {
@@ -211,16 +201,20 @@ function HabitForm({ habit }) {
         </div>
 
         <div className="habit__button-wrapper">
-          <button className="btn" type="submit" disabled={disableButton}>
+          <button
+            className="btn btn--submit"
+            type="submit"
+            disabled={disableButton}
+          >
             {editing ? 'Edit Habit' : 'Add Habit'}
           </button>
           <p style={{ fontSize: '2vh', textAlign: 'left' }}>
-            * Necesary fields
+            * Necessary fields
           </p>
         </div>
       </form>
       <div className="popup" data-show={showPopup}>
-        <span>Habit Ready 🙂</span>
+        <span>Habit Is Ready 🙂</span>
       </div>
     </>
   );

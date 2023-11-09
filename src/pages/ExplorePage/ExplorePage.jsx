@@ -11,6 +11,7 @@ import HeaderWithoutNav from '../../components/Header/HeaderWithoutNav';
 import { appRoutes } from '../../const/app-routes';
 import { filtersCategories } from '../../const/const';
 import api from '../../service/api';
+import Header from '../../components/Header/Header';
 
 function ExplorePage() {
   const [globalHabits, setGlobalHabits] = useState(null);
@@ -57,7 +58,7 @@ function ExplorePage() {
 
   return (
     <>
-      <HeaderWithoutNav />
+      <Header />
       <main className="ExplorePage ">
         <div className="page-explore__container">
           <h1 className="page-explore__title">explore our habit ideas</h1>

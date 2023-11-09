@@ -16,6 +16,7 @@ export const filtersCategories = [
   'relationships',
   'education',
   'hobbies',
+  'health',
   'reset filter',
 ];
 
@@ -24,5 +25,17 @@ export const SEARCH_DELAY = 400;
 export const authorizationStatus = {
   Auth: 'AUTH',
   NoAuth: 'NO_AUTH',
-  Unknown: 'UNKNOWN'
+  Unknown: 'UNKNOWN',
+};
+
+export const errorMessage = {
+  Reload: 'Try to reload this page.',
+  ErrorLogIn: 'Something is going wrong. Try to reload this page or log in.',
+  TryAgain: 'Try again.',
+  WrongCredentials: 'Wrong credentials. Please, try again or',
+};
+
+export const serverResponse = {
+  NotFound: 'User not found',
+  WrongPassword: 'Wrong credentials',
 };

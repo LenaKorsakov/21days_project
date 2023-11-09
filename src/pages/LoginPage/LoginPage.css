@@ -43,10 +43,10 @@
   }
 
   .login-link {
-    color: var(--light-blue);
+    color: var(--gray);
   }
 
   .login-link:hover {
-    color: var(--gray);
+    color: var(--light-blue);
   }
 }
