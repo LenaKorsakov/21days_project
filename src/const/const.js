@@ -28,14 +28,17 @@ export const authorizationStatus = {
   Unknown: 'UNKNOWN',
 };
 
-export const errorMessage = {
+export const messageForUser = {
   Reload: 'Try to reload this page.',
-  ErrorLogIn: 'Something is going wrong. Try to reload this page or log in.',
+  ErrorSignIn: 'Something is going wrong. Try again or',
   TryAgain: 'Try again.',
   WrongCredentials: 'Wrong credentials. Please, try again or',
+  SuccessfulSignup:
+    'Thanks for signing up. Your account has been created. Now you can ',
 };
 
 export const serverResponse = {
   NotFound: 'User not found',
   WrongPassword: 'Wrong credentials',
+  AlreadyExists: 'User already exists.',
 };

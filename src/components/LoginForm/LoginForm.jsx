@@ -1,15 +1,15 @@
 import './LoginForm.css';
 
 import { useRef, useState } from 'react';
-import { toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-import { useAuth } from '../AuthContextWrapper/AuthContextWrapper';
 import { myApi } from '../../service/api';
+import { useAuth } from '../AuthContextWrapper/AuthContextWrapper';
 
-import { appRoutes } from '../../const/app-routes';
 import { apiRoutes } from '../../const/api-routes';
-import { errorMessage, serverResponse } from '../../const/const';
+import { appRoutes } from '../../const/app-routes';
+import { messageForUser, serverResponse } from '../../const/const';
 
 function LoginForm() {
   const emailRef = useRef();
@@ -43,8 +43,6 @@ function LoginForm() {
 
     try {
       const { data } = await myApi.post(apiRoutes.Login, { email, password });
-      console.log(data);
-
       localStorage.setItem('authToken', data.token);
 
       await authenticateUser();
@@ -59,7 +57,7 @@ function LoginForm() {
         resetPassword();
         setTimeout(() => {
           setError('');
-        }, 3000);
+        }, 6000);
       } else {
         toast.error(`${error.message}. ${errorMessage.Reload}`);
       }
@@ -100,9 +98,16 @@ function LoginForm() {
           LOG IN
         </button>
       </form>
-      {error && (
+      {error ? (
         <p>
-          {errorMessage.WrongCredentials}{' '}
+          {messageForUser.WrongCredentials}{' '}
+          <Link className="login-link" to={appRoutes.Signup}>
+            Sign up
+          </Link>
+        </p>
+      ) : (
+        <p>
+          You don't have an account?{' '}
           <Link className="login-link" to={appRoutes.Signup}>
             Sign up
           </Link>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 import { apiRoutes } from '../const/api-routes';
-import { errorMessage } from '../const/const';
+import { messageForUser } from '../const/const';
 
 const BACKEND_URL = 'https://app-21days.adaptable.app/';
 const BACKEND_URL_DEV = 'http://localhost:5005/';
@@ -27,13 +27,13 @@ myApi.getUserInfo = async function () {
   }
 };
 
-myApi.signup = async function (userData) {
-  try {
-    await myApi.post(apiRoutes.Signup, userData);
-  } catch (error) {
-    toast.error(`${error.message}. ${errorMessage.Reload}`);
-  }
-};
+// myApi.signup = async function (userData) {
+//   try {
+//     await myApi.post(apiRoutes.Signup, userData);
+//   } catch (error) {
+//     toast.error(`${error.message}. ${errorMessage.Reload}`);
+//   }
+// };
 
 // myApi.login = async function (userData) {
 //   try {
@@ -63,7 +63,7 @@ api.fetchAllHabits = async function () {
     const { data } = await api.get(`${apiRoutes.AllHabits}?_embed=checkins`);
     return data;
   } catch (error) {
-    toast.error(`${error.message}. ${errorMessage.Reload}`);
+    toast.error(`${error.message}. ${messageForUser.Reload}`);
   }
 };
 
@@ -74,7 +74,7 @@ api.fetchFilteredHabits = async function (filter) {
     );
     return data;
   } catch (error) {
-    toast.error(`${error.message}. ${errorMessage.Reload}`);
+    toast.error(`${error.message}. ${messageForUser.Reload}`);
   }
 };
 
@@ -85,7 +85,7 @@ api.fetchOneHabit = async function (id) {
     );
     return data;
   } catch (error) {
-    toast.error(`${error.message}. ${errorMessage.Reload}`);
+    toast.error(`${error.message}. ${messageForUser.Reload}`);
   }
 };
 
@@ -93,7 +93,7 @@ api.createNewHabit = async function (habit) {
   try {
     await api.post(apiRoutes.AllHabits, habit);
   } catch (error) {
-    toast.warn(`${error.message}. ${errorMessage.TryAgain}`);
+    toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
   }
 };
 
@@ -101,7 +101,7 @@ api.createCheckIn = async function (checkin) {
   try {
     await api.post(apiRoutes.AllCheckins, checkin);
   } catch (error) {
-    toast.warn(`${error.message}. ${errorMessage.TryAgain}`);
+    toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
   }
 };
 
@@ -109,7 +109,7 @@ api.deleteCheckin = async function (id) {
   try {
     await api.delete(`${apiRoutes.AllCheckins}/${id}`);
   } catch (error) {
-    toast.warn(`${error.message}. ${errorMessage.TryAgain}`);
+    toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
   }
 };
 
@@ -117,7 +117,7 @@ api.editHabit = async function (id, habit) {
   try {
     await api.put(`${apiRoutes.AllHabits}/${id}`, habit);
   } catch (error) {
-    toast.warn(`${error.message}. ${errorMessage.TryAgain}`);
+    toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
   }
 };
 
@@ -125,7 +125,7 @@ api.deleteHabit = async function (id) {
   try {
     await api.delete(`${apiRoutes.AllHabits}/${id}`);
   } catch (error) {
-    toast.warn(`${error.message}. ${errorMessage.TryAgain}`);
+    toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
   }
 };
 
@@ -134,7 +134,7 @@ api.fetchGlobalHabits = async function () {
     const { data } = await api.get(apiRoutes.ExploreHabits);
     return data;
   } catch (error) {
-    toast.error(`${error.message}. ${errorMessage.Reload}`);
+    toast.error(`${error.message}. ${messageForUser.Reload}`);
   }
 };
 

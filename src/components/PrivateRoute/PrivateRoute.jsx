@@ -6,7 +6,6 @@ import { appRoutes } from '../../const/app-routes';
 
 function PrivateRoute() {
   const { authStatus, isLoading } = useAuth();
-  console.log(authStatus);
 
   if (isLoading || authorizationStatus === authorizationStatus.Unknown) {
     return <LoadingPage />;

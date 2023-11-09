@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
-import { createContext } from 'react';
-import { myApi } from '../../service/api';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { authorizationStatus, errorMessage } from '../../const/const';
+import { authorizationStatus, messageForUser } from '../../const/const';
+import { myApi } from '../../service/api';
 
 const AuthContext = createContext();
 
@@ -19,7 +18,6 @@ function AuthContentWrapper({ children }) {
     const token = localStorage.getItem('authToken');
 
     if (!token) {
-      console.log('TOKEN');
       setUser(null);
       setAuthStatus(authorizationStatus.NoAuth);
       setIsLoading(false);
@@ -29,7 +27,6 @@ function AuthContentWrapper({ children }) {
 
     try {
       const user = await myApi.getUserInfo();
-      console.log('AUTH');
 
       setUser(user);
       setAuthStatus(authorizationStatus.Auth);
@@ -38,7 +35,7 @@ function AuthContentWrapper({ children }) {
       setUser(null);
       setAuthStatus(authorizationStatus.Unknown);
       setIsLoading(false);
-      toast.warning(errorMessage.ErrorLogIn);
+      toast.warning(messageForUser.ErrorSignIn);
     }
   };
 

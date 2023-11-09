@@ -1,11 +1,20 @@
 import './Header.css';
-import { NavLink, Outlet, Link } from 'react-router-dom';
+import { NavLink, Outlet, Link, useNavigate } from 'react-router-dom';
+
 import { useAuth } from '../AuthContextWrapper/AuthContextWrapper';
+
 import { appRoutes } from '../../const/app-routes';
 import { authorizationStatus } from '../../const/const';
 
 function Header() {
-  const { authStatus, isLoading } = useAuth();
+  const { authStatus, isLoading, authenticateUser } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    authenticateUser();
+    navigate(appRoutes.Login);
+  };
 
   if (isLoading || authorizationStatus === authorizationStatus.Unknown) {
     return <LoadingPage />;
@@ -63,7 +72,9 @@ function Header() {
 
             {authStatus === authorizationStatus.Auth && (
               <li>
-                <button className="btn link">Log out</button>
+                <button className="btn link" onClick={handleLogout}>
+                  Log out
+                </button>
               </li>
             )}
           </ul>
