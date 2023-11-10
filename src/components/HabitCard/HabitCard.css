@@ -23,7 +23,7 @@
   }
 
   & h3 {
-    font-size: clamp(1.2vh, 1.3vw, 2vh);
+    font-size: clamp(1vh, 1.5vw, 2vh);
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;

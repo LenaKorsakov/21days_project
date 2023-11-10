@@ -2,7 +2,6 @@
   display: flex;
   max-width: 100%;
   padding: 0.1vw 0;
-  /* align-items: center; */
   justify-content: space-between;
 
   @media (max-width: 500px) {
@@ -16,13 +15,9 @@
   .table-data {
     flex: 1 1 20%;
     text-align: center;
-    font-size: clamp(2vh, 1.7vw, 2vh);
+    font-size: clamp(2vh, 1.7vw, 2.8vh);
     display: flex;
     justify-content: center;
-
-    .table-data__emoji {
-      font-size: clamp(3vh, 1.7vw, 2vh);
-    }
 
     .table-data--important {
       color: var(--pink);
@@ -61,6 +56,7 @@
     color: var(--light-blue);
     border-radius: 0;
     width: 5vw;
+    color: var(--white);
 
     border-radius: 20px 0px 0px 20px;
     flex: 1 1 50%;
@@ -71,7 +67,11 @@
   }
 
   .btn--start:hover {
-    background-color: var(--light-green);
+    background-color: var(--dark-pink);
+  }
+
+  .btn--delete:hover {
+    background-color: var(--dark-yellow);
   }
 
   .buttons_container {
@@ -79,7 +79,7 @@
   }
 
   & h3 {
-    font-size: clamp(1vh, 1.3vw, 1.5vh);
+    font-size: clamp(1vh, 1.5vw, 2vh);
     color: var(--lightblue);
     flex: 1 1 20%;
   }
@@ -90,7 +90,7 @@
     display: flex;
     align-items: center;
 
-    &>span {
+    & > span {
       width: 100%;
       height: 10px;
       background-color: var(--light-yellow);
@@ -108,4 +108,8 @@
       }
     }
   }
+}
+
+.HabitInProgressRow:hover {
+  box-shadow: rgba(0, 0, 0, 0.138) 0px 4px 12px;
 }

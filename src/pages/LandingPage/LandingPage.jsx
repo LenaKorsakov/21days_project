@@ -14,10 +14,10 @@ function LandingPage() {
         <div className="logo">
           <img alt="logo" src="/image/turtle.png" />
         </div>
-        <h1>You haven't built a single habit yet!</h1>
-        <p>What a great opportunity to start anew!</p>
+        <h1>It seems like you want to start building habits!</h1>
+        <p>What a great opportunity for it!</p>
         <p>
-          You can now Sign Up to create your first habit or Get started to
+          You can now Sign Up to create your own habits or Get started to
           explore habits from our selection:
         </p>
 

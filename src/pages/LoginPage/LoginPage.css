@@ -37,7 +37,7 @@
 
   .subtitle {
     font-size: clamp(4vh, 2vw, 3vw);
-    margin: 6vh 0;
+    margin: 2vh 0;
     font-family: 'LilitaOne', sans-serif;
     color: var(--gray);
   }

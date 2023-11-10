@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { appRoutes } from '../../const/app-routes';
 import './GlobalHabitCard.css';
+import { useAuth } from '../AuthContextWrapper/AuthContextWrapper';
+import { authorizationStatus } from '../../const/const';
 
 function GlobalHabitCard({ habit, habits, onCreateNewHabit }) {
   const [myHabit, setMyHabit] = useState(null);
+  const { authStatus } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const findMyHabit = (myHabits) => {
     const oneHabit = myHabits.find((myHabit) => myHabit.title === habit.title);
@@ -16,6 +21,11 @@ function GlobalHabitCard({ habit, habits, onCreateNewHabit }) {
   }, [habits]);
 
   const handleAddToMyHabits = async () => {
+    if (authStatus === authorizationStatus.NoAuth) {
+      navigate(appRoutes.Login, { state: { from: location } });
+      return;
+    }
+
     const newHabit = {
       title: habit.title,
       category: habit.category,
