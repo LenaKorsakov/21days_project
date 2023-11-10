@@ -94,7 +94,7 @@ function HabitCard({
         {wasCompletedToday ? buttonMesage.Uncompleted : buttonMesage.Completed}
       </button>
       <Link
-        className="btn btn--edit"
+        className="btn--edit"
         to={`${appRoutes.EditHabit}/${habit._id}`}
         title="To the edit page"
       >
@@ -116,7 +116,10 @@ function HabitCard({
           </svg>
         </span>
       </Link>
-      <button className="btn--delete" onClick={() => onDeleteButton(habit._id)}>
+      <button
+        className="btn btn--delete"
+        onClick={() => onDeleteButton(habit._id)}
+      >
         <span>
           <svg
             style={{ width: '2vh' }}

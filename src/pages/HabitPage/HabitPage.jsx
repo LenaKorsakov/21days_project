@@ -56,7 +56,7 @@ function HabitPage() {
             <p className="habit-page__category">Category: {habit.category}</p>
             <p className="habit-page__description">{habit.description}</p>
           </div>
-          <div className="habit-page__botton">
+          <div className="habit-page__bottom">
             <div className="habit-page__stats-wrapper">
               <p className="habit-page__streak">
                 <span>Days in the row: </span>
@@ -67,7 +67,9 @@ function HabitPage() {
               </p>
             </div>
 
-            <h2>Daily Progress</h2>
+            <h2 className="habit-page__title habit-page__title--dark">
+              Daily Progress
+            </h2>
             <div className="calendar">
               <Days
                 habit={habit}

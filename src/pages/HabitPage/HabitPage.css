@@ -32,41 +32,50 @@
 
   .habit-page__title {
     text-align: center;
+    font-size: clamp(4vh, 3vw, 2.5vh);
     font-family: 'LilitaOne', sans-serif;
     color: var(--gray);
   }
 
   .habit-page__emoji {
     background-color: var(--white);
-    width: 100px;
-    height: 100px;
+    width: 8vw;
+    height: 8vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50px;
+    border-radius: 50%;
     margin: 3vh auto;
 
+    @media (max-width: 500px) {
+      width: 14vw;
+      height: 14vw;
+    }
+
     & span {
-      font-size: 35px;
+      font-size: 3vw;
+
+      @media (max-width: 500px) {
+        font-size: 6vw;
+      }
     }
   }
 
-  .habit-page__botton {
+  .habit-page__bottom {
     background-color: var(--blue);
     border-radius: 40px 40px 0 0;
-    padding: 5vw;
+    padding: 0.5vh;
   }
 
   .habit-page__info-wrapper {
     max-width: 80vw;
     border-radius: 10px;
-    padding: 10px;
     margin: 0 auto;
 
     .habit-page__category {
       margin: 2vh auto;
       text-align: center;
-      font-size: clamp(4vh, 1vw, 1vw);
+      font-size: clamp(2.5vh, 1.8vw, 2vh);
       font-family: 'LilitaOne', sans-serif;
       color: var(--gray);
     }
@@ -80,15 +89,11 @@
   .habit-page__stats-wrapper {
     display: flex;
     justify-content: space-around;
-    margin: 0 0 5vh 0;
+    margin: 1vh;
 
     & p {
-      font-size: clamp(5vh, 1vw, 1vw);
+      font-size: clamp(2.5vh, 2vw, 2vh);
       font-family: 'LilitaOne', sans-serif;
-
-      @media (max-width: 500px) {
-        font-size: clamp(3vh, 1vw, 1vw);
-      }
     }
 
     .habit-page__streak {
@@ -102,5 +107,9 @@
 
   & h2 {
     font-family: 'LilitaOne', sans-serif;
+  }
+
+  .habit-page__title--dark {
+    color: var(--dark-blue);
   }
 }

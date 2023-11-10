@@ -23,17 +23,11 @@
   }
 
   & h3 {
-    font-size: clamp(1vh, 1.5vw, 2vh);
+    font-size: clamp(2vh, 2vw, 2.5vh);
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     color: var(--lightblue);
-  }
-
-  & button {
-    border: 0;
-    background-color: transparent;
-    cursor: pointer;
   }
 
   .btn--complete {
@@ -41,10 +35,10 @@
     color: white;
     border-radius: 0;
     width: 13vw;
+    font-size: clamp(2vh, 2vw, 2.5vh);
   }
 
   & .btn--edit {
-    border: none;
     background-color: var(--light-yellow);
     border-radius: 0;
   }
@@ -60,9 +54,9 @@
 
   .btn--uncomplete {
     background-color: var(--dark-green);
-    color: white;
     border-radius: 0;
     width: 13vw;
+    font-size: clamp(2vh, 2vw, 2.5vh);
   }
 }
 

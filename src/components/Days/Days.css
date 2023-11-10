@@ -1,141 +1,116 @@
 .days {
-    display: flex;
-    /* flex-flow: row wrap; */
-    flex-wrap: wrap;
-    padding: 0;
-    width: 80%;
-    margin: 4vw auto;
-    align-items: center;
-    justify-content: center;
-    gap: calc(1vw);
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  width: 80%;
+  margin: 4vw auto;
+  align-items: center;
+  justify-content: center;
+  gap: calc(1vw);
+  justify-content: space-between;
 
-    @media (max-width: 500px) {
-        padding-bottom: 30px;
+  @media (max-width: 500px) {
+    padding-bottom: 30px;
+  }
+
+  .day {
+    flex-basis: 20%;
+
+    & label {
+      font-family: 'LilitaOne', sans-serif;
+      font-size: clamp(2vh, 1vw, 1vw);
     }
 
-    .day {
-        flex-basis: 20%;
+    & input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
 
-        & label {
-            font-family: "LilitaOne", sans-serif;
-            font-size: clamp(3vh, 1vw, 1vw);
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: var(--gray);
+      height: 3vw;
+      width: 3vw;
+      border-radius: 1px;
+      display: block;
+      position: relative;
+      border-radius: 3vw;
+      cursor: pointer;
+      margin: 0 auto;
 
-            /* @media (min-width: 1401px) {
-                font-size: clamp(1vh, 3vw, 6.5vw);
-            }
+      @media (max-width: 500px) {
+        height: 6vw;
+        width: 6vw;
+      }
+    }
 
-            @media (min-width: 801px) and (max-width: 1400px) {
-                font-size: clamp(1vh, 3vw, 6.5vw);
-            }
+    /* flex: 0 1 calc(20% - 8px); */
 
-            @media (min-width: 500px) and (max-width: 800px) {
-                font-size: clamp(1vh, 3vw, 6.5vw);
-            } */
+    & input[checkin-id='0000'] {
+      pointer-events: none;
+      cursor: not-allowed;
+    }
 
-            @media (max-width: 500px) {
-                font-size: clamp(2vh, 1vw, 1vw);
-            }
+    &[data-light='off'] {
+      pointer-events: none;
+      cursor: not-allowed;
+
+      .checkmark {
+        background-color: var(--gray);
+        box-shadow: 4px 2px 2px #444;
+        /* background: radial-gradient(circle at 65% 15%, #333 1px, #333 3%, #666 60%, gray 100%); */
+        cursor: default;
+        pointer-events: none;
+        cursor: not-allowed;
+
+        @media (max-width: 500px) {
+          box-shadow: 2px 1px 1px #444;
+        }
+      }
+    }
+
+    &[data-light='green'] {
+      .checkmark {
+        background-color: #fff;
+        box-shadow: 0 0 40px 20px var(--light-yellow);
+
+        &:hover {
+          box-shadow: 0 0 40px 10px var(--light-yellow);
         }
 
-
-        & input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-            height: 0;
-            width: 0;
+        @media (max-width: 500px) {
+          box-shadow: 0 0 20px 10px var(--light-yellow);
         }
+      }
 
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: #eee;
-            height: 6vw;
-            width: 6vw;
-            border-radius: 1px;
-            display: block;
-            position: relative;
-            border-radius: 3vw;
-            cursor: pointer;
-            margin: 0 auto;
-        }
-
-
-        /* flex: 0 1 calc(20% - 8px); */
-
-        & input[checkin-id="0000"] {
-            pointer-events: none;
-            cursor: not-allowed;
-        }
-
-        &[data-light="off"] {
-            pointer-events: none;
-            cursor: not-allowed;
-
-            .checkmark {
-                background-color: var(--gray);
-                box-shadow: 4px 2px 2px #444;
-                /* background: radial-gradient(circle at 65% 15%, #333 1px, #333 3%, #666 60%, gray 100%); */
-                cursor: default;
-                pointer-events: none;
-                cursor: not-allowed;
-
-
-                @media (max-width: 500px) {
-                    box-shadow: 2px 1px 1px #444;
-                }
-            }
-
-        }
-
-        &[data-light="green"] {
-            .checkmark {
-                background-color: #fff;
-                box-shadow: 0 0 40px 20px var(--light-yellow);
-
-                &:hover {
-                    box-shadow: 0 0 40px 10px var(--light-yellow);
-                }
-
-                @media (max-width: 500px) {
-                    box-shadow: 0 0 20px 10px var(--light-yellow);
-                }
-
-            }
-
-
-
-            /* pointer-events: none;
+      /* pointer-events: none;
             cursor: not-allowed; */
-        }
-
-        &[data-light="red"] {
-            .checkmark {
-                background-color: #e1c2c2;
-                box-shadow: 0 0 40px 20px #f1aaaa;
-
-                &:hover {
-                    box-shadow: 0 0 40px 10px #f1aaaa;
-                }
-
-                @media (max-width: 500px) {
-                    box-shadow: 0 0 20px 10px #f1aaaa;
-                }
-
-            }
-
-
-        }
-
-        &[data-light="yellow"] {
-            .checkmark {
-                background-color: var(--light-yellow);
-            }
-
-        }
-
-
     }
+
+    &[data-light='red'] {
+      .checkmark {
+        background-color: #e1c2c2;
+        box-shadow: 0 0 40px 20px #f1aaaa;
+
+        &:hover {
+          box-shadow: 0 0 40px 10px #f1aaaa;
+        }
+
+        @media (max-width: 500px) {
+          box-shadow: 0 0 20px 10px #f1aaaa;
+        }
+      }
+    }
+
+    &[data-light='yellow'] {
+      .checkmark {
+        background-color: var(--light-yellow);
+      }
+    }
+  }
 }
