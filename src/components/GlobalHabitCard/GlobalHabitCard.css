@@ -49,12 +49,14 @@
   }
 
   .container--emoji {
-    border: 1px solid var(--gray);
+    /* border: 1px solid var(--gray); */
     border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.138) 0px 4px 12px;
     width: 2.8vw;
     height: 2.8vw;
     padding: 0.5vw;
     margin: 5px;
+    background-color: var(--white);
 
     @media (max-width: 500px) {
       border: 0.1px solid var(--gray);
@@ -94,4 +96,16 @@
   box-shadow: rgba(0, 0, 0, 0.3) 0px 12px 28px 0px,
     rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
     rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+.GlobalHabitCard--quit {
+  background: radial-gradient(
+    circle at 50% 3%,
+    rgb(246, 215, 228) 0%,
+    var(--white) 100%
+  );
+}
+
+.GlobalHabitCard--build {
+  background: radial-gradient(circle at 50% 3%, #85bc8b 0%, var(--white) 90.5%);
 }

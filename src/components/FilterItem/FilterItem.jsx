@@ -1,20 +1,13 @@
 import './FilterItem.css';
 
-function FilterItem({
-  title,
-  onFilterHabits,
-  onFetchAllHabits,
-  onChangeFilter,
-  currentFilter,
-}) {
+function FilterItem({ title, onChangeFilter, currentFilter }) {
   const handleFilterChange = (event) => {
     const filter = event.target.name;
-    onChangeFilter(filter);
 
     if (filter === 'reset filter') {
-      onFetchAllHabits();
+      onChangeFilter('');
     } else {
-      onFilterHabits(filter);
+      onChangeFilter(filter);
     }
   };
 

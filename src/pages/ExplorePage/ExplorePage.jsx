@@ -6,34 +6,34 @@ import { Link } from 'react-router-dom';
 import FilterItem from '../../components/FilterItem/FilterItem';
 import LoadingPage from '../LoadingPage/LoadingPage';
 import GlobalHabitCard from '../../components/GlobalHabitCard/GlobalHabitCard';
-import HeaderWithoutNav from '../../components/Header/HeaderWithoutNav';
 
 import { appRoutes } from '../../const/app-routes';
 import { filtersCategories } from '../../const/const';
-import api from '../../service/api';
+import api, { myApi } from '../../service/api';
 import Header from '../../components/Header/Header';
 
 function ExplorePage() {
   const [globalHabits, setGlobalHabits] = useState(null);
   const [myHabits, setMyHabits] = useState(null);
-  const [currentFilter, setCurrentFilter] = useState('');
+  const [filterQuery, setFilterQuery] = useState('');
+
+  const fetchGlobalHabits = async (queryString = null) => {
+    const data = await myApi.fetchAllGlobalHabits(queryString);
+    setGlobalHabits(data);
+  };
+
+  useEffect(() => {
+    let queryString = '';
+
+    if (filterQuery) {
+      queryString += `category=${filterQuery}&`;
+    }
+
+    fetchGlobalHabits(queryString);
+  }, [filterQuery]);
 
   const onChangeFilter = (newFilter) => {
-    setCurrentFilter(newFilter);
-  };
-
-  const fetchGlobalHabits = async () => {
-    const data = await api.fetchGlobalHabits();
-    setGlobalHabits(data);
-  };
-
-  const fetchFilterdHabits = async (fiterName) => {
-    const data = await api.fetchFilteredHabits(fiterName);
-    setGlobalHabits(data);
-  };
-
-  const onFilterHabits = (filterName) => {
-    fetchFilterdHabits(filterName);
+    setFilterQuery(newFilter);
   };
 
   const fetchMyHabits = async () => {
@@ -70,9 +70,7 @@ function ExplorePage() {
                   <FilterItem
                     key={category}
                     title={category}
-                    onFilterHabits={onFilterHabits}
-                    onFetchAllHabits={fetchGlobalHabits}
-                    currentFilter={currentFilter}
+                    currentFilter={filterQuery}
                     onChangeFilter={onChangeFilter}
                   />
                 );
@@ -97,7 +95,7 @@ function ExplorePage() {
                 {globalHabits.map((habit) => {
                   return (
                     <GlobalHabitCard
-                      key={habit.id}
+                      key={habit._id}
                       habit={habit}
                       habits={myHabits}
                       onCreateNewHabit={createNewHabit}

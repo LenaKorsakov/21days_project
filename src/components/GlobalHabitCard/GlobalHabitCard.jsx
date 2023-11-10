@@ -37,7 +37,13 @@ function GlobalHabitCard({ habit, habits, onCreateNewHabit }) {
   };
 
   return (
-    <div className="GlobalHabitCard">
+    <div
+      className={`GlobalHabitCard ${
+        habit.type === 'quit'
+          ? 'GlobalHabitCard--quit'
+          : 'GlobalHabitCard--build'
+      }`}
+    >
       <div className="habit-img__wrapper">
         <div className="container container--emoji">
           <span>{habit.emoji}</span>
@@ -45,7 +51,7 @@ function GlobalHabitCard({ habit, habits, onCreateNewHabit }) {
       </div>
 
       <div className="habit-card__content">
-        <h3 className="habit__title">{habit.title}</h3>
+        <h3 className="habit__title">{`To ${habit.type}: ${habit.title}`}</h3>
         <p className="habit__description">{habit.description}</p>
       </div>
       {!myHabit ? (

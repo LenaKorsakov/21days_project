@@ -27,28 +27,6 @@ myApi.getUserInfo = async function () {
   }
 };
 
-// myApi.signup = async function (userData) {
-//   try {
-//     await myApi.post(apiRoutes.Signup, userData);
-//   } catch (error) {
-//     toast.error(`${error.message}. ${errorMessage.Reload}`);
-//   }
-// };
-
-// myApi.login = async function (userData) {
-//   try {
-//     const { data } = await myApi.post(apiRoutes.Login, userData);
-//     return data;
-//   } catch (error) {
-//     console.log(error.response.data.message);
-//     if (error.message === 'Request failed with status code 401') {
-//       console.log('User not found');
-//     } else {
-//       toast.error(`${error.message}. ${errorMessage.Reload}`);
-//     }
-//   }
-// };
-
 myApi.interceptors.request.use((request) => {
   const token = localStorage.getItem('authToken');
   if (!token) {
@@ -61,17 +39,6 @@ myApi.interceptors.request.use((request) => {
 api.fetchAllHabits = async function () {
   try {
     const { data } = await api.get(`${apiRoutes.AllHabits}?_embed=checkins`);
-    return data;
-  } catch (error) {
-    toast.error(`${error.message}. ${messageForUser.Reload}`);
-  }
-};
-
-api.fetchFilteredHabits = async function (filter) {
-  try {
-    const { data } = await api.get(
-      `${apiRoutes.ExploreHabits}?category=${filter}`
-    );
     return data;
   } catch (error) {
     toast.error(`${error.message}. ${messageForUser.Reload}`);
@@ -133,6 +100,40 @@ api.fetchGlobalHabits = async function () {
   try {
     const { data } = await api.get(apiRoutes.ExploreHabits);
     return data;
+  } catch (error) {
+    toast.error(`${error.message}. ${messageForUser.Reload}`);
+  }
+};
+
+api.fetchFilteredHabits = async function (filter) {
+  try {
+    const { data } = await api.get(
+      `${apiRoutes.ExploreHabits}?category=${filter}`
+    );
+    return data;
+  } catch (error) {
+    toast.error(`${error.message}. ${messageForUser.Reload}`);
+  }
+};
+
+// myApi.fetchAllGlobalHabits = async function () {
+//   try {
+//     const { data } = await api.get(apiRoutes.GlobalHabits);
+//     return data;
+//   } catch (error) {
+//     toast.error(`${error.message}. ${messageForUser.Reload}`);
+//   }
+// };
+
+myApi.fetchAllGlobalHabits = async function (query) {
+  try {
+    if (query) {
+      const { data } = await myApi.get(`${apiRoutes.GlobalHabits}?${query}`);
+      return data;
+    } else {
+      const { data } = await myApi.get(apiRoutes.GlobalHabits);
+      return data;
+    }
   } catch (error) {
     toast.error(`${error.message}. ${messageForUser.Reload}`);
   }

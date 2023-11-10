@@ -2,6 +2,7 @@ import './Header.css';
 import { NavLink, Outlet, Link, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../AuthContextWrapper/AuthContextWrapper';
+import LoadingPage from '../../pages/LoadingPage/LoadingPage';
 
 import { appRoutes } from '../../const/app-routes';
 import { authorizationStatus } from '../../const/const';
