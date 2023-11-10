@@ -11,7 +11,7 @@ function HabitInProgressList({ habits, onDeleteButton, onStartAgain }) {
             return (
               <HabitInProgressRow
                 habit={habit}
-                key={habit.id}
+                key={habit._id}
                 onDeleteButton={onDeleteButton}
                 onStartAgain={onStartAgain}
               />

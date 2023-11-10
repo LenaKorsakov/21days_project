@@ -9,7 +9,7 @@ import GlobalHabitCard from '../../components/GlobalHabitCard/GlobalHabitCard';
 
 import { appRoutes } from '../../const/app-routes';
 import { filtersCategories } from '../../const/const';
-import api, { myApi } from '../../service/api';
+import { myApi } from '../../service/api';
 import Header from '../../components/Header/Header';
 
 function ExplorePage() {
@@ -37,12 +37,12 @@ function ExplorePage() {
   };
 
   const fetchMyHabits = async () => {
-    const data = await api.fetchAllHabits();
+    const data = await myApi.fetchAllHabits();
     setMyHabits(data);
   };
 
   const createNewHabit = async (habit) => {
-    await api.createNewHabit(habit);
+    await myApi.createNewHabit(habit);
     await fetchMyHabits();
     await fetchGlobalHabits();
   };

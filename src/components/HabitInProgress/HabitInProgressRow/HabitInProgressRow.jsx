@@ -2,9 +2,10 @@ import './HabitInProgressRow.css';
 
 import dayjs from 'dayjs';
 import isToday from 'dayjs/plugin/isToday';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { AMOUNT_OF_DAYS } from '../../../const/const';
+import { myApi } from '../../../service/api';
 
 dayjs.extend(isToday);
 
@@ -12,8 +13,14 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
   const [isLastDayOfHabit, setLastDayOfHabit] = useState(false);
   const [isStartAgain, setStartAgain] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [checkins, setCheckins] = useState([]);
 
-  const myProgress = habit.checkins.length;
+  const fetchCheckins = async () => {
+    const data = await myApi.fetchCheckinsByHabitId(habit._id);
+    setCheckins(data);
+  };
+
+  const myProgress = checkins.length;
 
   const countProgressInPercent = () => {
     if (myProgress === AMOUNT_OF_DAYS) {
@@ -61,16 +68,17 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
     }
   };
 
-  useState(() => {
+  useEffect(() => {
     checkIsTodayLastDayOfHabit();
-  }, []);
+    fetchCheckins();
+  }, [habit]);
 
   const handleStartAgain = async () => {
     const newHabit = {
       ...habit,
       start_day: new Date().toJSON(),
     };
-    await onStartAgain(habit.id, newHabit);
+    await onStartAgain(habit._id, newHabit);
 
     setStartAgain(true);
     setIsLoading(true);
@@ -108,7 +116,7 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
             </button>
             <button
               className="btn--delete"
-              onClick={() => onDeleteButton(habit.id)}
+              onClick={() => onDeleteButton(habit._id)}
             >
               <svg
                 style={{ width: '2vh' }}

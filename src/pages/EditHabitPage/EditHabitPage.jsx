@@ -1,10 +1,10 @@
-import HabitForm from "../../components/HabitForm/HabitForm";
-import "./EditHabitPage.css";
-import { useParams } from "react-router-dom";
-import api from "../../service/api";
-import { useEffect } from "react";
-import { useState } from "react";
-import LoadingPage from "../LoadingPage/LoadingPage";
+import HabitForm from '../../components/HabitForm/HabitForm';
+import './EditHabitPage.css';
+import { useParams } from 'react-router-dom';
+import { myApi } from '../../service/api';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 function EditHabitPage() {
   const [habit, setHabit] = useState(null);
@@ -15,7 +15,7 @@ function EditHabitPage() {
   }, []);
 
   const fetchOneHabit = async () => {
-    const data = await api.fetchOneHabit(habitId);
+    const data = await myApi.fetchOneHabit(habitId);
     setHabit(data);
   };
 

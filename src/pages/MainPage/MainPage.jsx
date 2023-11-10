@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import HabitInProgressList from '../../components/HabitInProgress/HabitInProgressList';
 import LoadingPage from '../LoadingPage/LoadingPage';
 
-import api from '../../service/api';
+import { myApi } from '../../service/api';
 
 import { appRoutes } from '../../const/app-routes';
 import { buttonMesage } from '../../const/const';
@@ -16,46 +16,34 @@ function MainPage() {
   const [habits, setHabits] = useState(null);
 
   const fetchAllHabits = async () => {
-    const data = await api.fetchAllHabits();
+    const data = await myApi.fetchAllHabits();
     setHabits(data);
   };
 
   const onDeleteButton = async (id) => {
-    await api.deleteHabit(id);
+    await myApi.deleteHabit(id);
     fetchAllHabits();
   };
 
   const onCompleteButton = async (id) => {
-    const date = new Date().toJSON();
-    const dateObj = {
-      my_habitId: id,
-      date: date,
-    };
-
-    await api.createCheckIn(dateObj);
+    await myApi.createCheckIn({
+      habit: id,
+    });
     fetchAllHabits();
   };
 
   const onUncompleteButton = async (id) => {
-    await api.deleteCheckin(id);
+    await myApi.deleteCheckin(id);
     fetchAllHabits();
   };
 
-  const deleteCheckin = async (id) => {
-    await api.deleteCheckin(id);
-  };
-
-  const clearAllCheckins = async (habit) => {
-    if (habit.checkins) {
-      for (const checkin of habit.checkins) {
-        await deleteCheckin(checkin.id);
-      }
-    }
+  const clearAllCheckins = async (habitId) => {
+    await myApi.deleteAllCheckinsByHabitId(habitId);
   };
 
   const onStartHabitAgain = async (id, habit) => {
-    await api.editHabit(id, habit);
-    await clearAllCheckins(habit);
+    await myApi.editHabit(id, habit);
+    await clearAllCheckins(habit._id);
     await fetchAllHabits();
   };
 
@@ -83,7 +71,7 @@ function MainPage() {
                   return (
                     <HabitCard
                       habit={habit}
-                      key={habit.id}
+                      key={habit._id}
                       onDeleteButton={onDeleteButton}
                       onCompleteButton={onCompleteButton}
                       onUncompleteButton={onUncompleteButton}

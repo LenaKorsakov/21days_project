@@ -1,8 +1,10 @@
+import './GlobalHabitCard.css';
+
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { appRoutes } from '../../const/app-routes';
-import './GlobalHabitCard.css';
 import { useAuth } from '../AuthContextWrapper/AuthContextWrapper';
+
+import { appRoutes } from '../../const/app-routes';
 import { authorizationStatus } from '../../const/const';
 
 function GlobalHabitCard({ habit, habits, onCreateNewHabit }) {
@@ -61,7 +63,7 @@ function GlobalHabitCard({ habit, habits, onCreateNewHabit }) {
       ) : (
         <button className="btn btn--add btn--pink">
           <Link
-            to={`${appRoutes.Habit}/${myHabit.id}`}
+            to={`${appRoutes.Habit}/${myHabit._id}`}
             title="To the habit page"
           >
             Go to the habit

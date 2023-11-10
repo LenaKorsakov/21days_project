@@ -57,6 +57,7 @@
     border-radius: 0;
     width: 5vw;
     color: var(--white);
+    font-family: 'JosefinSans';
 
     border-radius: 20px 0px 0px 20px;
     flex: 1 1 50%;

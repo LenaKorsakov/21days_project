@@ -1,7 +1,6 @@
 /* GENERAL
 /* Remove the margin in all browsers. */
 
-/* TODO add fonts */
 @font-face {
   font-family: 'LilitaOne';
   src: url('./../public/fonts/LilitaOne-Regular.ttf') format('TrueType');
@@ -130,13 +129,13 @@ a {
   justify-content: center;
   align-items: center;
   padding: 0.9rem 0.8rem;
-  font-weight: 600;
+  font-family: 'JosefinSans';
   font-size: clamp(0.8vh, 0.9vw, 1.1vh);
   line-height: 1.2;
   color: var(--white);
   background-color: var(--pink);
   border: 0;
-  border-radius: 30px;
+  border-radius: 20px;
   cursor: pointer;
 }
 

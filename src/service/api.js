@@ -4,14 +4,8 @@ import { toast } from 'react-toastify';
 import { apiRoutes } from '../const/api-routes';
 import { messageForUser } from '../const/const';
 
-const BACKEND_URL = 'https://app-21days.adaptable.app/';
 const BACKEND_URL_DEV = 'http://localhost:5005/';
 const REQUEST_TIMEOUT = 5000;
-
-const api = axios.create({
-  baseURL: BACKEND_URL,
-  timeout: REQUEST_TIMEOUT,
-});
 
 export const myApi = axios.create({
   baseURL: BACKEND_URL_DEV,
@@ -36,94 +30,37 @@ myApi.interceptors.request.use((request) => {
   return request;
 });
 
-api.fetchAllHabits = async function () {
+myApi.createCheckIn = async function (checkin) {
   try {
-    const { data } = await api.get(`${apiRoutes.AllHabits}?_embed=checkins`);
-    return data;
-  } catch (error) {
-    toast.error(`${error.message}. ${messageForUser.Reload}`);
-  }
-};
-
-api.fetchOneHabit = async function (id) {
-  try {
-    const { data } = await api.get(
-      `${apiRoutes.AllHabits}/${id}?_embed=checkins`
-    );
-    return data;
-  } catch (error) {
-    toast.error(`${error.message}. ${messageForUser.Reload}`);
-  }
-};
-
-api.createNewHabit = async function (habit) {
-  try {
-    await api.post(apiRoutes.AllHabits, habit);
+    await myApi.post(apiRoutes.Checkins, checkin);
   } catch (error) {
     toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
   }
 };
 
-api.createCheckIn = async function (checkin) {
+myApi.deleteCheckin = async function (checkinId) {
   try {
-    await api.post(apiRoutes.AllCheckins, checkin);
+    await myApi.delete(`${apiRoutes.Checkins}/${checkinId}`);
   } catch (error) {
     toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
   }
 };
 
-api.deleteCheckin = async function (id) {
+myApi.deleteAllCheckinsByHabitId = async function (habitId) {
   try {
-    await api.delete(`${apiRoutes.AllCheckins}/${id}`);
+    await myApi.delete(`${apiRoutes.DeleteAllCheckins}/${habitId}`);
   } catch (error) {
     toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
   }
 };
 
-api.editHabit = async function (id, habit) {
+myApi.deleteHabit = async function (id) {
   try {
-    await api.put(`${apiRoutes.AllHabits}/${id}`, habit);
+    await myApi.delete(`${apiRoutes.MyHabits}/${id}`);
   } catch (error) {
     toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
   }
 };
-
-api.deleteHabit = async function (id) {
-  try {
-    await api.delete(`${apiRoutes.AllHabits}/${id}`);
-  } catch (error) {
-    toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
-  }
-};
-
-api.fetchGlobalHabits = async function () {
-  try {
-    const { data } = await api.get(apiRoutes.ExploreHabits);
-    return data;
-  } catch (error) {
-    toast.error(`${error.message}. ${messageForUser.Reload}`);
-  }
-};
-
-api.fetchFilteredHabits = async function (filter) {
-  try {
-    const { data } = await api.get(
-      `${apiRoutes.ExploreHabits}?category=${filter}`
-    );
-    return data;
-  } catch (error) {
-    toast.error(`${error.message}. ${messageForUser.Reload}`);
-  }
-};
-
-// myApi.fetchAllGlobalHabits = async function () {
-//   try {
-//     const { data } = await api.get(apiRoutes.GlobalHabits);
-//     return data;
-//   } catch (error) {
-//     toast.error(`${error.message}. ${messageForUser.Reload}`);
-//   }
-// };
 
 myApi.fetchAllGlobalHabits = async function (query) {
   try {
@@ -139,4 +76,45 @@ myApi.fetchAllGlobalHabits = async function (query) {
   }
 };
 
-export default api;
+myApi.createNewHabit = async function (habit) {
+  try {
+    await myApi.post(apiRoutes.MyHabits, habit);
+  } catch (error) {
+    toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
+  }
+};
+
+myApi.editHabit = async function (habitId, habit) {
+  try {
+    await myApi.put(`${apiRoutes.MyHabits}/${habitId}`, habit);
+  } catch (error) {
+    toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
+  }
+};
+
+myApi.fetchAllHabits = async function () {
+  try {
+    const { data } = await myApi.get(apiRoutes.MyHabits);
+    return data;
+  } catch (error) {
+    toast.error(`${error.message}. ${messageForUser.Reload}`);
+  }
+};
+
+myApi.fetchOneHabit = async function (habitId) {
+  try {
+    const { data } = await myApi.get(`${apiRoutes.MyHabits}/${habitId}`);
+    return data;
+  } catch (error) {
+    toast.error(`${error.message}. ${messageForUser.Reload}`);
+  }
+};
+
+myApi.fetchCheckinsByHabitId = async function (habitId) {
+  try {
+    const { data } = await myApi.get(`${apiRoutes.Checkins}/${habitId}`);
+    return data;
+  } catch (error) {
+    toast.error(`${error.message}. ${messageForUser.Reload}`);
+  }
+};

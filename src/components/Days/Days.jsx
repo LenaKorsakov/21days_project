@@ -1,12 +1,22 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useState } from 'react';
-import dayjs from 'dayjs';
-import api from '../../service/api';
 import './Days.css';
+
+import dayjs from 'dayjs';
+import { useState } from 'react';
+
+import { myApi } from '../../service/api';
+
 import LoadingPage from '../../pages/LoadingPage/LoadingPage';
 
-function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
+function Days({
+  habit,
+  onChangeMisses,
+  onChangeDaysInRow,
+  fetchOneHabit,
+  checkins,
+  fetchCheckins,
+}) {
   const [allHabitDay, setAllHabitDay] = useState();
   const firstDay = dayjs(new Date(habit.start_day)).startOf('day');
 
@@ -22,7 +32,7 @@ function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
     const daysObject = days.map((day) => {
       const habitDay = {};
       const nextDay = dayjs(firstDay).add(day, 'd').toDate();
-      const checkfound = habit.checkins.find((checkin) => {
+      const checkfound = checkins.find((checkin) => {
         if (checkin.date) {
           return dayjs(nextDay).isSame(dayjs(checkin.date).startOf('day'));
         } else {
@@ -38,7 +48,7 @@ function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
 
       if (checkfound) {
         checkinDate = checkfound.date;
-        checkinId = checkfound.id;
+        checkinId = checkfound._id;
         dataLight = 'green';
         inputChecked = true;
         dayState = 'passed';
@@ -58,7 +68,6 @@ function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
       }
 
       if (dayjs(nextDay).isToday()) {
-        // dataLight = "yellow";
         dayState = 'today';
       }
 
@@ -84,34 +93,33 @@ function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
     setAllHabitDay(dailyHabits);
     onChangeMisses(misses);
     onChangeDaysInRow(daysinarow);
+    fetchCheckins();
   }, [habit]);
 
   const [checkedStateData, setCheckedStateData] = useState(inputChecksObject);
   const [lightStateData, setLightStateData] = useState(inputLightsObject);
 
-  const handleCheck = (event, index, checkInDate, checkinId) => {
+  const handleCheck = (event, index, date, checkinId) => {
     setCheckedStateData({ ...checkedStateData, [index]: event.target.checked });
     if (event.target.checked) {
       setLightStateData({ ...lightStateData, [index]: 'green' });
-      addCheckIn(checkInDate);
+      addCheckIn();
     } else {
       setLightStateData({ ...lightStateData, [index]: 'red' });
       deleteCheckin(checkinId);
     }
   };
 
-  const addCheckIn = async (date) => {
-    const dateObj = {
-      my_habitId: habit.id,
-      date: date,
-    };
-    await api.createCheckIn(dateObj);
+  const addCheckIn = async () => {
+    await myApi.createCheckIn({
+      habit: habit._id,
+    });
     await fetchOneHabit();
   };
 
   const deleteCheckin = async (id) => {
-    await api.deleteCheckin(id);
-    await fetchOneHabit();
+    await myApi.deleteCheckin(id);
+    await fetchCheckins();
   };
   if (!allHabitDay) {
     return <LoadingPage />;
@@ -137,7 +145,7 @@ function Days({ habit, onChangeMisses, onChangeDaysInRow, fetchOneHabit }) {
                   id={habitDay.dayId}
                   name="scales"
                   value={habitDay.date}
-                  onChange={() =>
+                  onChange={(event) =>
                     handleCheck(
                       event,
                       habitDay.number,

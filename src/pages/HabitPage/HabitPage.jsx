@@ -1,17 +1,26 @@
 import './HabitPage.css';
+
 import { useParams } from 'react-router-dom';
-import api from '../../service/api';
 import { useEffect } from 'react';
 import { useState } from 'react';
+
+import { myApi } from '../../service/api';
+
 import LoadingPage from '../LoadingPage/LoadingPage';
-import dayjs from 'dayjs';
 import Days from '../../components/Days/Days';
 
 function HabitPage() {
   const [habit, setHabit] = useState(null);
   const [misses, setMisses] = useState(0);
   const [daysInRow, setDaysInRow] = useState(0);
+  const [checkins, setCheckins] = useState([]);
+
   const { habitId } = useParams();
+
+  const fetchCheckins = async () => {
+    const data = await myApi.fetchCheckinsByHabitId(habitId);
+    setCheckins(data);
+  };
 
   const onChangeMisses = (mymisses) => {
     setMisses(mymisses);
@@ -21,14 +30,15 @@ function HabitPage() {
     setDaysInRow(mydaysinrow);
   };
 
-  useEffect(() => {
-    fetchOneHabit();
-  }, []);
-
   const fetchOneHabit = async () => {
-    const data = await api.fetchOneHabit(habitId);
+    const data = await myApi.fetchOneHabit(habitId);
     setHabit(data);
   };
+
+  useEffect(() => {
+    fetchOneHabit();
+    fetchCheckins();
+  }, []);
 
   if (!habit) {
     return <LoadingPage />;
@@ -61,12 +71,13 @@ function HabitPage() {
             <div className="calendar">
               <Days
                 habit={habit}
+                checkins={checkins}
                 onChangeMisses={onChangeMisses}
                 onChangeDaysInRow={onChangeDaysInRow}
                 fetchOneHabit={fetchOneHabit}
+                fetchCheckins={fetchCheckins}
               />
             </div>
-            {/* <button className="btn">Complete today</button> */}
           </div>
         </div>
       </div>

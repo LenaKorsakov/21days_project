@@ -1,10 +1,11 @@
 import './HabitForm.css';
 import EmojiPicker from 'emoji-picker-react';
 import { useState } from 'react';
-import api from '../../service/api';
+import { myApi } from '../../service/api';
 import { useNavigate } from 'react-router-dom';
 import { appRoutes } from '../../const/app-routes';
 import { useEffect } from 'react';
+import { filtersCategories } from '../../const/const';
 
 const initialState = {
   title: '',
@@ -65,7 +66,7 @@ function HabitForm({ habit }) {
   };
 
   const createNewHabit = async (habit) => {
-    await api.createNewHabit(habit);
+    await myApi.createNewHabit(habit);
     setshowPopup(true);
     setTimeout(() => {
       setshowPopup(false);
@@ -77,7 +78,7 @@ function HabitForm({ habit }) {
   };
 
   const editHabit = async (id, habit) => {
-    await api.editHabit(id, habit);
+    await myApi.editHabit(id, habit);
     setshowPopup(true);
     setTimeout(() => {
       setshowPopup(false);
@@ -90,10 +91,9 @@ function HabitForm({ habit }) {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    const creationDate = new Date().toJSON();
-    setFormData({ ...formData, ['start_day']: creationDate });
+    setFormData({ ...formData });
     if (editing) {
-      editHabit(habit.id, formData);
+      editHabit(habit._id, formData);
     } else {
       createNewHabit(formData);
     }
@@ -180,21 +180,17 @@ function HabitForm({ habit }) {
               onChange={handleChange}
             >
               <option disabled value="default">
-                Pick a Category
+                Pick a category
               </option>
-              <option value="self-realization">Self-realization</option>
-              <option value="emotional-state">Emotional state</option>
-              <option value="lifestyle">Lifestyle</option>
-              <option value="health">Health</option>
-              <option value="beauty">Beauty</option>
-              <option value="career-and-finance">Career and finance</option>
-              <option value="relationships">Relationships</option>
-              <option value="self-developement and education">
-                Self-developement and education
-              </option>
-              <option value="hobbies">Hobbies</option>
+              {filtersCategories.map((category) => {
+                return (
+                  <option value={category} key={category}>
+                    {category}
+                  </option>
+                );
+              })}
               <option value="other" default>
-                Other
+                other
               </option>
             </select>
           </div>
