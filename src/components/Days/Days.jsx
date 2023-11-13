@@ -1,159 +1,161 @@
-import React from 'react';
-import { useEffect } from 'react';
 import './Days.css';
-
-import dayjs from 'dayjs';
+import { useEffect } from 'react';
 import { useState } from 'react';
+import dayjs from 'dayjs';
 
 import { myApi } from '../../service/api';
 
 import LoadingPage from '../../pages/LoadingPage/LoadingPage';
 
+import { checkBoxesColors } from '../../const/const';
+
 function Days({
   habit,
-  onChangeMisses,
   onChangeDaysInRow,
-  fetchOneHabit,
   checkins,
   fetchCheckins,
+  onChangeMisses,
 }) {
-  const [allHabitDay, setAllHabitDay] = useState();
-  const firstDay = dayjs(new Date(habit.start_day)).startOf('day');
+  let checkboxesColors = {},
+    daysInRow = 0;
 
-  const inputChecksObject = {};
-  const inputLightsObject = {};
+  const [allHabitDays, setAllHabitDays] = useState();
+  const [checkboxesColorsData, setCheckboxesColorsData] =
+    useState(checkboxesColors);
 
-  let misses = 0,
-    daysinarow = 0;
+  const firstDayOfHabit = dayjs(new Date(habit.start_day)).startOf('day');
+  const today = dayjs();
 
-  const numbers = [...Array(21).keys()];
+  const daysNumbers = [...Array(21).keys()];
+
+  const countMisses = () => {
+    if (checkins) {
+      const currentCheckinsAmount = checkins.length;
+      const checkinsShouldBe = Math.round(
+        today.diff(firstDayOfHabit) / (1000 * 60 * 60 * 24)
+      );
+
+      return checkinsShouldBe - currentCheckinsAmount;
+    }
+    return 0;
+  };
 
   const setDaysData = (days) => {
-    const daysObject = days.map((day) => {
-      const habitDay = {};
-      const nextDay = dayjs(firstDay).add(day, 'd').toDate();
-      const checkfound = checkins.find((checkin) => {
-        if (checkin.date) {
-          return dayjs(nextDay).isSame(dayjs(checkin.date).startOf('day'));
-        } else {
-          return undefined;
-        }
-      });
+    const allHabitDays = days.map((day) => {
+      const currentDayDate = dayjs(firstDayOfHabit).add(day, 'd').toDate();
+      const alreadyExistedCheckin = checkins.find((checkin) =>
+        dayjs(currentDayDate).isSame(dayjs(checkin.date), 'day')
+      );
 
-      let dataLight,
+      let dataColor,
         checkinDate,
         checkinId,
-        dayState,
-        inputChecked = false;
+        isInputChecked = false;
 
-      if (checkfound) {
-        checkinDate = checkfound.date;
-        checkinId = checkfound._id;
-        dataLight = 'green';
-        inputChecked = true;
-        dayState = 'passed';
-        daysinarow++;
-      } else if (!checkfound && dayjs(nextDay).isBefore(dayjs())) {
-        checkinDate = nextDay;
-        checkinId = '000';
-        dataLight = 'red';
-        dayState = 'passed';
-        misses++;
-        daysinarow = 0;
+      if (alreadyExistedCheckin) {
+        checkinDate = alreadyExistedCheckin.date;
+        checkinId = alreadyExistedCheckin._id;
+        dataColor = checkBoxesColors.Yellow;
+        isInputChecked = true;
+        daysInRow++;
+        onChangeDaysInRow(daysInRow);
+      } else if (
+        !alreadyExistedCheckin &&
+        dayjs(currentDayDate).isBefore(today)
+      ) {
+        checkinDate = currentDayDate.toJSON();
+        dataColor = checkBoxesColors.Pink;
+        daysInRow = 0;
+        onChangeDaysInRow(daysInRow);
       } else {
-        checkinDate = '000';
-        checkinId = '000';
-        dataLight = 'off';
-        dayState = 'future';
+        checkinDate = currentDayDate.toJSON();
+        dataColor = checkBoxesColors.Off;
       }
 
-      if (dayjs(nextDay).isToday()) {
-        dayState = 'today';
-      }
+      const oneHabitDay = {};
 
-      habitDay.number = day + 1;
-      habitDay.dayId = 'day' + (day + 1);
-      habitDay.date = nextDay;
-      habitDay.dayCheked = inputChecked;
-      habitDay.checkin_id = checkinId;
-      habitDay.checkin_date = checkinDate;
-      habitDay.light = dataLight;
-      habitDay.state = dayState;
+      oneHabitDay.number = day + 1;
+      oneHabitDay.dayId = 'day' + (day + 1);
+      oneHabitDay.date = checkinDate;
+      oneHabitDay.isChecked = isInputChecked;
+      oneHabitDay.checkin_id = checkinId;
+      oneHabitDay.light = dataColor;
 
-      inputChecksObject[day + 1] = inputChecked;
-      inputLightsObject[day + 1] = dataLight;
+      checkboxesColors[day + 1] = dataColor;
 
-      return habitDay;
+      return oneHabitDay;
     });
-    return daysObject;
+
+    return allHabitDays;
   };
 
   useEffect(() => {
-    const dailyHabits = setDaysData(numbers);
-    setAllHabitDay(dailyHabits);
-    onChangeMisses(misses);
-    onChangeDaysInRow(daysinarow);
-    fetchCheckins();
-  }, [habit]);
+    const dailyHabits = setDaysData(daysNumbers);
+    setAllHabitDays(dailyHabits);
+    onChangeMisses(countMisses());
+  }, [checkins]);
 
-  const [checkedStateData, setCheckedStateData] = useState(inputChecksObject);
-  const [lightStateData, setLightStateData] = useState(inputLightsObject);
-
-  const handleCheck = (event, index, date, checkinId) => {
-    setCheckedStateData({ ...checkedStateData, [index]: event.target.checked });
-    if (event.target.checked) {
-      setLightStateData({ ...lightStateData, [index]: 'green' });
-      addCheckIn();
-    } else {
-      setLightStateData({ ...lightStateData, [index]: 'red' });
-      deleteCheckin(checkinId);
-    }
-  };
-
-  const addCheckIn = async () => {
+  const addCheckIn = async (currentDate) => {
     await myApi.createCheckIn({
       habit: habit._id,
+      date: currentDate,
     });
-    await fetchOneHabit();
+    await fetchCheckins();
   };
 
   const deleteCheckin = async (id) => {
     await myApi.deleteCheckin(id);
     await fetchCheckins();
   };
-  if (!allHabitDay) {
+
+  const handleCurrentDayCheck = (event, index, checkinDate, checkinId) => {
+    if (event.target.checked) {
+      addCheckIn(checkinDate);
+      setCheckboxesColorsData({
+        ...checkboxesColorsData,
+        [index]: checkBoxesColors.Yellow,
+      });
+    } else {
+      deleteCheckin(checkinId);
+      setCheckboxesColorsData({
+        ...checkboxesColorsData,
+        [index]: checkBoxesColors.Pink,
+      });
+    }
+  };
+
+  if (!allHabitDays) {
     return <LoadingPage />;
   }
+
   return (
     <>
       <ul className="days">
-        {allHabitDay.map((habitDay) => {
+        {allHabitDays.map((habitDay) => {
           return (
             <li
               key={habitDay.dayId}
               className="day"
-              data-light={lightStateData[habitDay.number]}
+              data-color={checkboxesColorsData[habitDay.number]}
             >
               <label>
-                {habitDay.state === 'today'
+                {dayjs(habitDay.date).isToday()
                   ? 'Today'
                   : 'Day ' + habitDay.number}
 
                 <input
                   type="checkbox"
-                  checkin-id={habitDay.checkin_id}
                   id={habitDay.dayId}
                   name="scales"
-                  value={habitDay.date}
                   onChange={(event) =>
-                    handleCheck(
+                    handleCurrentDayCheck(
                       event,
                       habitDay.number,
                       habitDay.date,
                       habitDay.checkin_id
                     )
                   }
-                  checked={checkedStateData[habitDay.number]}
+                  checked={habitDay.isChecked}
                 />
                 <span className="checkmark"></span>
               </label>

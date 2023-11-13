@@ -42,3 +42,9 @@ export const serverResponse = {
   WrongPassword: 'Wrong credentials',
   AlreadyExists: 'User already exists.',
 };
+
+export const checkBoxesColors = {
+  Pink: 'pink',
+  Yellow: 'yellow',
+  Off: 'off',
+};

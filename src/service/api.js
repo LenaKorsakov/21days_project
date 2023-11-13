@@ -45,6 +45,13 @@ myApi.deleteCheckin = async function (checkinId) {
     toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
   }
 };
+// myApi.deleteCheckinByDate = async function (checkinDate) {
+//   try {
+//     await myApi.delete(`${apiRoutes.Checkins}/${checkinId}`);
+//   } catch (error) {
+//     toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
+//   }
+// };
 
 myApi.deleteAllCheckinsByHabitId = async function (habitId) {
   try {

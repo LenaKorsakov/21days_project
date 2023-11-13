@@ -49,21 +49,13 @@
       }
     }
 
-    /* flex: 0 1 calc(20% - 8px); */
-
-    & input[checkin-id='0000'] {
-      pointer-events: none;
-      cursor: not-allowed;
-    }
-
-    &[data-light='off'] {
+    &[data-color='off'] {
       pointer-events: none;
       cursor: not-allowed;
 
       .checkmark {
         background-color: var(--gray);
         box-shadow: 4px 2px 2px #444;
-        /* background: radial-gradient(circle at 65% 15%, #333 1px, #333 3%, #666 60%, gray 100%); */
         cursor: default;
         pointer-events: none;
         cursor: not-allowed;
@@ -74,7 +66,7 @@
       }
     }
 
-    &[data-light='green'] {
+    &[data-color='yellow'] {
       .checkmark {
         background-color: #fff;
         box-shadow: 0 0 40px 20px var(--light-yellow);
@@ -87,29 +79,20 @@
           box-shadow: 0 0 20px 10px var(--light-yellow);
         }
       }
-
-      /* pointer-events: none;
-            cursor: not-allowed; */
     }
 
-    &[data-light='red'] {
+    &[data-color='pink'] {
       .checkmark {
-        background-color: #e1c2c2;
-        box-shadow: 0 0 40px 20px #f1aaaa;
+        background-color: var(--pink);
+        box-shadow: 0 0 40px 20px var(--dark-pink);
 
         &:hover {
-          box-shadow: 0 0 40px 10px #f1aaaa;
+          box-shadow: 0 0 40px 10px var(--dark-pink);
         }
 
         @media (max-width: 500px) {
-          box-shadow: 0 0 20px 10px #f1aaaa;
+          box-shadow: 0 0 20px 10px var(--dark-pink);
         }
-      }
-    }
-
-    &[data-light='yellow'] {
-      .checkmark {
-        background-color: var(--light-yellow);
       }
     }
   }

@@ -28,6 +28,7 @@ function MainPage() {
   const onCompleteButton = async (id) => {
     await myApi.createCheckIn({
       habit: id,
+      date: new Date().toJSON(),
     });
     fetchAllHabits();
   };

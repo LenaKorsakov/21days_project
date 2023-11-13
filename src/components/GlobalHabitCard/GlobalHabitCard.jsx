@@ -53,7 +53,7 @@ function GlobalHabitCard({ habit, habits, onCreateNewHabit }) {
       </div>
 
       <div className="habit-card__content">
-        <h3 className="habit__title">{`To ${habit.type}: ${habit.title}`}</h3>
+        <h3 className="habit__title">{habit.title}</h3>
         <p className="habit__description">{habit.description}</p>
       </div>
       {!myHabit ? (
