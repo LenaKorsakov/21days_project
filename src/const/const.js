@@ -35,6 +35,9 @@ export const messageForUser = {
   WrongCredentials: 'Wrong credentials. Please, try again or',
   SuccessfulSignup:
     'Thanks for signing up. Your account has been created. Now you can ',
+  ValidatePassword:
+    'Password must contain at least 6 symbols: numbers and letters',
+  ValidateLogin: 'Enter correct email',
 };
 
 export const serverResponse = {
