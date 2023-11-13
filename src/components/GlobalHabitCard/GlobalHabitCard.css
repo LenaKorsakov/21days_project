@@ -59,7 +59,6 @@
     background-color: var(--white);
 
     @media (max-width: 500px) {
-      border: 0.1px solid var(--gray);
       border-radius: 50%;
       width: 2.8vh;
       height: 2.8vh;

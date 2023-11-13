@@ -23,7 +23,7 @@
   }
 
   & h3 {
-    font-size: clamp(2vh, 2vw, 2.5vh);
+    font-size: clamp(1.5vh, 2vw, 2.5vh);
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -35,17 +35,19 @@
     color: white;
     border-radius: 0;
     width: 13vw;
-    font-size: clamp(2vh, 2vw, 2.5vh);
+    font-size: clamp(1vh, 2vw, 2.5vh);
   }
 
   & .btn--edit {
     background-color: var(--light-yellow);
     border-radius: 0;
+    color: var(--lightblue);
   }
 
   .btn--delete {
     background-color: var(--light-yellow);
     border-radius: 0 20px 20px 0;
+    color: var(--lightblue);
   }
 
   .completed {
@@ -56,7 +58,7 @@
     background-color: var(--dark-green);
     border-radius: 0;
     width: 13vw;
-    font-size: clamp(2vh, 2vw, 2.5vh);
+    font-size: clamp(1vh, 2vw, 2.5vh);
   }
 }
 

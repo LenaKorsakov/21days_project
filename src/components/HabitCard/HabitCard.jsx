@@ -9,6 +9,7 @@ import { appRoutes } from '../../const/app-routes';
 import { buttonMesage } from '../../const/const';
 import { debounce } from 'lodash';
 import { myApi } from '../../service/api';
+import LoadingPage from '../../pages/LoadingPage/LoadingPage';
 
 dayjs.extend(isToday);
 
@@ -19,12 +20,7 @@ function HabitCard({
   onUncompleteButton,
 }) {
   const [wasCompletedToday, setWasCompletedToday] = useState(false);
-  const [checkins, setCheckins] = useState([]);
-
-  const fetchCheckins = async () => {
-    const data = await myApi.fetchCheckinsByHabitId(habit._id);
-    setCheckins(data);
-  };
+  const [checkins, setCheckins] = useState(null);
 
   const findTodayCheckin = (myCheckins) => {
     const todayCheckin = myCheckins.find((checkin) =>
@@ -34,7 +30,7 @@ function HabitCard({
     return todayCheckin;
   };
 
-  const checkIsTodayWasCheckin = () => {
+  const checkIsTodayWasCheckin = (checkins) => {
     if (checkins.length === 0) {
       setWasCompletedToday(false);
     } else {
@@ -48,19 +44,24 @@ function HabitCard({
     }
   };
 
+  const fetchCheckins = async () => {
+    const data = await myApi.fetchCheckinsByHabitId(habit._id);
+    setCheckins(data);
+    checkIsTodayWasCheckin(data);
+  };
+
   useEffect(() => {
-    checkIsTodayWasCheckin();
     fetchCheckins();
-  }, [habit, checkins]);
+  }, [habit]);
 
   const handleCompleteButton = async () => {
     if (wasCompletedToday) {
       const lastCheckinId = findTodayCheckin(checkins)._id;
       await onUncompleteButton(lastCheckinId);
-      setWasCompletedToday(false);
+      await fetchCheckins();
     } else {
       await onCompleteButton(habit._id);
-      setWasCompletedToday(true);
+      await fetchCheckins();
     }
   };
 
@@ -68,6 +69,10 @@ function HabitCard({
     async () => await handleCompleteButton(),
     500
   );
+
+  if (!checkins) {
+    return <LoadingPage />;
+  }
 
   return (
     <li className="HabitCard">
@@ -94,7 +99,7 @@ function HabitCard({
         {wasCompletedToday ? buttonMesage.Uncompleted : buttonMesage.Completed}
       </button>
       <Link
-        className="btn--edit"
+        className="btn btn--edit"
         to={`${appRoutes.EditHabit}/${habit._id}`}
         title="To the edit page"
       >

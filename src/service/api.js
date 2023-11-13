@@ -17,7 +17,7 @@ myApi.getUserInfo = async function () {
     const { data } = await myApi.get(apiRoutes.Auth);
     return data;
   } catch (error) {
-    toast.error(`${error.message}. Try to reload this page.`);
+    toast.error(`${error.message}. Authorisation time expired.`);
   }
 };
 

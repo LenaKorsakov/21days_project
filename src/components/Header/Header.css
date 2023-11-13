@@ -68,20 +68,18 @@
     }
 
     & p {
-      font-size: clamp(1.5vh, 2vw, 5vh);
+      font-size: clamp(1.5vh, 2vw, 3.5vh);
       font-family: 'JosefinSans';
       color: var(--white);
       position: relative;
       bottom: 2px;
 
       @media (min-width: 1401px) {
-        font-size: clamp(1.1vh, 1vw, 1vh);
         bottom: 5px;
       }
 
       @media (min-width: 2000px) {
-        font-size: clamp(1.1vh, 1vw, 1vh);
-        bottom: 12px;
+        bottom: 15px;
       }
 
       @media (max-width: 1401px) {
@@ -128,8 +126,8 @@
     justify-content: space-evenly;
     margin: 0;
 
-    @media (max-width: 500px) {
-      max-width: 50%;
+    @media (max-width: 1024px) {
+      display: none !important;
     }
 
     & .link {

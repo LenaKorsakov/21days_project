@@ -14,36 +14,28 @@ function HabitPage() {
   const [misses, setMisses] = useState(0);
   const [daysInRow, setDaysInRow] = useState(0);
   const [checkins, setCheckins] = useState([]);
-
   const { habitId } = useParams();
-
   const fetchCheckins = async () => {
     const data = await myApi.fetchCheckinsByHabitId(habitId);
     setCheckins(data);
   };
-
   const onChangeMisses = (mymisses) => {
     setMisses(mymisses);
   };
-
   const onChangeDaysInRow = (mydaysinrow) => {
     setDaysInRow(mydaysinrow);
   };
-
   const fetchOneHabit = async () => {
     const data = await myApi.fetchOneHabit(habitId);
     setHabit(data);
   };
-
   useEffect(() => {
     fetchOneHabit();
     fetchCheckins();
   }, []);
-
   if (!habit) {
     return <LoadingPage />;
   }
-
   return (
     <main className="HabitPage">
       <div className="container">
@@ -66,7 +58,6 @@ function HabitPage() {
                 <span>Misses:</span> {misses}
               </p>
             </div>
-
             <h2 className="habit-page__title habit-page__title--dark">
               Daily Progress
             </h2>
