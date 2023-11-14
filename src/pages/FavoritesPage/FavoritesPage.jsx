@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
-import HabitCard from '../../components/HabitCard/HabitCard';
 import './FavoritesPage.css';
 
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import LoadingPage from '../LoadingPage/LoadingPage';
+import { useAuth } from '../../components/AuthContextWrapper/AuthContextWrapper';
+import BookmarkCard from '../../components/BookmarkCard/BookmarkCard';
 
 import { myApi } from '../../service/api';
 
@@ -14,6 +15,8 @@ import { buttonMesage } from '../../const/const';
 function FavoritesPage() {
   const [habits, setHabits] = useState(null);
   const [bookmarks, setBookmarks] = useState(null);
+  const { authenticateUser } = useAuth();
+  const navigate = useNavigate();
 
   const fetchAllHabits = async () => {
     const data = await myApi.fetchAllHabits();
@@ -30,6 +33,12 @@ function FavoritesPage() {
     fetchBookmarks();
   }, []);
 
+  const handleLogoutClick = () => {
+    localStorage.removeItem('authToken');
+    authenticateUser();
+    navigate(appRoutes.Login);
+  };
+
   if (!habits || !bookmarks) {
     return <LoadingPage />;
   }
@@ -40,7 +49,7 @@ function FavoritesPage() {
           <section className="habits">
             <div className="habits__info">
               <h2>Your active habits</h2>
-              <p>You have {habits.length} active habits</p>
+              <p>You have {habits.length} active habits.</p>
               <Link
                 className="btn btn--add"
                 title="To add habit form"
@@ -56,7 +65,7 @@ function FavoritesPage() {
 
             <div className="habits__info">
               <h2>Your completed habits</h2>
-              <p>You have completed successfully {habits.length} habits</p>
+              <p>You've completed {habits.length} habits.</p>
               <p>Good work!</p>
               <Link
                 className="btn btn--add"
@@ -88,11 +97,19 @@ function FavoritesPage() {
                 </>
               ) : (
                 bookmarks.map((habit) => {
-                  return <HabitCard habit={habit} key={habit._id} />;
+                  return (
+                    <BookmarkCard
+                      habit={habit}
+                      key={habit._id}
+                      onFetchBookmarks={fetchBookmarks}
+                    />
+                  );
                 })
               )}
             </ul>
-            <button className="btn btn--logout">Log out</button>
+            <button className="btn btn--logout" onClick={handleLogoutClick}>
+              Log out
+            </button>
           </div>
         </div>
       </main>

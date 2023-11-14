@@ -66,7 +66,7 @@
     }
 
     .btn--logout {
-      width: 98%;
+      width: 96%;
       background-color: var(--blue);
       margin-top: 4vh;
       font-size: clamp(1.5vh, 3vw, 3.5vh);

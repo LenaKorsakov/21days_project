@@ -8,5 +8,5 @@ export const appRoutes = {
   Landing: '/landing',
   Login: '/login',
   Signup: '/signup',
-  Favorites: '/bookmarks',
+  Favorites: '/profile',
 };
