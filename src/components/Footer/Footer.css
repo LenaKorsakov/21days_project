@@ -1,7 +1,6 @@
 .Footer {
   padding-top: 0.5vh;
-  color: #000;
-  background-color: #fff;
+  background-color: var(--white);
   border-radius: 5vh 5vh 0 0;
   z-index: 1;
   position: fixed;
@@ -33,7 +32,6 @@
 
     & h3 {
       font-size: clamp(1vw, 1.6vw, 2vw);
-      color: rgba(0, 128, 41, 0.546);
     }
 
     & small {

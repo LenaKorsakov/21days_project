@@ -50,7 +50,7 @@ function Header() {
                   isActive ? 'link active' : 'link'
                 }
               >
-                Home
+                Main
               </NavLink>
             </li>
             <li>
@@ -60,7 +60,17 @@ function Header() {
                 }
                 to={appRoutes.Explore}
               >
-                Explore
+                Explore habits
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? 'link active' : 'link'
+                }
+                to={appRoutes.Favorites}
+              >
+                Profile
               </NavLink>
             </li>
             {authStatus === authorizationStatus.NoAuth && (

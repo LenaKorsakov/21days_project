@@ -15,11 +15,22 @@ import Header from '../../components/Header/Header';
 function ExplorePage() {
   const [globalHabits, setGlobalHabits] = useState(null);
   const [myHabits, setMyHabits] = useState(null);
+  const [bookmarks, setBookmarks] = useState(null);
   const [filterQuery, setFilterQuery] = useState('');
 
   const fetchGlobalHabits = async (queryString = null) => {
     const data = await myApi.fetchAllGlobalHabits(queryString);
     setGlobalHabits(data);
+  };
+
+  const fetchMyHabits = async () => {
+    const data = await myApi.fetchAllHabits();
+    setMyHabits(data);
+  };
+
+  const fetchBookmarks = async () => {
+    const data = await myApi.fetchBookmarks();
+    setBookmarks(data);
   };
 
   useEffect(() => {
@@ -36,23 +47,29 @@ function ExplorePage() {
     setFilterQuery(newFilter);
   };
 
-  const fetchMyHabits = async () => {
-    const data = await myApi.fetchAllHabits();
-    setMyHabits(data);
-  };
-
   const createNewHabit = async (habit) => {
     await myApi.createNewHabit(habit);
     await fetchMyHabits();
     await fetchGlobalHabits();
   };
 
+  const addToBookmarks = async (habit) => {
+    await myApi.createNewBookmark(habit);
+    await fetchBookmarks();
+  };
+
+  const deleteFromBookmarks = async (id) => {
+    await myApi.deleteBookmark(id);
+    await fetchBookmarks();
+  };
+
   useEffect(() => {
     fetchGlobalHabits();
     fetchMyHabits();
+    fetchBookmarks();
   }, []);
 
-  if (!globalHabits || !myHabits) {
+  if (!globalHabits || !myHabits || !bookmarks) {
     return <LoadingPage />;
   }
 
@@ -80,7 +97,7 @@ function ExplorePage() {
           <section className="page-explore__decoration">
             {globalHabits.length === 0 ? (
               <div className="message__container">
-                <h2>We don't have filters in this category yet 😔</h2>
+                <h2>We don't have habits in this category yet 😔</h2>
                 <Link
                   title="To add habit form"
                   to={appRoutes.AddHabit}
@@ -98,7 +115,10 @@ function ExplorePage() {
                       key={habit._id}
                       habit={habit}
                       habits={myHabits}
+                      bookmarks={bookmarks}
                       onCreateNewHabit={createNewHabit}
+                      onCreateNewBookmark={addToBookmarks}
+                      onDeleteFromBookmarks={deleteFromBookmarks}
                     />
                   );
                 })}

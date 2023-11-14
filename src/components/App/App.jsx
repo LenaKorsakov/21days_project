@@ -12,6 +12,7 @@ import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import SignupPage from '../../pages/SignupPage/SignupPage';
+import FavoritesPage from '../../pages/FavoritesPage/FavoritesPage';
 
 import { appRoutes } from '../../const/app-routes';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
@@ -39,6 +40,8 @@ function App() {
               path={`${appRoutes.EditHabit}/:habitId`}
               element={<EditHabitPage />}
             />
+
+            <Route path={appRoutes.Favorites} element={<FavoritesPage />} />
           </Route>
         </Route>
 

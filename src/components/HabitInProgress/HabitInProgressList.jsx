@@ -4,7 +4,7 @@ import HabitInProgressRow from './HabitInProgressRow/HabitInProgressRow';
 function HabitInProgressList({ habits, onDeleteButton, onStartAgain }) {
   return (
     <section className="HabitInProgress">
-      <h2>my progress</h2>
+      <h2>My progress</h2>
       <div className="table">
         <div className="table-content">
           {habits.map((habit) => {

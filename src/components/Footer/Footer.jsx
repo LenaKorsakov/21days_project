@@ -1,6 +1,6 @@
-import { NavLink } from "react-router-dom";
-import "./Footer.css";
-import { appRoutes } from "../../const/app-routes";
+import { NavLink } from 'react-router-dom';
+import './Footer.css';
+import { appRoutes } from '../../const/app-routes';
 
 function Footer() {
   return (
@@ -13,7 +13,7 @@ function Footer() {
                 to={appRoutes.Main}
                 end
                 className={({ isActive }) =>
-                  isActive ? "link active" : "link"
+                  isActive ? 'link active' : 'link'
                 }
               >
                 <svg
@@ -35,7 +35,7 @@ function Footer() {
             <li>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "link active" : "link"
+                  isActive ? 'link active' : 'link'
                 }
                 to={appRoutes.Explore}
               >
@@ -58,9 +58,9 @@ function Footer() {
             <li>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "link active" : "link"
+                  isActive ? 'link active' : 'link'
                 }
-                to={appRoutes.Explore}
+                to={appRoutes.Favorites}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

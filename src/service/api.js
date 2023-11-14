@@ -45,13 +45,6 @@ myApi.deleteCheckin = async function (checkinId) {
     toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
   }
 };
-// myApi.deleteCheckinByDate = async function (checkinDate) {
-//   try {
-//     await myApi.delete(`${apiRoutes.Checkins}/${checkinId}`);
-//   } catch (error) {
-//     toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
-//   }
-// };
 
 myApi.deleteAllCheckinsByHabitId = async function (habitId) {
   try {
@@ -123,5 +116,30 @@ myApi.fetchCheckinsByHabitId = async function (habitId) {
     return data;
   } catch (error) {
     toast.error(`${error.message}. ${messageForUser.Reload}`);
+  }
+};
+
+myApi.fetchBookmarks = async function () {
+  try {
+    const { data } = await myApi.get(apiRoutes.FavoriteHabits);
+    return data;
+  } catch (error) {
+    toast.error(`${error.message}. ${messageForUser.Reload}`);
+  }
+};
+
+myApi.createNewBookmark = async function (habit) {
+  try {
+    await myApi.post(apiRoutes.FavoriteHabits, habit);
+  } catch (error) {
+    toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
+  }
+};
+
+myApi.deleteBookmark = async function (id) {
+  try {
+    await myApi.delete(`${apiRoutes.FavoriteHabits}/${id}`);
+  } catch (error) {
+    toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
   }
 };

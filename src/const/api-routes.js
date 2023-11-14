@@ -1,8 +1,4 @@
 export const apiRoutes = {
-  AllHabits: '/my_habits',
-  ExploreHabits: '/habits',
-  AllCheckins: '/checkins',
-
   GlobalHabits: '/api/globalhabits',
   MyHabits: 'api/myhabits',
   FavoriteHabits: '/api/favorite-habits',

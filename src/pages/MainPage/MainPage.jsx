@@ -66,7 +66,7 @@ function MainPage() {
           />
           <div className="page-main__decoration">
             <section className="habits">
-              <h2>my habits</h2>
+              <h2>My habits</h2>
               <ul className="habits__list">
                 {habits.map((habit) => {
                   return (

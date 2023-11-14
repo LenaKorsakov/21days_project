@@ -7,6 +7,7 @@
   box-shadow: rgba(0, 0, 0, 0.138) 0px 4px 12px;
   padding: 1vh 1vw;
   border-radius: 20px;
+  position: relative;
 
   gap: 0.5vw;
 
@@ -15,14 +16,40 @@
   }
 
   & h3 {
-    color: var(--blue);
     font-size: clamp(1.3vh, 1.4vw, 1.35vh);
+
+    .habit__type {
+      color: var(--light-blue);
+    }
   }
 
-  & button {
+  & .habit__favorite_btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
     border: 0;
     background-color: transparent;
-    cursor: pointer;
+
+    & svg {
+      width: 2.5vh;
+      cursor: pointer;
+      stroke: var(--light-blue);
+      fill: none;
+
+      @media (max-width: 501px) {
+        width: 2vh;
+      }
+    }
+
+    .active {
+      fill: var(--dark-green);
+      stroke: none;
+    }
+
+    & svg:hover {
+      fill: var(--light-green);
+      stroke: none;
+    }
   }
 
   .btn--add {
@@ -49,7 +76,6 @@
   }
 
   .container--emoji {
-    /* border: 1px solid var(--gray); */
     border-radius: 50%;
     box-shadow: rgba(0, 0, 0, 0.138) 0px 4px 12px;
     width: 2.8vw;
@@ -89,6 +115,14 @@
       width: 80%;
     }
   }
+
+  .quit {
+    color: var(--dark-pink);
+  }
+
+  .build {
+    color: var(--dark-blue);
+  }
 }
 
 .GlobalHabitCard:hover {
@@ -98,13 +132,13 @@
 }
 
 .GlobalHabitCard--quit {
-  background: radial-gradient(
-    circle at 50% 3%,
-    rgb(246, 215, 228) 0%,
-    var(--white) 100%
+  background: linear-gradient(
+    to bottom left,
+    rgb(240, 188, 210) 0%,
+    var(--white) 45%
   );
 }
 
 .GlobalHabitCard--build {
-  background: radial-gradient(circle at 50% 3%, #85bc8b 0%, var(--white) 90.5%);
+  background: linear-gradient(to bottom left, var(--blue) 0%, var(--white) 45%);
 }

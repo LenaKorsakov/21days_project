@@ -52,13 +52,15 @@ function HabitPage() {
           </div>
           <div className="habit-page__info-wrapper">
             <p className="habit-page__category">Category: {habit.category}</p>
+            <p className="habit-page__category">
+              You want to {habit.type} this habit
+            </p>
             <p className="habit-page__description">{habit.description}</p>
           </div>
           <div className="habit-page__bottom">
             <div className="habit-page__stats-wrapper">
               <p className="habit-page__streak">
-                <span>Days in the row: </span>
-                {daysInRow}
+                {daysInRow} <span>days streak </span>
               </p>
               <p className="habit-page__misses">
                 <span>Misses:</span> {misses}
