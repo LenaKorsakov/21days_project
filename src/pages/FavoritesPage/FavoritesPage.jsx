@@ -15,6 +15,8 @@ import { buttonMesage } from '../../const/const';
 function FavoritesPage() {
   const [habits, setHabits] = useState(null);
   const [bookmarks, setBookmarks] = useState(null);
+  const [completedHabits, setCompletedHabits] = useState(null);
+
   const { authenticateUser } = useAuth();
   const navigate = useNavigate();
 
@@ -28,9 +30,15 @@ function FavoritesPage() {
     setBookmarks(data);
   };
 
+  const fetchCompletedHabits = async () => {
+    const data = await myApi.fetchCompletedHabits();
+    setCompletedHabits(data);
+  };
+
   useEffect(() => {
     fetchAllHabits();
     fetchBookmarks();
+    fetchCompletedHabits();
   }, []);
 
   const handleLogoutClick = () => {
@@ -39,7 +47,7 @@ function FavoritesPage() {
     navigate(appRoutes.Login);
   };
 
-  if (!habits || !bookmarks) {
+  if (!habits || !bookmarks || !completedHabits) {
     return <LoadingPage />;
   }
   return (
@@ -65,8 +73,15 @@ function FavoritesPage() {
 
             <div className="habits__info">
               <h2>Your completed habits</h2>
-              <p>You've completed {habits.length} habits.</p>
-              <p>Good work!</p>
+              {completedHabits.length > 0 ? (
+                <>
+                  <p>You've completed {completedHabits.length} habits.</p>
+                  <p>Good work!</p>
+                </>
+              ) : (
+                <p>You haven't completed any habits yet</p>
+              )}
+
               <Link
                 className="btn btn--add"
                 title="To explore page"

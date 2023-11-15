@@ -12,7 +12,7 @@ import { appRoutes } from '../../const/app-routes';
 import { messageForUser, serverResponse } from '../../const/const';
 
 const passwordRegex = /^(?=.*?[A-Za-z])(?=.*?[0-9]).{2,}$/;
-const loginRegex =
+const emailRegex =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 function LoginForm() {
@@ -28,19 +28,17 @@ function LoginForm() {
   const { authenticateUser } = useAuth();
 
   const validateEmail = (value) => {
-    if (value.match(loginRegex) === null) {
+    if (!value.match(emailRegex)) {
       setIsEmailError(true);
+      return true;
     }
   };
 
   const validatePassword = (value) => {
-    console.log(value, value.match(passwordRegex));
-    if (value.match(passwordRegex) === null) {
-      console.log('fefofkjf');
+    if (!value.match(passwordRegex)) {
       setIsPasswordError(true);
-      console.log(isPasswordError);
+      return true;
     }
-    console.log(isPasswordError);
   };
 
   const navigateUser = () => {
@@ -59,15 +57,13 @@ function LoginForm() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    setError('');
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
-    validatePassword(password);
-    validateEmail(email);
+    const isErrEmail = validateEmail(email);
+    const isErrPass = validatePassword(password);
 
-    console.log(isEmailError, isPasswordError);
-    if (!isEmailError && !isPasswordError) {
+    if (!isErrEmail && !isErrPass) {
       try {
         const { data } = await myApi.post(apiRoutes.Login, { email, password });
         localStorage.setItem('authToken', data.token);
@@ -95,7 +91,8 @@ function LoginForm() {
       setTimeout(() => {
         setIsEmailError(false);
         setIsPasswordError(false);
-      }, 6000);
+        setError('');
+      }, 3000);
     }
   };
 
@@ -127,7 +124,7 @@ function LoginForm() {
             ref={passwordRef}
             type="password"
             name="password"
-            className={`form__item ${isEmailError ? 'error' : ''}`}
+            className={`form__item ${isPasswordError ? 'error' : ''}`}
             autoComplete="off"
             required
           />

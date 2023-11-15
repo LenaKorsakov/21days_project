@@ -24,7 +24,6 @@
     background-color: var(--light-green);
     color: var(--white);
     border-radius: 0;
-    width: 13vw;
     font-size: clamp(1vh, 2vw, 2.5vh);
     height: 100%;
   }

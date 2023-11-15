@@ -9,6 +9,11 @@
   border-radius: 20px;
   padding: 1vh;
 
+  @media (max-width: 500px) {
+    border: 0;
+    width: 100%;
+  }
+
   .form__label {
     width: 100%;
     padding: 0;
@@ -29,7 +34,13 @@
 
   .btn--login {
     padding: 1vh 1.5vw;
-    min-width: 20%;
+    width: 40%;
+    font-size: clamp(2vh, 0.9vw, 0.8vh);
+    margin: 3vh;
+
+    @media (max-width: 500px) {
+      width: 60%;
+    }
   }
 
   .error {
@@ -39,6 +50,13 @@
   .error-message {
     color: red;
     padding-bottom: 0;
-    font-size: clamp(0.8vh, 0.6vw, 0.7vh);
+    font-size: clamp(1vh, 1.1vw, 0.9vh);
+  }
+
+  .login__input-wrapper {
+    width: 40%;
+    @media (max-width: 500px) {
+      width: 60%;
+    }
   }
 }

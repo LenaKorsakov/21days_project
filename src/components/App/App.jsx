@@ -43,9 +43,9 @@ function App() {
 
             <Route path={appRoutes.Favorites} element={<FavoritesPage />} />
           </Route>
+          <Route path={appRoutes.Explore} element={<ExplorePage />} />
         </Route>
 
-        <Route path={appRoutes.Explore} element={<ExplorePage />} />
         <Route path={appRoutes.NotFound} element={<NotFoundPage />} />
       </Routes>
       <Footer />

@@ -89,6 +89,11 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
     }, 1500);
   };
 
+  const handleDeleteHabit = async () => {
+    await myApi.addToCompletedHabits(habit);
+    await onDeleteButton(habit._id);
+  };
+
   return (
     <div className="HabitInProgressRow">
       {isLastDayOfHabit ? (
@@ -114,10 +119,7 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
             <button className="btn--start" onClick={handleStartAgain}>
               {isLoading ? 'Starting again...' : 'Start again?'}
             </button>
-            <button
-              className="btn--delete"
-              onClick={() => onDeleteButton(habit._id)}
-            >
+            <button className="btn--delete" onClick={handleDeleteHabit}>
               <svg
                 style={{ width: '2vh' }}
                 xmlns="http://www.w3.org/2000/svg"

@@ -7,4 +7,5 @@ export const apiRoutes = {
   Login: '/auth/login',
   Signup: '/auth/signup',
   Auth: '/auth/verify',
+  Completed: '/api/completed-habits',
 };

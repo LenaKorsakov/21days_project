@@ -1,8 +1,11 @@
 .HabitCard {
   display: flex;
-  background-color: #fff;
+  background-color: var(--white);
   border-radius: 20px;
   justify-content: space-between;
+  @media (min-width: 1400px) {
+    height: 80px;
+  }
 
   .habit__type {
     display: flex;

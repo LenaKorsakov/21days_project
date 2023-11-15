@@ -47,14 +47,15 @@ function HabitPage() {
       <div className="container">
         <div className="habit-page__content">
           <h1 className="habit-page__title">{habit.title}</h1>
+          <small className="habit-page__type">
+            You want to {habit.type} this habit
+          </small>
           <div className="habit-page__emoji">
             <span>{habit.emoji}</span>
           </div>
           <div className="habit-page__info-wrapper">
             <p className="habit-page__category">Category: {habit.category}</p>
-            <p className="habit-page__category">
-              You want to {habit.type} this habit
-            </p>
+
             <p className="habit-page__description">{habit.description}</p>
           </div>
           <div className="habit-page__bottom">

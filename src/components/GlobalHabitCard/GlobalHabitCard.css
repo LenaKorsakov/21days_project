@@ -42,12 +42,12 @@
     }
 
     .active {
-      fill: var(--dark-green);
+      fill: var(--light-blue);
       stroke: none;
     }
 
     & svg:hover {
-      fill: var(--light-green);
+      fill: var(--light-blue);
       stroke: none;
     }
   }

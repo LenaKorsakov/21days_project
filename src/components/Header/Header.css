@@ -12,11 +12,11 @@
   }
 
   @media (min-width: 501px) and (max-width: 800px) {
-    height: 65px;
+    height: 70px;
   }
 
   @media (max-width: 500px) {
-    height: 55px;
+    height: 65px;
   }
 
   .page-header__title {
@@ -68,7 +68,7 @@
     }
 
     & p {
-      font-size: clamp(1.5vh, 2vw, 2.3vh);
+      font-size: clamp(1.5vh, 2vw, 1.9vh);
       font-family: 'JosefinSans';
       color: var(--white);
       position: relative;
@@ -131,11 +131,7 @@
     }
 
     & .link {
-      font-size: clamp(2vh, 2vw, 1.4vw);
-
-      @media (min-width: 1401px) {
-        font-size: clamp(1vh, 1.5vw, 2vw);
-      }
+      font-size: clamp(2vh, 1.7vw, 2.3vh);
 
       &.active {
         color: var(--gray);

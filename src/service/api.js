@@ -143,3 +143,20 @@ myApi.deleteBookmark = async function (id) {
     toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
   }
 };
+
+myApi.fetchCompletedHabits = async function () {
+  try {
+    const { data } = await myApi.get(apiRoutes.Completed);
+    return data;
+  } catch (error) {
+    toast.error(`${error.message}. ${messageForUser.Reload}`);
+  }
+};
+
+myApi.addToCompletedHabits = async function (habit) {
+  try {
+    await myApi.post(apiRoutes.Completed, habit);
+  } catch (error) {
+    toast.warn(`${error.message}. ${messageForUser.TryAgain}`);
+  }
+};

@@ -78,9 +78,9 @@ function ExplorePage() {
       <Header />
       <main className="ExplorePage ">
         <div className="page-explore__container">
-          <h1 className="page-explore__title">explore our habit ideas</h1>
+          <h1 className="page-explore__title">Explore our habits ideas</h1>
           <section className="filter__section">
-            <h2>filter by:</h2>
+            <h2>filtered by:</h2>
             <ul className="filter__list">
               {filtersCategories.map((category) => {
                 return (
@@ -101,7 +101,7 @@ function ExplorePage() {
                 <Link
                   title="To add habit form"
                   to={appRoutes.AddHabit}
-                  className="link"
+                  className="link link--add"
                 >
                   But you can create your own habit here!
                 </Link>

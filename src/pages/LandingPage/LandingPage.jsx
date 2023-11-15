@@ -16,10 +16,7 @@ function LandingPage() {
         </div>
         <h1>It seems like you want to start building habits!</h1>
         <p>What a great opportunity for it!</p>
-        <p>
-          You can now Sign Up to create your own habits or Get started to
-          explore habits from our selection:
-        </p>
+        <p>You can now Sign Up to create your own habits or just Log In:</p>
 
         <div className="Landing-page__buttons-wrapper">
           <div className="button__container">
@@ -30,10 +27,6 @@ function LandingPage() {
               <p className="login-link link">Already have an account? Login</p>
             </Link>
           </div>
-
-          <Link to={appRoutes.Explore} className="button__container">
-            <div className="btn btn--nav">Get started</div>
-          </Link>
         </div>
       </main>
     </>
