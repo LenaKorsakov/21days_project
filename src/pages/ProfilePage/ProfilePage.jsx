@@ -1,18 +1,18 @@
-import './FavoritesPage.css';
+import './ProfilePage.css';
 
-import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-import LoadingPage from '../LoadingPage/LoadingPage';
 import { useAuth } from '../../components/AuthContextWrapper/AuthContextWrapper';
 import BookmarkCard from '../../components/BookmarkCard/BookmarkCard';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 import { myApi } from '../../service/api';
 
 import { appRoutes } from '../../const/app-routes';
 import { buttonMesage } from '../../const/const';
 
-function FavoritesPage() {
+function ProfilePage() {
   const [habits, setHabits] = useState(null);
   const [bookmarks, setBookmarks] = useState(null);
   const [completedHabits, setCompletedHabits] = useState(null);
@@ -56,8 +56,20 @@ function FavoritesPage() {
         <div className="page-favorites__container">
           <section className="habits">
             <div className="habits__info">
-              <h2>Your active habits</h2>
-              <p>You have {habits.length} active habits.</p>
+              <h2>Your habits</h2>
+
+              {habits.length > 0 ? (
+                <p>
+                  You have {habits.length}{' '}
+                  {habits.length === 1 ? (
+                    <span>habit now.</span>
+                  ) : (
+                    <span>habits now.</span>
+                  )}
+                </p>
+              ) : (
+                <p>You don't have habits yet. Add your first one!</p>
+              )}
               <Link
                 className="btn btn--add"
                 title="To add habit form"
@@ -75,7 +87,14 @@ function FavoritesPage() {
               <h2>Your completed habits</h2>
               {completedHabits.length > 0 ? (
                 <>
-                  <p>You've completed {completedHabits.length} habits.</p>
+                  <p>
+                    For now you've completed {completedHabits.length}{' '}
+                    {completedHabits.length === 1 ? (
+                      <span>habit.</span>
+                    ) : (
+                      <span>habits.</span>
+                    )}
+                  </p>
                   <p>Good work!</p>
                 </>
               ) : (
@@ -117,6 +136,7 @@ function FavoritesPage() {
                       habit={habit}
                       key={habit._id}
                       onFetchBookmarks={fetchBookmarks}
+                      onFetchMyHabits={fetchAllHabits}
                     />
                   );
                 })
@@ -132,4 +152,4 @@ function FavoritesPage() {
   );
 }
 
-export default FavoritesPage;
+export default ProfilePage;

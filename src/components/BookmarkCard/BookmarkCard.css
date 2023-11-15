@@ -4,7 +4,7 @@
   border-radius: 20px;
   justify-content: space-between;
 
-  .habit__type {
+  .emoji__container {
     display: flex;
     align-items: center;
     padding: 0.3vh;
@@ -13,19 +13,30 @@
   }
 
   & h3 {
-    font-size: clamp(1.5vh, 2vw, 2.5vh);
+    font-size: clamp(2vh, 2.2vw, 3.1vh);
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    color: var(--lightblue);
+    color: var(--light-blue);
+
+    & span {
+      color: var(--blue);
+    }
+  }
+
+  .habit__buttons {
+    display: flex;
+    align-items: center;
   }
 
   .btn--complete {
     background-color: var(--light-green);
     color: var(--white);
     border-radius: 0;
-    font-size: clamp(1vh, 2vw, 2.5vh);
+    font-size: clamp(1.5vh, 2.2vw, 3.1vh);
+    border: none;
     height: 100%;
+    font-family: 'JosefinSans';
   }
 
   .btn--complete:hover {

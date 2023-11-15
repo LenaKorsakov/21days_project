@@ -1,5 +1,5 @@
-import './App.css';
 import { Route, Routes } from 'react-router-dom';
+import './App.css';
 
 import AddNewHabitPage from '../../pages/AddNewHabitPage/AddNewHabitPage';
 import EditHabitPage from '../../pages/EditHabitPage/EditHabitPage';
@@ -9,14 +9,14 @@ import LandingPage from '../../pages/LandingPage/LandingPage';
 import LoginPage from '../../pages/LoginPage/LoginPage';
 import MainPage from '../../pages/MainPage/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
+import ProfilePage from '../../pages/ProfilePage/ProfilePage';
+import SignupPage from '../../pages/SignupPage/SignupPage';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import SignupPage from '../../pages/SignupPage/SignupPage';
-import FavoritesPage from '../../pages/FavoritesPage/FavoritesPage';
 
 import { appRoutes } from '../../const/app-routes';
-import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import AuthRedirect from '../AuthRedirect/AuthRedirect';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -41,7 +41,7 @@ function App() {
               element={<EditHabitPage />}
             />
 
-            <Route path={appRoutes.Favorites} element={<FavoritesPage />} />
+            <Route path={appRoutes.Favorites} element={<ProfilePage />} />
           </Route>
           <Route path={appRoutes.Explore} element={<ExplorePage />} />
         </Route>

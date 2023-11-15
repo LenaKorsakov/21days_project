@@ -4,13 +4,13 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import FilterItem from '../../components/FilterItem/FilterItem';
-import LoadingPage from '../LoadingPage/LoadingPage';
 import GlobalHabitCard from '../../components/GlobalHabitCard/GlobalHabitCard';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
+import Header from '../../components/Header/Header';
 import { appRoutes } from '../../const/app-routes';
 import { filtersCategories } from '../../const/const';
 import { myApi } from '../../service/api';
-import Header from '../../components/Header/Header';
 
 function ExplorePage() {
   const [globalHabits, setGlobalHabits] = useState(null);
@@ -132,3 +132,6 @@ function ExplorePage() {
 }
 
 export default ExplorePage;
+
+// TODO добавить фильтрацию по категории build and quit, добавить фильтры в url. добавить визуально тип привычки на главной, добавить обновление токена
+//добавить возможность поиска и пагинацию

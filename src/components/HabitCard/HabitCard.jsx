@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { appRoutes } from '../../const/app-routes';
-import { buttonMesage } from '../../const/const';
+import { buttonMesage, habitType } from '../../const/const';
 import { debounce } from 'lodash';
 import { myApi } from '../../service/api';
 import LoadingPage from '../../pages/LoadingPage/LoadingPage';
@@ -75,7 +75,11 @@ function HabitCard({
   }
 
   return (
-    <li className="HabitCard">
+    <li
+      className={`HabitCard ${
+        habit.type === habitType.Build ? 'habit-build' : 'habit-quit'
+      }`}
+    >
       <div className="habit__type">
         <Link to={`${appRoutes.Habit}/${habit._id}`} title="To the habit page">
           <span className="habit__emoji">{habit.emoji}</span>

@@ -51,3 +51,8 @@ export const checkBoxesColors = {
   Yellow: 'yellow',
   Off: 'off',
 };
+
+export const habitType = {
+  Build: 'build',
+  Quit: 'quit',
+};

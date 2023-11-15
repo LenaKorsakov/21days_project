@@ -158,6 +158,8 @@ function HabitForm({ habit }) {
 
           {showEmojis && (
             <EmojiPicker
+              width={250}
+              suggestedEmojisMode="recent"
               onEmojiClick={(emojiData, event) => {
                 setShowEmojis(false);
                 setEmojiValue(emojiData.emoji);

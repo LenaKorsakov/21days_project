@@ -1,8 +1,7 @@
-import { async } from 'rxjs';
 import { myApi } from '../../service/api';
 import './Bookmarkcard.css';
 
-function BookmarkCard({ habit, onFetchBookmarks }) {
+function BookmarkCard({ habit, onFetchBookmarks, onFetchMyHabits }) {
   const { emoji, title, type, description, category, _id } = habit;
 
   const deleteBookmark = async () => {
@@ -20,21 +19,21 @@ function BookmarkCard({ habit, onFetchBookmarks }) {
     });
 
     deleteBookmark();
+    onFetchMyHabits();
   };
 
   return (
     <li className="BookmarkCard">
-      <div className="habit__type">
+      <div className="emoji__container">
         <span className="habit__emoji">{emoji}</span>
       </div>
       <div className="container">
-        <h3 className="habit__title">{title}</h3>
+        <h3 className="habit__title">
+          Let's {type} <span>{title}</span>
+        </h3>
       </div>
       <div className="habit__buttons">
-        <button
-          className="btn btn--complete"
-          onClick={handleAddToMyHabitsClick}
-        >
+        <button className="btn--complete" onClick={handleAddToMyHabitsClick}>
           Add to my habits
         </button>
         <button className="btn btn--delete" onClick={() => deleteBookmark()}>
@@ -62,9 +61,3 @@ function BookmarkCard({ habit, onFetchBookmarks }) {
 }
 
 export default BookmarkCard;
-
-// <Link
-//         className="link"
-//         to={`${appRoutes.Habit}/${habit._id}`}
-//         title="To the habit page"
-//       ></Link>

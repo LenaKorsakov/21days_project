@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { apiRoutes } from '../const/api-routes';
 import { messageForUser } from '../const/const';
 
-const BACKEND_URL_DEV = 'http://localhost:5005/';
+const BACKEND_URL_DEV = 'https://21days.fly.dev/';
 const REQUEST_TIMEOUT = 5000;
 
 export const myApi = axios.create({

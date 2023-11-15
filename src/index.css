@@ -92,6 +92,7 @@ html {
   line-height: 1.5;
   font-family: 'JosefinSans', 'Roboto', 'Helvetica', sans-serif;
   height: 100%;
+  background-color: #a4d8ee;
 }
 
 body {
@@ -163,4 +164,16 @@ a {
 
 .title--uppercase {
   text-transform: uppercase;
+}
+
+.habit-quit {
+  background: linear-gradient(
+    to bottom left,
+    rgb(240, 188, 210) 0%,
+    var(--white) 45%
+  );
+}
+
+.habit-build {
+  background: linear-gradient(to bottom left, var(--blue) 0%, var(--white) 45%);
 }
