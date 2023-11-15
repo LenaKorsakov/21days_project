@@ -1,5 +1,5 @@
 import { myApi } from '../../service/api';
-import './Bookmarkcard.css';
+import './BookmarkCard.css';
 
 function BookmarkCard({ habit, onFetchBookmarks, onFetchMyHabits }) {
   const { emoji, title, type, description, category, _id } = habit;
