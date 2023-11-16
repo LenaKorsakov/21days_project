@@ -3,8 +3,8 @@
   background-color: var(--white);
   border-radius: 20px;
   justify-content: space-between;
-  @media (min-width: 1400px) {
-    height: 80px;
+  @media (min-width: 1400px) and (max-width: 2000px) {
+    height: 100px;
   }
 
   .habit__type {
@@ -39,6 +39,10 @@
     border-radius: 0;
     width: 13vw;
     font-size: clamp(1vh, 2vw, 2.5vh);
+    @media (max-width: 500px) {
+      width: 10vh;
+      height: 8vh;
+    }
   }
 
   & .btn--edit {
@@ -62,6 +66,10 @@
     border-radius: 0;
     width: 13vw;
     font-size: clamp(1vh, 2vw, 2.5vh);
+    @media (max-width: 500px) {
+      width: 11vh;
+      height: 7vh;
+    }
   }
 }
 

@@ -12,6 +12,7 @@ const initialState = {
   description: '',
   emoji: '',
   category: 'default',
+  type: 'default',
   start_day: '',
 };
 
@@ -39,6 +40,7 @@ function HabitForm({ habit }) {
         description: habit.description,
         emoji: habit.emoji,
         category: habit.category,
+        type: habit.type,
         start_day: habit.start_day,
       };
       setFormData(prefilledForm);
@@ -50,7 +52,8 @@ function HabitForm({ habit }) {
     if (
       formData.title !== '' &&
       formData.category !== 'default' &&
-      formData.emoji !== ''
+      formData.emoji !== '' &&
+      formData.type !== 'default'
     ) {
       setDisableButton(false);
     }
@@ -193,6 +196,32 @@ function HabitForm({ habit }) {
               })}
               <option value="other" default>
                 other
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div className="container container-category">
+          <label className="form__label title--uppercase" htmlFor="category">
+            Type*
+          </label>
+          <div>
+            <select
+              name="type"
+              id="type"
+              className="form__item"
+              value={formData.type}
+              onChange={handleChange}
+            >
+              <option disabled value="default">
+                Pick a type
+              </option>
+
+              <option value="build" default>
+                build
+              </option>
+              <option value="quit" default>
+                quit
               </option>
             </select>
           </div>

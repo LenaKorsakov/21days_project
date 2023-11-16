@@ -83,7 +83,7 @@ function Header() {
 
             {authStatus === authorizationStatus.Auth && (
               <li>
-                <button className="btn link" onClick={handleLogout}>
+                <button className="btn link btn--logout" onClick={handleLogout}>
                   Log out
                 </button>
               </li>

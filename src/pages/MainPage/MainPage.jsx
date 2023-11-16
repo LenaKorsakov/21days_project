@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom';
-import HabitCard from '../../components/HabitCard/HabitCard';
 import './MainPage.css';
+import { Link } from 'react-router-dom';
 
 import { useEffect, useState } from 'react';
 
+import HabitCard from '../../components/HabitCard/HabitCard';
 import HabitInProgressList from '../../components/HabitInProgress/HabitInProgressList';
 import LoadingPage from '../LoadingPage/LoadingPage';
+import Footer from '../../components/Footer/Footer';
 
 import { myApi } from '../../service/api';
 
@@ -95,6 +96,7 @@ function MainPage() {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 }

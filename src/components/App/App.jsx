@@ -11,7 +11,6 @@ import MainPage from '../../pages/MainPage/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import ProfilePage from '../../pages/ProfilePage/ProfilePage';
 import SignupPage from '../../pages/SignupPage/SignupPage';
-import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 
 import { appRoutes } from '../../const/app-routes';
@@ -42,13 +41,12 @@ function App() {
             />
 
             <Route path={appRoutes.Favorites} element={<ProfilePage />} />
+            <Route path={appRoutes.Explore} element={<ExplorePage />} />
           </Route>
-          <Route path={appRoutes.Explore} element={<ExplorePage />} />
         </Route>
 
         <Route path={appRoutes.NotFound} element={<NotFoundPage />} />
       </Routes>
-      <Footer />
     </>
   );
 }

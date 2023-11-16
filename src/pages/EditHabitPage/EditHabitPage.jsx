@@ -1,10 +1,12 @@
-import HabitForm from '../../components/HabitForm/HabitForm';
 import './EditHabitPage.css';
 import { useParams } from 'react-router-dom';
-import { myApi } from '../../service/api';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { myApi } from '../../service/api';
+
+import HabitForm from '../../components/HabitForm/HabitForm';
 import LoadingPage from '../LoadingPage/LoadingPage';
+import Footer from '../../components/Footer/Footer';
 
 function EditHabitPage() {
   const [habit, setHabit] = useState(null);
@@ -24,14 +26,17 @@ function EditHabitPage() {
   }
 
   return (
-    <main className="EditHabitPage">
-      <div className="container">
-        <div className="add-new-page-content__title-wrapper">
-          <h1 className="subtitle">Edit Your Habit</h1>
+    <>
+      <main className="EditHabitPage">
+        <div className="container">
+          <div className="add-new-page-content__title-wrapper">
+            <h1 className="subtitle">Edit Your Habit</h1>
+          </div>
+          <HabitForm habit={habit} />
         </div>
-        <HabitForm habit={habit} />
-      </div>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }
 

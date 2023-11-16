@@ -36,6 +36,10 @@
       width: 40vw;
       margin-top: 4vh;
     }
+
+    & p {
+      font-size: clamp(1.5vh, 2.2vw, 2vh);
+    }
   }
 
   .habits__info:hover {
@@ -66,7 +70,7 @@
     }
 
     .btn--logout {
-      width: 96%;
+      width: 94%;
       background-color: var(--blue);
       margin-top: 4vh;
       font-size: clamp(1.5vh, 3vw, 3.5vh);
@@ -81,13 +85,6 @@
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 2.5vh;
-
-    & h2 {
-      font-size: clamp(1.5vh, 3vw, 3.5vh);
-      margin: 2.5vh 1vw 0;
-      font-family: 'LilitaOne', sans-serif;
-      color: var(--gray);
-    }
   }
 
   .habits__list {
@@ -110,5 +107,12 @@
 
   .btn--add:hover {
     background-color: var(--dark-pink);
+  }
+
+  & h2 {
+    font-size: clamp(2.5vh, 3vw, 3.5vh);
+    margin: 2.5vh 1vw 0;
+    font-family: 'LilitaOne', sans-serif;
+    color: var(--gray);
   }
 }

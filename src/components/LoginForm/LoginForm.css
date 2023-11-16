@@ -9,7 +9,7 @@
   border-radius: 20px;
   padding: 1vh;
 
-  @media (max-width: 500px) {
+  @media (max-width: 768px) {
     border: 0;
     width: 100%;
   }

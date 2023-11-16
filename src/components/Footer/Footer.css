@@ -12,7 +12,7 @@
     font-size: 1vh;
   }
 
-  @media (min-width: 501px) {
+  @media (min-width: 769px) {
     display: none !important;
   }
 

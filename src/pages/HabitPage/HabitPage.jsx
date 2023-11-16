@@ -8,6 +8,7 @@ import { myApi } from '../../service/api';
 
 import LoadingPage from '../LoadingPage/LoadingPage';
 import Days from '../../components/Days/Days';
+import Footer from '../../components/Footer/Footer';
 
 function HabitPage() {
   const [habit, setHabit] = useState(null);
@@ -43,46 +44,49 @@ function HabitPage() {
     return <LoadingPage />;
   }
   return (
-    <main className="HabitPage">
-      <div className="container">
-        <div className="habit-page__content">
-          <h1 className="habit-page__title">{habit.title}</h1>
-          <small className="habit-page__type">
-            You want to {habit.type} this habit
-          </small>
-          <div className="habit-page__emoji">
-            <span>{habit.emoji}</span>
-          </div>
-          <div className="habit-page__info-wrapper">
-            <p className="habit-page__category">Category: {habit.category}</p>
-
-            <p className="habit-page__description">{habit.description}</p>
-          </div>
-          <div className="habit-page__bottom">
-            <div className="habit-page__stats-wrapper">
-              <p className="habit-page__streak">
-                {daysInRow} <span>days streak </span>
-              </p>
-              <p className="habit-page__misses">
-                <span>Misses:</span> {misses}
-              </p>
+    <>
+      <main className="HabitPage">
+        <div className="container">
+          <div className="habit-page__content">
+            <h1 className="habit-page__title">{habit.title}</h1>
+            <small className="habit-page__type">
+              You want to {habit.type} this habit
+            </small>
+            <div className="habit-page__emoji">
+              <span>{habit.emoji}</span>
             </div>
-            <h2 className="habit-page__title habit-page__title--dark">
-              Daily Progress
-            </h2>
-            <div className="calendar">
-              <Days
-                habit={habit}
-                checkins={checkins}
-                onChangeMisses={onChangeMisses}
-                onChangeDaysInRow={onChangeDaysInRow}
-                fetchCheckins={fetchCheckins}
-              />
+            <div className="habit-page__info-wrapper">
+              <p className="habit-page__category">Category: {habit.category}</p>
+
+              <p className="habit-page__description">{habit.description}</p>
+            </div>
+            <div className="habit-page__bottom">
+              <div className="habit-page__stats-wrapper">
+                <p className="habit-page__streak">
+                  {daysInRow} <span>days streak </span>
+                </p>
+                <p className="habit-page__misses">
+                  <span>Misses:</span> {misses}
+                </p>
+              </div>
+              <h2 className="habit-page__title habit-page__title--dark">
+                Daily Progress
+              </h2>
+              <div className="calendar">
+                <Days
+                  habit={habit}
+                  checkins={checkins}
+                  onChangeMisses={onChangeMisses}
+                  onChangeDaysInRow={onChangeDaysInRow}
+                  fetchCheckins={fetchCheckins}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }
 

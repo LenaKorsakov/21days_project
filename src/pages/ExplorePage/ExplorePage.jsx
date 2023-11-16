@@ -8,6 +8,8 @@ import GlobalHabitCard from '../../components/GlobalHabitCard/GlobalHabitCard';
 import LoadingPage from '../LoadingPage/LoadingPage';
 
 import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+
 import { appRoutes } from '../../const/app-routes';
 import { filtersCategories } from '../../const/const';
 import { myApi } from '../../service/api';
@@ -75,7 +77,6 @@ function ExplorePage() {
 
   return (
     <>
-      <Header />
       <main className="ExplorePage ">
         <div className="page-explore__container">
           <h1 className="page-explore__title">Explore our habits ideas</h1>
@@ -127,6 +128,7 @@ function ExplorePage() {
           </section>
         </div>
       </main>
+      <Footer />
     </>
   );
 }

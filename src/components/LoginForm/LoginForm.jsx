@@ -108,7 +108,7 @@ function LoginForm() {
           <label className="form__label">E-mail</label>
           <input
             ref={emailRef}
-            // autoComplete="off"
+            autoComplete="off"
             className={`form__item ${isEmailError ? 'error' : ''}`}
             name="email"
             autoFocus
@@ -133,7 +133,7 @@ function LoginForm() {
           )}
         </div>
         <button className="btn btn--login" type="submit">
-          LOG IN
+          Log In
         </button>
       </form>
       {error ? (

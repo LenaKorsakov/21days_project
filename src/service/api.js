@@ -5,7 +5,7 @@ import { apiRoutes } from '../const/api-routes';
 import { messageForUser } from '../const/const';
 
 const BACKEND_URL_DEV = 'https://21days.fly.dev/';
-const REQUEST_TIMEOUT = 5000;
+const REQUEST_TIMEOUT = 10000;
 
 export const myApi = axios.create({
   baseURL: BACKEND_URL_DEV,

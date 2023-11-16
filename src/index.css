@@ -118,7 +118,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* padding: 1vw; */
+
   flex-direction: column;
 }
 
@@ -151,7 +151,6 @@ a {
   font-size: clamp(1vh, 0.5vw, 1.1vh);
   color: var(--white);
   overflow-wrap: anywhere;
-  /* background-color: rgba(255, 255, 255, 0); */
   cursor: pointer;
   padding: 0.4rem 0.4rem;
 }

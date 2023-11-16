@@ -10,6 +10,10 @@
     padding-top: 56px;
   }
 
+  @media (min-width: 2500px) {
+    padding-top: 200px;
+  }
+
   background-color: var(--light-yellow);
 
   .habit-page__picture {
@@ -107,5 +111,11 @@
 
   & h2 {
     font-family: 'LilitaOne', sans-serif;
+  }
+
+  .habit-page__type {
+    @media (min-width: 2500px) {
+      font-size: 1.5vh;
+    }
   }
 }

@@ -15,10 +15,14 @@
     width: 300px;
   }
 
-  & h3 {
-    font-size: clamp(1.3vh, 1.4vw, 1.35vh);
+  @media (min-width: 2500px) {
+    width: 600px;
+  }
 
-    .habit__type {
+  & h3 {
+    font-size: clamp(1.1vh, 1.4vw, 1.35vh);
+
+    &.habit__type {
       color: var(--light-blue);
     }
   }
@@ -29,6 +33,11 @@
     top: 10px;
     border: 0;
     background-color: transparent;
+
+    @media (max-width: 501px) {
+      right: 4px;
+      top: 10px;
+    }
 
     & svg {
       width: 2.5vh;
@@ -57,6 +66,11 @@
     background-color: var(--light-green);
     color: white;
     margin-bottom: 1vw;
+
+    @media (max-width: 501px) {
+      width: 100%;
+      padding: 0.9vh 0.3vh;
+    }
   }
 
   .btn--add:hover {
@@ -108,11 +122,11 @@
     flex-direction: column;
 
     .habit__description {
-      font-size: clamp(1vh, 1.6vw, 1vh);
+      font-size: clamp(0.9vh, 1.6vw, 1vh);
       text-wrap: balance;
       color: var(--light-blue);
       text-wrap: balance;
-      width: 80%;
+      width: 100%;
     }
   }
 

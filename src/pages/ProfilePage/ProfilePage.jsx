@@ -7,6 +7,7 @@ import { useAuth } from '../../components/AuthContextWrapper/AuthContextWrapper'
 import BookmarkCard from '../../components/BookmarkCard/BookmarkCard';
 import LoadingPage from '../LoadingPage/LoadingPage';
 
+import Footer from '../../components/Footer/Footer';
 import { myApi } from '../../service/api';
 
 import { appRoutes } from '../../const/app-routes';
@@ -148,6 +149,7 @@ function ProfilePage() {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 }

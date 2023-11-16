@@ -162,7 +162,7 @@ function SignupForm() {
           )}
         </div>
         <button className="btn btn--login" type="submit">
-          SIGN UP
+          Sign Up
         </button>
       </form>
       {showMessageElement()}
