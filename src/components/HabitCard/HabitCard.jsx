@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { appRoutes } from '../../const/app-routes';
-import { buttonMesage, habitType } from '../../const/const';
+import { AMOUNT_OF_DAYS, buttonMesage, habitType } from '../../const/const';
 import { debounce } from 'lodash';
 import { myApi } from '../../service/api';
 import LoadingPage from '../../pages/LoadingPage/LoadingPage';
