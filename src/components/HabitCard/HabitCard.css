@@ -5,7 +5,7 @@
   justify-content: space-between;
   height: 80px;
   @media (min-width: 1200px) and (max-width: 2500px) {
-    height: 100px;
+    height: 60px;
   }
 
   .habit__type {
