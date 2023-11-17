@@ -30,6 +30,17 @@ function HabitCard({
     return todayCheckin;
   };
 
+  const firstDayOfHabit = dayjs(habit.start_day);
+  const lastDayOfHabit = firstDayOfHabit.add(AMOUNT_OF_DAYS, 'day');
+
+  const checkIsTodayAfterLastDayOfHabit = () => {
+    const isAfterLastDay = dayjs().isAfter(lastDayOfHabit, 'day');
+
+    if (isAfterLastDay) {
+      return true;
+    }
+  };
+
   const checkIsTodayWasCheckin = (checkins) => {
     if (checkins.length === 0) {
       setWasCompletedToday(false);
@@ -94,14 +105,18 @@ function HabitCard({
           {habit.title}
         </h3>
       </Link>
-      <button
-        className={`btn ${
-          wasCompletedToday ? 'btn--uncomplete' : 'btn--complete'
-        }`}
-        onClick={handleCompleteButtonDebonced}
-      >
-        {wasCompletedToday ? buttonMesage.Uncompleted : buttonMesage.Completed}
-      </button>
+      {!checkIsTodayAfterLastDayOfHabit() && (
+        <button
+          className={`btn ${
+            wasCompletedToday ? 'btn--uncomplete' : 'btn--complete'
+          }`}
+          onClick={handleCompleteButtonDebonced}
+        >
+          {wasCompletedToday
+            ? buttonMesage.Uncompleted
+            : buttonMesage.Completed}
+        </button>
+      )}
       <Link
         className="btn btn--edit"
         to={`${appRoutes.EditHabit}/${habit._id}`}

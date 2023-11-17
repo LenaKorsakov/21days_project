@@ -7,7 +7,7 @@ import { myApi } from '../../service/api';
 
 import LoadingPage from '../../pages/LoadingPage/LoadingPage';
 
-import { checkBoxesColors } from '../../const/const';
+import { AMOUNT_OF_DAYS, checkBoxesColors } from '../../const/const';
 
 function Days({
   habit,
@@ -25,17 +25,31 @@ function Days({
 
   const firstDayOfHabit = dayjs(new Date(habit.start_day)).startOf('day');
   const today = dayjs();
+  const lastDayOfHabit = firstDayOfHabit.add(AMOUNT_OF_DAYS, 'day');
 
-  const daysNumbers = [...Array(21).keys()];
+  const checkIsTodayLastDayOfHabit = () => {
+    const isLastDay = dayjs(lastDayOfHabit).isToday();
+    const isAfterLastDay = dayjs().isAfter(lastDayOfHabit, 'day');
+
+    if (isLastDay || isAfterLastDay) {
+      return true;
+    }
+  };
+
+  const daysNumbers = [...Array(AMOUNT_OF_DAYS).keys()];
 
   const countMisses = () => {
     if (checkins) {
       const currentCheckinsAmount = checkins.length;
-      const checkinsShouldBe = Math.round(
-        today.diff(firstDayOfHabit) / (1000 * 60 * 60 * 24)
-      );
 
-      return checkinsShouldBe - currentCheckinsAmount;
+      if (checkIsTodayLastDayOfHabit()) {
+        return AMOUNT_OF_DAYS - currentCheckinsAmount;
+      } else {
+        const checkinsShouldBe = Math.round(
+          today.diff(firstDayOfHabit) / (1000 * 60 * 60 * 24)
+        );
+        return checkinsShouldBe - currentCheckinsAmount;
+      }
     }
     return 0;
   };
