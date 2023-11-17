@@ -25,8 +25,7 @@ function Days({
 
   const firstDayOfHabit = dayjs(new Date(habit.start_day)).startOf('day');
   const today = dayjs();
-  const lastDayOfHabit = firstDayOfHabit.add(AMOUNT_OF_DAYS, 'day');
-  console.log(lastDayOfHabit);
+  const lastDayOfHabit = firstDayOfHabit.add(AMOUNT_OF_DAYS - 1, 'day');
 
   const checkIsTodayLastDayOfHabit = () => {
     const isLastDay = dayjs(lastDayOfHabit).isToday();

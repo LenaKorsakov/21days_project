@@ -31,7 +31,7 @@ function HabitInProgressRow({ habit, onDeleteButton, onStartAgain }) {
   };
 
   const firstDayOfHabit = dayjs(habit.start_day);
-  const lastDayOfHabit = firstDayOfHabit.add(AMOUNT_OF_DAYS, 'day');
+  const lastDayOfHabit = firstDayOfHabit.add(AMOUNT_OF_DAYS - 1, 'day');
 
   const evaluateProgress = () => {
     const progressIShouldHave = Math.round(

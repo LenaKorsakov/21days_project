@@ -31,7 +31,7 @@ function HabitCard({
   };
 
   const firstDayOfHabit = dayjs(habit.start_day);
-  const lastDayOfHabit = firstDayOfHabit.add(AMOUNT_OF_DAYS, 'day');
+  const lastDayOfHabit = firstDayOfHabit.add(AMOUNT_OF_DAYS - 1, 'day');
 
   const checkIsTodayAfterLastDayOfHabit = () => {
     const isAfterLastDay = dayjs().isAfter(lastDayOfHabit, 'day');
