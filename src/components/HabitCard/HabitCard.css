@@ -3,7 +3,7 @@
   background-color: var(--white);
   border-radius: 20px;
   justify-content: space-between;
-  @media (min-width: 1400px) and (max-width: 2000px) {
+  @media (min-width: 1200px) and (max-width: 2000px) {
     height: 100px;
   }
 
