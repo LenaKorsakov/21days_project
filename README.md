@@ -2,7 +2,7 @@
 
 ## Overview
 
-'21 Days' is a full-stack habit tracking application designed to help users build and maintain positive habits by tracking their progress for 21 days.
+'21 Days' is a full-stack habit tracking application designed to help users build or quit and maintain habits by tracking their progress for 21 days.
 
 It is said that it takes 21 (straight) days to create a habit so our App is the perfect way to put it to the test!
 
