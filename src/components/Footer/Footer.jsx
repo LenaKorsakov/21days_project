@@ -107,12 +107,15 @@ function Footer() {
           Made with ❤️ by{' '}
           <Link
             to={'https://www.linkedin.com/in/lenakorsakov/'}
-            className="link"
+            className="link link--name"
           >
             Elena
           </Link>{' '}
           and{' '}
-          <Link to={'https://www.linkedin.com/in/rrlaforest/'} className="link">
+          <Link
+            to={'https://www.linkedin.com/in/rrlaforest/'}
+            className="link link--name"
+          >
             Rony
           </Link>{' '}
         </span>
