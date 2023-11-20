@@ -39,7 +39,7 @@
     font-family: 'JosefinSans';
 
     @media (max-width: 500px) {
-      min-width: 10vw;
+      width: 10vw;
     }
   }
 
