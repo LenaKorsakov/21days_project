@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Footer.css';
 import { appRoutes } from '../../const/app-routes';
 
@@ -103,7 +103,19 @@ function Footer() {
             </li> */}
           </ul>
         </div>
-        <span className="copyright">Made with ❤️ by Rony and Elena </span>
+        <span className="copyright">
+          Made with ❤️ by{' '}
+          <Link
+            to={'https://www.linkedin.com/in/lenakorsakov/'}
+            className="link"
+          >
+            Elena
+          </Link>{' '}
+          and{' '}
+          <Link to={'https://www.linkedin.com/in/rrlaforest/'} className="link">
+            Rony
+          </Link>{' '}
+        </span>
       </footer>
     </>
   );
