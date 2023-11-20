@@ -69,12 +69,15 @@ Include links to your mobile screenshots here.
 
 Screenshot 1: Mobile Version - Main Page
 ![Main](https://github.com/LenaKorsakov/21days_project/blob/main/screenshots/mobile-1.jpg)
-![Explore](https://github.com/LenaKorsakov/21days_project/blob/main/screenshots/mobile-2.jpg)
-![Profile](https://github.com/LenaKorsakov/21days_project/blob/main/screenshots/mobile-4.jpg)
-![Habit](https://github.com/LenaKorsakov/21days_project/blob/main/screenshots/mobile-5.jpg)
 
-Screenshot 2: Mobile Version - Profile Page
-Profile Page Mobile
+Screenshot 2: Mobile Version - Explore Page
+![Explore](https://github.com/LenaKorsakov/21days_project/blob/main/screenshots/mobile-2.jpg)
+
+Screenshot 3: Mobile Version - Profile Page
+![Profile](https://github.com/LenaKorsakov/21days_project/blob/main/screenshots/mobile-4.jpg)
+
+Screenshot 4: Mobile Version - Habit Page
+![Habit](https://github.com/LenaKorsakov/21days_project/blob/main/screenshots/mobile-5.jpg)
 
 ## Demo
 
