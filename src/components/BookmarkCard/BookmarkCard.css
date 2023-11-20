@@ -18,6 +18,8 @@
     white-space: nowrap;
     overflow: hidden;
     color: var(--light-blue);
+    text-wrap: balance;
+    max-width: 60vw;
 
     & span {
       color: var(--blue);
@@ -39,7 +41,7 @@
     font-family: 'JosefinSans';
 
     @media (max-width: 500px) {
-      width: 10vw;
+      width: 20vw;
     }
   }
 
