@@ -12,8 +12,16 @@
     font-size: clamp(2.5vh, 3vw, 2.5vh);
   }
 
+  .title__container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 25px;
+  }
+
   & h3 {
-    font-size: clamp(1.5vh, 2vw, 2.5vh);
+    font-size: clamp(1.5vh, 1vw, 2vh);
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -35,7 +43,7 @@
     background-color: var(--light-green);
     color: var(--white);
     border-radius: 0;
-    font-size: clamp(1.5vh, 2.2vw, 3.1vh);
+    font-size: clamp(1.5vh, 1vw, 2vh);
     border: none;
     height: 100%;
     font-family: 'JosefinSans';

@@ -27,7 +27,7 @@ function BookmarkCard({ habit, onFetchBookmarks, onFetchMyHabits }) {
       <div className="emoji__container">
         <span className="habit__emoji">{emoji}</span>
       </div>
-      <div className="container">
+      <div className="title__container">
         <h3 className="habit__title">
           Let's {type} <span>{title}</span>
         </h3>

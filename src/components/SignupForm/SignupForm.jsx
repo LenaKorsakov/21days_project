@@ -1,6 +1,6 @@
-import './SignupForm.css';
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import './SignupForm.css';
 
 import { myApi } from '../../service/api';
 
@@ -8,7 +8,7 @@ import { apiRoutes } from '../../const/api-routes';
 import { appRoutes } from '../../const/app-routes';
 import { messageForUser } from '../../const/const';
 
-const passwordRegex = /^(?=.*?[A-Za-z])(?=.*?[0-9]).{2,}$/;
+const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
 const emailRegex =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 

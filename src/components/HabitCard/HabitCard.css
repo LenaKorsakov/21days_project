@@ -19,14 +19,14 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     overflow: hidden;
     padding: 0 13px;
     color: var(--ligt-blue);
   }
 
   & h3 {
-    font-size: clamp(1.5vh, 2vw, 2.5vh);
+    font-size: clamp(1.5vh, 1vw, 2.5vh);
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -38,7 +38,7 @@
     color: white;
     border-radius: 0;
     width: 13vw;
-    font-size: clamp(1vh, 2vw, 2.5vh);
+    font-size: clamp(1vh, 1vw, 2.5vh);
     @media (max-width: 500px) {
       width: 10vh;
       height: 8vh;
@@ -65,7 +65,7 @@
     background-color: var(--dark-green);
     border-radius: 0;
     width: 13vw;
-    font-size: clamp(1vh, 2vw, 2.5vh);
+    font-size: clamp(1vh, 1vw, 2.5vh);
     @media (max-width: 500px) {
       width: 11vh;
       height: 7vh;

@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
-import './Footer.css';
 import { appRoutes } from '../../const/app-routes';
+import './Footer.css';
 
 function Footer() {
   return (
@@ -110,14 +110,7 @@ function Footer() {
             className="link link--name"
           >
             Elena
-          </Link>{' '}
-          and{' '}
-          <Link
-            to={'https://www.linkedin.com/in/rrlaforest/'}
-            className="link link--name"
-          >
-            Rony
-          </Link>{' '}
+          </Link>
         </span>
       </footer>
     </>

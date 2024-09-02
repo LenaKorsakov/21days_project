@@ -68,7 +68,7 @@
     }
 
     & p {
-      font-size: clamp(1.5vh, 2vw, 1.9vh);
+      font-size: clamp(1vh, 0.8vw, 1.5vh);
       font-family: 'JosefinSans';
       color: var(--white);
       position: relative;
@@ -117,7 +117,7 @@
 
   & .page-header-nav__list {
     flex: 1 1 10%;
-    max-width: 40vw;
+    max-width: 25vw;
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
@@ -128,6 +128,10 @@
 
     & .btn--logout {
       background-color: transparent;
+
+      &:hover {
+        background-color: var(--light-green);
+      }
     }
 
     @media (max-width: 1024px) {
@@ -135,7 +139,7 @@
     }
 
     & .link {
-      font-size: clamp(2vh, 1.7vw, 2.3vh);
+      font-size: clamp(1.5vh, 1.7vw, 1.7vh);
 
       &.active {
         color: var(--gray);

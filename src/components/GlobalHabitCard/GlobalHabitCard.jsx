@@ -1,7 +1,7 @@
 import './GlobalHabitCard.css';
 
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { appRoutes } from '../../const/app-routes';
 
